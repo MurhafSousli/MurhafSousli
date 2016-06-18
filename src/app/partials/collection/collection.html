@@ -1,0 +1,7 @@
+<div class="container">
+<masonry [options]="{percentPosition:true, resize:true, transitionDuration: '0.8s'}">
+  <masonry-brick class="brick" *ngFor="let item of data">
+    <post-item [data]="item"></post-item>
+  </masonry-brick>
+</masonry>
+</div>

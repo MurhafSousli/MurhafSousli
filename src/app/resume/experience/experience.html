@@ -1,0 +1,19 @@
+<div class="experience-outer">
+  <div class="experience-item" *ngFor="let item of items">
+    <div class="experience-company-name">
+      {{item.company}}
+    </div>
+    <div class="experience-company-address">
+      {{item.address}}
+    </div>
+    <div class="experience-job-title">
+      {{item.jobTitle}}
+    </div>
+    <div class="experience-date">
+      {{item.date}}
+    </div>
+    <div class="experience-content" [innerHtml]="item.content">
+
+    </div>
+  </div>
+</div>

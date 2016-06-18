@@ -1,0 +1,9 @@
+<div class="skills">
+  <progress-bar *ngFor="let skill of skills"
+                [value]="skill.grade/100"
+                [text]="skill.title"
+                [type]="skill.type"
+                [args]="progessBarArgs">
+  </progress-bar>
+</div>
+

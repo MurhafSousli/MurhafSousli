@@ -1,0 +1,44 @@
+.menu-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 15px;
+  height: 100%;
+}
+
+.header{
+  flex: 0 0 100px;
+
+}
+
+.search {
+  flex: 0 0 50px;
+}
+
+.menu {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: space-between;
+  width: 80vw;
+}
+
+.menu-item {
+  transform: skewX(10deg);
+  flex: 0 1 250px;
+}
+
+#blog {
+  background-color: mediumseagreen;
+}
+
+#about {
+  background-color: orangered;
+}
+
+#resume {
+  background-color: purple;
+}
+
+#work {
+  background-color: cornflowerblue;
+}

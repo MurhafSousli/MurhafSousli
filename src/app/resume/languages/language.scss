@@ -1,0 +1,24 @@
+$language-column-height: 100px;
+$language-column-width: 2px;
+
+.languages{
+  display: flex;
+  justify-content: space-between;
+  .language-item{
+    flex: 0 1 200px;
+    position: relative;
+    margin-top: $language-column-height;
+    text-align: center;
+    border-radius: 8px;
+    border: 2px dotted pink;
+    padding: 10px;
+    &::before{
+      content: '';
+      height: $language-column-height;
+      border-left: 2px dotted pink;
+      position: absolute;
+      left: calc(50% - #{$language-column-width/2});;
+      bottom: 100%;
+    }
+  }
+}

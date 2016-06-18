@@ -1,0 +1,25 @@
+.lightbox {
+  z-index: 9999;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60px;
+  button {
+    margin: 15px;
+    background: transparent;
+    border: 0;
+    color: rgba(255, 255, 255, 0.8);
+  }
+}

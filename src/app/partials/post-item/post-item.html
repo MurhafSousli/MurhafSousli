@@ -1,0 +1,17 @@
+
+<div class="card-header">
+  <img *ngIf="post.featuredMedia()" [src]="post.featuredImageUrl('medium')"/>
+</div>
+
+<div class="card-body">
+  <h4>{{post.title()}}</h4>
+  <div [innerHtml]="post.excerpt()"></div>
+</div>
+
+<div class="card-footer">
+  <a class="card-link" [routerLink]=" ['Node' ,{ id: post.id() }]">
+    <i class="fa fa-link fa-1x" aria-hidden="true"></i> Open
+  </a>
+</div>
+
+

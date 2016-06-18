@@ -1,0 +1,122 @@
+//@import url('https://fonts.googleapis.com/css?family=Karla:400,700');
+//@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css');
+
+html, body {
+  height: 100%;
+  margin: 0;
+  @extend .base-font;
+}
+
+main-menu{
+  display: block;
+  height: 100vh;
+}
+
+.fillheight{
+  height: 100vh;
+}
+
+.flexpage{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*======================================================
+ *    _typography.scss
+ *======================================================
+ */
+.base-font {
+  font-family: 'Karla', sans-serif;
+  font-size: 14px;
+}
+
+.large-font {
+  font-size: 18px;
+}
+
+/*======================================================
+ *    _buttons.scss
+ *======================================================
+ */
+
+
+/* LEFT TO RIGHT */
+.sliding-u-l-r {
+  text-decoration: none;
+  display: inline-block;
+  &:after {
+    content: '';
+    display: block;
+    height: 2px;
+    width: 0;
+    background: transparent;
+    transition: width .5s ease;
+  }
+  &:hover:after {
+    width: 100%;
+  }
+}
+a {
+  color: rgba(0, 0, 0, 0.8);
+  @extend .sliding-u-l-r;
+}
+
+button {
+  outline: 0;
+  border: 0;
+  background-color: transparent;
+}
+
+/*======================================================
+ *    app component layout
+ *======================================================
+ */
+
+root {
+  display: flex;
+  height: 100%;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 50px;
+}
+
+main {
+  /* this contains our router-outlet which is set to 100VH scrollable*/
+  flex: 1 1 100vh;
+  overflow-y: auto;
+  h1 {
+    text-align: center;
+  }
+  .container {
+    margin: 0 auto;
+    max-width: 810px;
+  }
+}
+
+/*======================================================
+ *    card layout(masonry brick)
+ *======================================================
+ */
+
+.brick {
+  width: 250px;
+  margin: 10px;
+  background: #fff;
+  box-shadow: 0 0 5px 1px #aaa;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+/*======================================================
+ *    Fix hover for link and buttons with hand cursor
+ *======================================================
+ */
+button:hover, a:hover {
+  cursor: pointer;
+  cursor: hand;
+}
+
