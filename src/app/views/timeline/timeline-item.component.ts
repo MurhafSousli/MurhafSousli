@@ -30,3 +30,6 @@ export class TimelineItem {
 
   }
 }
+/*
+  TODO: decide to finish timeline or to let it go.
+ */

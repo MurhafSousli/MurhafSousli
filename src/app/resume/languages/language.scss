@@ -10,12 +10,12 @@ $language-column-width: 2px;
     margin-top: $language-column-height;
     text-align: center;
     border-radius: 8px;
-    border: 2px dotted pink;
+    border: 2px dotted gray;
     padding: 10px;
     &::before{
       content: '';
       height: $language-column-height;
-      border-left: 2px dotted pink;
+      border-left: 2px dotted gray;
       position: absolute;
       left: calc(50% - #{$language-column-width/2});;
       bottom: 100%;

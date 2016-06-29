@@ -8,7 +8,7 @@ import {
   ComponentFactory
 } from '@angular/core';
 import {RouteParams} from '@angular/router-deprecated';
-import {Single} from "../partials/single";
+import {Single} from "../views/single";
 import {WpModel,Helper} from "../service";
 import {Post} from "../service/models";
 
@@ -76,6 +76,8 @@ export class Node {
       err=>console.log(err)
     );
   }
-
+  /*
+   TODO: Add condition to display post layout or project layout according to the post type.
+   */
 }
 

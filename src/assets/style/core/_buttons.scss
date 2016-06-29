@@ -1,0 +1,65 @@
+#{$all-buttons} {
+  appearance: none;
+  background-color: $action-color;
+  border: 0;
+  border-radius: $base-border-radius;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: $base-font-family;
+  font-size: $base-font-size;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 600;
+  line-height: 1;
+  padding: $small-spacing $base-spacing;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color $base-duration $base-timing;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+
+  &:hover,
+  &:focus {
+    background-color: shade($action-color, 20%);
+    color: #fff;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+
+    &:hover {
+      background-color: $action-color;
+    }
+  }
+}
+
+.btn {
+  margin: 5px;
+  font-family: $heading-font-family;
+  border: 2px solid $base-font-color;
+  border-radius: 4px;
+  padding: 10px;
+  color: $base-font-color;
+  //font-weight: bold;
+  &:hover {
+    background: $base-font-color;
+    color: white;
+    @include transition(all .5s ease);
+  }
+}
+
+.btn-inverse {
+  color: white;
+  border: 2px solid white;
+  &:hover {
+    color: $base-font-color;
+    background: white;
+  }
+}
+
+button:hover, a:hover {
+  cursor: pointer;
+  cursor: hand;
+}

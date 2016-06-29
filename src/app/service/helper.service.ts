@@ -1,8 +1,5 @@
-/**
- * Created by Murhaf on 6/7/2016.
- */
 /*
- * This is a static class contains all shared functions which Models and Collections need.
+ This is a static class contains all shared functions which Models and Collections need.
  */
 
 import {Headers} from '@angular/http';
@@ -13,8 +10,9 @@ export module Helper {
   export function baseUrl() {
     return 'http://localhost/wordpress/wp-json';
   }
+
   export function getIpUrl() {
-    return 'http://ip-api.com/json';
+    return 'http://ip-api.com/json'; 
   }
 
   export function getBodyCredentials(encodedCred:string):string {
@@ -34,12 +32,15 @@ export module Helper {
     Root = <any>'',
     Users = <any> '/wp/v2/users/',
     Authentication = <any>'/jwt-auth/v1/token/',
-    Posts = <any>'/wp/v2/posts/'
+    Posts = <any>'/wp/v2/posts/',
+    Categories = <any>'/wp/v2/categories/'  ,
+    Projects = <any>'/wp/v2/projects/',
+    Experiences = <any>'/wp/v2/experiences/'
   }
 
   export function toUrlEncoded(obj):string {
     var str = [];
-    for(var p in obj)
+    for (var p in obj)
       if (obj.hasOwnProperty(p)) {
         str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
       }

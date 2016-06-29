@@ -1,30 +1,23 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 import {RouteConfig} from '@angular/router-deprecated';
 
-import {AppState} from './app.service';
 import {Home} from './home';
 import {Blog} from './blog';
 import {Header} from './partials/header';
-import {SideHeader} from './partials/side-header';
-
 
 @Component({
   selector: 'app',
   encapsulation: ViewEncapsulation.None,
   styles: [
+    require('../assets/style/style.scss'),
     require('./app.scss')
   ],
-  directives: [SideHeader],
+  directives: [Header],
   template: `
-    <root>
-    
-      <header></header>
-
+     <header></header>
      <main>
-        <router-outlet></router-outlet>
-      </main>
-      
-    </root>
+      <router-outlet></router-outlet>
+     </main>
   `
 })
 @RouteConfig([
@@ -37,14 +30,10 @@ import {SideHeader} from './partials/side-header';
   {path: '/resume', name: 'Resume', loader: () => require('es6-promise!./resume')('Resume')}
 ])
 export class App {
-  loading = false;
 
-  constructor(public appState:AppState) {
+  constructor() {
 
   }
 
-  ngOnInit() {
-    console.log('Initial App State', this.appState.state);
-  }
 
 }

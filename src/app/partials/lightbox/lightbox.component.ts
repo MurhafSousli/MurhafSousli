@@ -24,3 +24,7 @@ export class Lightbox {
     this.appState['lightbox'] = false;
   }
 }
+
+/*
+  TODO: lightbox should be activated only on node component for displaying images
+ */

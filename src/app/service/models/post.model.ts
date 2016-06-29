@@ -35,7 +35,9 @@ export class Post {
   content() {
     return this.post.content.rendered;
   }
-
+  date(){
+    return this.post.date;
+  }
   categories() {
     if (this.post._embedded && this.post._embedded['wp:term'][0])
       return this.post._embedded['wp:term'][0];

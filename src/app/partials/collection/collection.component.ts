@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {WpCollection, Helper} from '../../service';
 import {MASONRY_DIRECTIVES} from '../../directives/masonry-layout';
-import {PostItem} from '../post-item';
+import {PostItem} from '../../views/post-item';
 import {Args} from "../../service/models";
 
 
@@ -50,6 +50,10 @@ export class Collection {
       err => console.log(err)
     );
   }
+
+  /*
+    TODO: Add load on scroll feature with loading animation, check if masonry does that out of the box.
+   */
 
 }
 

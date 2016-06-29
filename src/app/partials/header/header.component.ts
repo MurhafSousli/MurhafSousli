@@ -1,16 +1,28 @@
 import {Component} from '@angular/core';
-import {RouterActive} from "../../directives/router-active";
+import {Router} from '@angular/router-deprecated';
+
 
 @Component({
   selector: 'header',
-  template: require('./header.html'),
-  styles: [require('./header.scss')],
-  directives: [RouterActive]
+  template: require('./header.html')
 })
 
 export class Header{
-  logo: string = require('../../assets/img/ladybug.svg');
-  constructor(){
+
+  isActive = false;
+
+  constructor(public router: Router){
 
   }
+  navigate(target?: string){
+    this.router.navigate([target]);
+    this.isActive = false;
+  }
+  search(key:string) {
+    this.router.navigate(['Search', {key: key}]);
+    this.isActive = false;
+  }
 }
+/*
+  TODO: add social links + search feature.
+ */

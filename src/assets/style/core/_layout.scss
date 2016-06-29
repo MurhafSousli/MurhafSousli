@@ -1,0 +1,31 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+.brick {
+  width: 250px;
+  margin: 10px;
+  background: #fff;
+  box-shadow:  0px 0px 5px 0px rgba(0,0,0,0.75);
+  //border: 2px solid black;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+
+.fillheight {
+  height: 100vh;
+}
+
+
+.flexpage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

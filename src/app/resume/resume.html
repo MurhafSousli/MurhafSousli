@@ -8,26 +8,21 @@
     <h2>SELF SUMMARY</h2>
   </div>
   <div class="section-content container flexpage large-font">
-    <p>
-      I’m software engineer, specialized in web development, I’m seeking for a job as a web developer.
-
-      I have deep knowledge in web industry, experience gained through many projects and researches I do constantly.
-
-      I’m also professional wordpress developer, I have designed many themes in my freelancing career.
-
-      I have also coded different types of applications such as portfolio, blog, ecommerce, intranet system and games
-
-      I have strong will to learn new technologies and languages.
-
-      I’m organized and eager to write code reusable, DRY and clean as possible.
-
-      I pay attention to small details because I believe it’s important.
-      I always use the latest technologies at the time
-    </p>
+    <p [innerHtml]="introduction"></p>
   </div>
 
 </div>
 
+<!--RADAR PART-->
+<div class="radar-wrapper">
+  <div class="section-content flexpage container large-font">
+    <base-chart id="myChart" [datasets]="radarChartData"
+                [labels]="radarChartLabels"
+                [chartType]="radarChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></base-chart>
+  </div>
+</div>
 <!--SKILLS PART-->
 
 <div class="skills-wrapper">
@@ -51,26 +46,45 @@
 </div>
 
 <!--LANGUAGES PART-->
-<div class="languages-wrapper">
-  <div class="section-title container">
-    <h2>LANGUAGES</h2>
-  </div>
-  <div class="section-content flexpage container large-font">
-    <languages></languages>
-  </div>
-</div>
+<!--<div class="languages-wrapper">-->
+  <!--<div class="section-title container">-->
+    <!--<h2>LANGUAGES</h2>-->
+  <!--</div>-->
+  <!--<div class="section-content flexpage container large-font">-->
+    <!--<languages></languages>-->
+  <!--</div>-->
+<!--</div>-->
 
 <!--EXPERIENCE PART-->
-<div clas="experience-wrapper container">
-  <experience></experience>
+<div class="experience-wrapper">
+  <div class="section-title container">
+    <h2>EXPERIENCE</h2>
+  </div>
+  <div class="section-content flexpage container large-font">
+    <experience></experience>
+  </div>
 </div>
 
 <!--PROJECT PART-->
-<div clas="projects-wrapper container">
-
+<div class="projects-wrapper">
+  <div class="section-title container">
+    <h2>PROJECTS</h2>
+  </div>
+  <div class="section-content flexpage container large-font">
+    <projects></projects>
+  </div>
 </div>
 
 <!--BADGES PART-->
 <div class="badges-wrapper">
-
+  <div class="section-title container">
+    <h2>BADGES</h2>
+  </div>
+  <div class="section-content flexpage container large-font">
+    <a href="http://stackoverflow.com/users/1015648/murhaf-sousli">
+      <img src="http://stackoverflow.com/users/flair/1015648.png?theme=clean" width="208" height="58"
+           alt="profile for Murhaf Sousli at Stack Overflow, Q&amp;A for professional and enthusiast programmers"
+           title="profile for Murhaf Sousli at Stack Overflow, Q&amp;A for professional and enthusiast programmers">
+    </a>
+  </div>
 </div>

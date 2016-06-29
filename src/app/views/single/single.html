@@ -1,0 +1,40 @@
+
+<div class="post-card">
+  <div class="post-header fillheight">
+    <div class="post-image" *ngIf="post.featuredMedia()"
+        [ngStyle]="postImageStyle">
+    </div>
+    <div class="post-overlay">
+      <div class="post-title">
+        <h1>{{post.title()}}</h1>
+      </div>
+      <div class="post-categories">
+        <a *ngFor="let cat of post.categories()" class="btn btn-inverse" [routerLink]="['Category', {id: cat.id}]">{{cat.name}}</a>
+      </div>
+      <div class="post-date">
+        posted on {{post.date() | date}}
+      </div>
+    </div>
+  </div>
+  <div class="post-body container">
+    <!--<div class="post-meta">-->
+      <!--<div class="post-date">-->
+        <!--{{post.date() | date}}-->
+      <!--</div>-->
+      <!--<div class="post-author">-->
+        <!--{{post.author().name}}-->
+      <!--</div>-->
+      <div class="post-categories">
+        <a *ngFor="let cat of post.categories()" class="btn" [routerLink]="['Category', {id: cat.id}]">{{cat.name}}</a>
+      </div>
+    <!--</div>-->
+    <div class="post-content" [innerHtml]="post.content()"></div>
+  </div>
+  <div class="post-share container"></div>
+  <div class="post-tags container">
+    <span class="badge-notice" *ngFor="let tag of post.tags()">{{tag.name}}</span>
+  </div>
+  <div *ngIf="post" class="post-comments container">
+    <disqus [shortname]="'murhafsousli'" [identifier]="post.id()"></disqus>
+  </div>
+</div>

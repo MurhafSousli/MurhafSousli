@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {RouterActive} from "../../directives/router-active";
+import {RouterActive} from "../.";
 import {Lightbox} from '../lightbox';
 import {Searchbox} from '../search-box';
 import {AppState} from "../../app.service";
@@ -20,3 +20,7 @@ export class SideHeader {
   }
 
 }
+
+/*
+  TODO: remove side-header
+ */

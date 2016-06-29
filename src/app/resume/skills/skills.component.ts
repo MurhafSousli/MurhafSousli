@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Skill} from "./skill.model";
-import {ProgressBar} from "../../partials/progressbar";
+import {ProgressBar} from "../../views/progressbar";
 
 @Component({
   selector: 'skills',
@@ -11,6 +11,7 @@ import {ProgressBar} from "../../partials/progressbar";
 
 export class Skills{
 
+
   skills;
   progessBarArgs;
 
@@ -20,7 +21,7 @@ export class Skills{
 
   setSkills() {
     this.progessBarArgs = {
-      color: '#FF6666',
+      color: 'white',
       strokeWidth: 4,
       trailWidth: 2,
       easing: 'easeInOut'
@@ -38,3 +39,4 @@ export class Skills{
     this.skills.push(new Skill('CSS3', 90, 'semi-circle'));
   }
 }
+

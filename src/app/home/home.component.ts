@@ -1,13 +1,36 @@
-import { Component } from '@angular/core';
-import { Menu } from '../menu';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'home',
-  styles: [ require('./home.css') ],
-  template: require('./home.html'),
-  directives: [Menu]
+  template: require('./home.html')
 })
 export class Home {
 
+  profilePic = '../../assets/img/angular-logo.png';
+  activeIndex = 0;
 
+  titles = [
+    'Web developer',
+    'Software Engineer',
+    'Blogger'
+  ];
+
+  ngOnInit() {
+    setInterval(_ => {
+
+      this.activeIndex++;
+      if (this.activeIndex >= this.titles.length) {
+        this.activeIndex = 0;
+      }
+    }, 2000);
+  }
+
+  getClass(index) {
+    if(this.activeIndex == index) {
+      return {'is-visible': true, 'is-hidden': false}
+    }
+    else {
+      return {'is-visible': false, 'is-hidden': true}
+    }
+  }
 }

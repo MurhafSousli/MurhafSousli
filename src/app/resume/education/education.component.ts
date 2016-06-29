@@ -9,5 +9,4 @@ import {Component} from '@angular/core';
 export class Education{
 
   graduateIcon = require('../../../assets/img/mortarboard.svg');
-
 }

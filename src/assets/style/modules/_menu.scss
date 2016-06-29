@@ -1,0 +1,171 @@
+$color-background: #F5F5F5;
+$color-main: #FF5252;
+$color-active: #FFF;
+$color-link: #FFF;
+
+$menu-button-height: 27px;
+$menu-button-width: 35px;
+
+
+.button_container {
+  position: fixed;
+  top: 25px;
+  left: 25px;
+  height: $menu-button-height;
+  width: $menu-button-width;
+  cursor: pointer;
+  z-index: 1000;
+  transition: opacity .25s ease;
+
+  &:hover {
+    opacity: .7;
+  }
+
+  &.active {
+    .top {
+      transform: translateY(11px) translateX(0) rotate(45deg);
+      background: $color-active;
+    }
+    .middle {
+      opacity: 0;
+      background: $color-active;
+    }
+
+    .bottom {
+      transform: translateY(-11px) translateX(0) rotate(-45deg);
+      background: $color-active;
+    }
+  }
+
+  span {
+    background: $color-main;
+    border: none;
+    height: 5px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition:  all .35s ease;
+    cursor: pointer;
+
+    &:nth-of-type(2) {
+      top: 11px;
+    }
+
+    &:nth-of-type(3) {
+      top: 22px;
+    }
+  }
+}
+.overlay-inner{
+  flex: 1 1 auto;
+  display: flex;
+  max-width: 400px;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.overlay {
+  text-transform: uppercase;
+  font-family: $heading-font-family;
+  display: flex;
+  justify-content: center;
+  z-index: 999;
+  position: fixed;
+  background: $color-main;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .35s, visibility .35s, height .35s;
+  overflow: hidden;
+
+  &.open {
+    opacity: .9;
+    visibility: visible;
+    height: 100%;
+
+    li {
+      @extend .animated, .jello;
+    }
+
+    .social{
+      @extend .animated, .jello;
+    }
+  }
+  nav {
+    width: 100%;
+    margin: 0 auto;
+    flex: 1 1 auto;
+    position: relative;
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+  }
+  ul {
+    flex: 1 1 auto;
+    list-style: none;
+    padding: 40px 0;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+
+
+    li {
+      position: relative;
+
+      a {
+        display: inline-block;
+        position: relative;
+        color: $color-link;
+        text-decoration: none;
+        overflow: hidden;
+
+        &:hover:after,
+        &:focus:after,
+        &:active:after {
+          width: 100%;
+        }
+
+        &:after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          width: 0%;
+          transform: translateX(-50%);
+          height: 3px;
+          background: $color-link;
+          transition: .35s;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+.searchbox {
+
+  color: white;
+}
+.search-input{
+  input {
+    color: white;
+    max-width: 100%;
+    text-align: center;
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    font-size: 4rem;
+  }
+}
+
+h1{
+  color: white;
+}
