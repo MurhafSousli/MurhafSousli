@@ -12,7 +12,7 @@ export module Helper {
   }
 
   export function getIpUrl() {
-    return 'http://ip-api.com/json'; 
+    return 'http://ip-api.com/json';
   }
 
   export function getBodyCredentials(encodedCred:string):string {

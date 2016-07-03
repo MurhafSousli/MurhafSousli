@@ -1,14 +1,12 @@
 import {Component, Input} from '@angular/core';
 import {WpCollection, Helper} from '../../service';
-import {MASONRY_DIRECTIVES} from '../../directives/masonry-layout';
-import {PostItem} from '../../views/post-item';
+import {Card} from '../../views/card';
 import {Args} from "../../service/models";
-
 
 @Component({
   selector: 'collection',
   template: require('./collection.html'),
-  directives: [MASONRY_DIRECTIVES, PostItem],
+  directives: [Card],
   providers: [WpCollection]
 })
 

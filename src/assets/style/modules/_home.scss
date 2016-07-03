@@ -1,0 +1,69 @@
+
+.home {
+  font-family: $heading-font-family;
+  padding: 15px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  .my-cover {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    max-width: 80%;
+    height: auto;
+    position: relative;
+    margin-bottom: 40px;
+
+    &:after {
+      content: 'Hi';
+      position: absolute;
+      top: 60%;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: 10em;
+      z-index: 100;
+      font-weight: bold;
+      text-shadow: 9px -9px 0 #fff;
+      font-family: $base-font-family;
+    }
+
+    .my-pic {
+      margin: auto;
+      padding-bottom: 75%;
+      flex: 1 1 auto;
+      border-radius: 50%;
+      background-color: dimgray;
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      max-width: 280px;
+      max-height: 280px;
+      img {
+        background-position: center;
+        width: 100%;
+      }
+    }
+  }
+
+  .my-name {
+    margin: 10px;
+    font-size: 2em;
+  }
+  .my-job {
+    margin: 10px;
+    font-size: 2em;
+    .rotate-title {
+      width: 200px;
+      display: inline-block;
+    }
+  }
+  .social {
+    a {
+      color: $base-font-color;
+      font-size: 30px;
+    }
+  }
+}

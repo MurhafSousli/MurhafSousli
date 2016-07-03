@@ -9,7 +9,7 @@ const helpers = require('./helpers');
  * Webpack Plugins
  */
 // problem with copy-webpack-plugin
-var CopyWebpackPlugin = (CopyWebpackPlugin = require('copy-webpack-plugin'), CopyWebpackPlugin.default || CopyWebpackPlugin);
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 const HtmlElementsPlugin = require('./html-elements-plugin');
@@ -18,7 +18,7 @@ const HtmlElementsPlugin = require('./html-elements-plugin');
  * Webpack Constants
  */
 const METADATA = {
-  title: 'Angular2 Webpack Starter by @gdi2290 from @AngularClass',
+  title: 'Murhaf Sousli - Web Developer',
   baseUrl: '/',
   isDevServer: helpers.isWebpackDevServer()
 };
@@ -59,7 +59,7 @@ module.exports = {
     'main':      './src/main.browser.ts'
 
   },
-  
+
   /*
    * Options affecting the resolving of modules.
    *
@@ -72,18 +72,13 @@ module.exports = {
      *
      * See: http://webpack.github.io/docs/configuration.html#resolve-extensions
      */
-    extensions: ['', '.ts', '.js'],
+    extensions: ['', '.ts', '.js', '.json'],
 
     // Make sure root is src
     root: helpers.root('src'),
 
     // remove other default values
     modulesDirectories: ['node_modules'],
-
-    alias: {
-      // legacy imports pre-rc releases
-      'angular2': helpers.root('node_modules/@angularclass/angular2-beta-to-rc-alias/dist/beta-17')
-    },
 
   },
 
@@ -121,6 +116,8 @@ module.exports = {
           // these packages have problems with their sourcemaps
           helpers.root('node_modules/rxjs'),
           helpers.root('node_modules/@angular'),
+          helpers.root('node_modules/@ngrx'),
+          helpers.root('node_modules/@angular2-material'),
         ]
       }
 
@@ -143,7 +140,7 @@ module.exports = {
        */
       {
         test: /\.ts$/,
-        loader: 'awesome-typescript-loader',
+        loaders: ['awesome-typescript-loader', 'angular2-template-loader'],
         exclude: [/\.(spec|e2e)\.ts$/]
       },
 
@@ -158,14 +155,13 @@ module.exports = {
       },
 
       /*
-       * Raw loader support for *.css files
+       * to string and css loader support for *.css files
        * Returns file content as string
        *
-       * See: https://github.com/webpack/raw-loader
        */
       {
         test: /\.css$/,
-        loader: 'raw-loader'
+        loaders: ['to-string-loader', 'css-loader']
       },
 
       /* Raw loader support for *.html
@@ -183,6 +179,7 @@ module.exports = {
         loaders: ['raw-loader', 'sass-loader?sourceMap']
       },
       { test: /.(png|woff(2)?|eot|ttf|svg)(\?[a-z0-9=\.]+)?$/, loader: 'url-loader?limit=100000' }
+
 
     ]
 
@@ -276,11 +273,7 @@ module.exports = {
     new HtmlElementsPlugin({
       headTags: require('./head-config.common')
     }),
-    new webpack.ProvidePlugin({   
-        jQuery: 'jquery',
-        $: 'jquery',
-        jquery: 'jquery'
-    })
+
   ],
 
   /*

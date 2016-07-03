@@ -1,0 +1,44 @@
+$twitter: #00acee;
+$facebook: #3b5998;
+$googleplus: #e93f2e;
+$stumbleupon: #f74425;
+$linkedin: #0e76a8;
+$pinterest: #C92228;
+$reddit: #FF4006;
+$tumbler: #36465D;
+
+.share-buttons{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  button{
+    @extend .btn;
+    flex: 1 1 50px;
+    background-color: white;
+  }
+}
+
+.facebook{
+  color: $facebook;
+}
+.twitter{
+  color: $twitter;
+}
+.googleplus{
+  color: $googleplus;
+}
+.stumbleupon{
+  color: $stumbleupon;
+}
+.linkedin{
+  color: $linkedin;
+}
+.pinterest{
+  color: $pinterest;
+}
+.reddit{
+  color: $reddit;
+}
+.tumblr{
+  color: $tumbler;
+}

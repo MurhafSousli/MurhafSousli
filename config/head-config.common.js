@@ -15,10 +15,10 @@
  */
 module.exports = {
   link: [
-    /* Murhaf's style imports */
+     /* Murhaf's style imports */
     { rel: "stylesheet", type: "text/css", href: "https://fonts.googleapis.com/css?family=Karla:400,700" },
     { rel: "stylesheet", integrity: "sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1", crossorigin: "anonymous", href: "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" },
-
+    
     /** <link> tags for "apple-touch-icon" (AKA Web Clips). **/
     { rel: "apple-touch-icon", sizes: "57x57", href: "/assets/icon/apple-icon-57x57.png" },
     { rel: "apple-touch-icon", sizes: "60x60", href: "/assets/icon/apple-icon-60x60.png" },

@@ -1,0 +1,23 @@
+<div class="card animated zoomIn">
+
+  <div class="card-image">
+    <a [routerLink]="['/node/' + post.id()]">
+      <img *ngIf="post.featuredMedia()" [src]="post.featuredImageUrl('medium')"/>
+    </a>
+  </div>
+
+  <div class="card-header">
+    <h4>{{post.title()}}</h4>
+  </div>
+
+  <div class="card-copy">
+    <div [innerHtml]="post.excerpt()"></div>
+  </div>
+
+  <div class="card-footer">
+    <a class="card-link" [routerLink]=" ['/node/' + post.id()]">
+      <i class="fa fa-link fa-1x" aria-hidden="true"></i> Open
+    </a>
+  </div>
+
+</div>

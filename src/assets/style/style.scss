@@ -19,146 +19,94 @@
 @import 'modules/base';
 
 
-.progressbar-text {
-  text-transform: uppercase;
-}
+
+$dark-blue: #0e2231;
+$light-blue: powderblue;
+$dark-yellow: #FF9600;
+$light-yellow: #FFD200;
+$light-red: #F66867;
 
 
-
-/*======================================================
- *    app component layout
- *======================================================
- */
-
-main {
-  display: block;
-  height: 100vh;
-  overflow-y: auto;
-  /* this contains our router-outlet which is set to 100VH scrollable*/
-  //flex: 1 1 100vh;
-  //overflow-y: auto;
-}
-
-
-.container {
-  margin: 0 auto;
-  max-width: 810px;
-}
-
-
-/*======================================================
- *    Fix hover for link and buttons with hand cursor
- *======================================================
- */
-
-
-.home {
-  font-family: $heading-font-family;
-  padding: 15px 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-
-  .my-cover {
-    flex: 1 1 auto;
-    display: flex;
-    flex-direction: column;
-    max-width: 80%;
-    height: auto;
-    position: relative;
-    margin-bottom: 40px;
-
-    &:after{
-      content: 'Hi';
-      position: absolute;
-      top: 60%;
-      left: 0;
-      right: 0;
-      text-align: center;
-      font-size: 10em;
-      z-index: 100;
-      font-weight: bold;
-      text-shadow: 9px -9px 0 #fff;
-      font-family: $base-font-family;
-    }
-
-    .my-pic {
-      margin: auto;
-      padding-bottom: 75%;
-      flex: 1 1 auto;
-      border-radius: 50%;
-      background-color: dimgray;
-      overflow: hidden;
-      position: relative;
-      width: 100%;
-      max-width: 280px;
-      max-height: 280px;
-      img{
-        background-position: center;
-        width: 100%;
-      }
-    }
-  }
-
-  .my-name {
-    margin: 10px;
-    // margin-top: -20px;
-    font-size: 2em;
-  }
-  .my-job {
-    margin: 10px;
-    font-size: 2em;
-  }
-  .social {
-    a {
-      color: $base-font-color;
-      font-size: 30px;
-    }
-  }
-}
-
-.social {
-
-  z-index: 100;
-  display: flex;
-  flex: 0 0 auto;
-  justify-content: space-around;
-  align-items: center;
-  align-content: center;
-  a {
-    color: white;
-    margin: 15px;
-    font-size: 30px;
-    &hover {
-      opacity: .8;
-    }
-  }
-}
-
-.rotate-title{
-  width: 200px;
-  display: inline-block;
-}
-.skills-wrapper{
-
-}
-.skills{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  font-family: $heading-font-family;
-  progress-bar {
-    margin: 10px;
-    width: 100px;
-  }
-
-}
-.page-title{
-    color: $base-font-color;
+.resume-title {
+  h1 {
+    color: $dark-blue;
+    text-align: right;
     font-size: 3em;
+    font-weight: bold;
+    margin: 20px;
+  }
+}
+
+.section-title {
+  font-weight: bolder;
+}
+
+.introduction {
+  background-color: $dark-blue;
+  padding: 20px 20px 60px;
+  color: whitesmoke;
+  transform: skew(0deg, 5deg);
+  .section-title {
+    color: $light-blue;
+  }
+  .section-content {
+    transform: skew(0deg, -5deg);
+  }
+}
+
+.radar-wrapper {
+  flex: 1 1 auto;
+  padding: 60px 20px 30px;
+  background-color: white;
+}
+
+.skills-wrapper {
+  padding: 20px 20px 140px;
+  margin-bottom: -60px;
+  //transform: skew(0deg, 5deg);
+  background-color: $light-red;
+  .section-title {
+    color: $dark-blue;
+  }
+  .section-content {
+    //transform: skew(0deg, -5deg);
+  }
+  skills {
+    flex: 1 1 auto;
+  }
+}
+
+.education-wrapper {
+  transform: skew(0deg, -3deg);
+  padding: 50px 0 60px 0;
+  education {
+    flex: 1 1 auto;
+    transform: skew(0deg, 3deg);
+
+  }
+  background-color: $light-blue;
+}
+
+.languages-wrapper {
+  padding: 150px 20px 200px;
+  margin-top: -80px;
+  background-color: #8E2043;
+  color: gray;
+  .section-title {
     text-align: center;
-    text-transform: uppercase;
-    margin-top: 40px;
+    border: 2px dotted;
+    border-radius: 8px;
+  }
+  languages {
+    width: 100%;
+  }
+
+}
+
+projects {
+  width: 100%;
+}
+#myChart{
+  display:flex;
+  width: 100%;
 }

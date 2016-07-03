@@ -1,4 +1,4 @@
-import { Component, Input, ElementRef } from '@angular/core';
+import {Component, Input, ElementRef} from '@angular/core';
 
 @Component({
   selector: 'disqus',
@@ -9,25 +9,23 @@ export class Disqus {
 
   _dom;
 
-  @Input() public identifier: string;
+  @Input() public identifier:string;
 
-  @Input() public shortname: string;
+  @Input() public shortname:string;
 
-  constructor(private _el: ElementRef)
-  {
+  constructor(private _el:ElementRef) {
     this._dom = _el.nativeElement;
   }
 
-
-  /**
-   * Component on init
-   */
   ngOnInit() {
-    if ((<any>window).DISQUS === undefined) {
-      this._addScriptTag();
-    } else {
-      this._reset();
-    }
+    setTimeout(_=> {
+      if (window['DISQUS'] === undefined) {
+        this._addScriptTag();
+      }
+      else {
+        this._reset();
+      }
+    }, 2000);
   }
 
   /**
@@ -47,6 +45,7 @@ export class Disqus {
     (<any>window).disqus_config = this._getConfig();
     let script = this._buildScriptTag(`//${this.shortname}.disqus.com/embed.js`);
     this._dom.appendChild(script);
+    console.log(this._getConfig());
   }
 
   /**
@@ -55,7 +54,7 @@ export class Disqus {
   _getConfig() {
     let _self = this;
     return function () {
-      this.page.url = 'http://murhafsousli.com';
+      this.page.url = window.location.href;
       this.page.identifier = _self.identifier;
       this.language = 'en';
     };
@@ -66,7 +65,7 @@ export class Disqus {
    * @param  {string} src
    * @return {HTMLScriptElement}
    */
-  _buildScriptTag(src: string): HTMLScriptElement {
+  _buildScriptTag(src:string):HTMLScriptElement {
     let script = document.createElement("script");
     script.src = src;
     script.async = true;

@@ -1,24 +1,39 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, ElementRef} from '@angular/core';
 import {Post} from "../../service/models";
 import {Disqus} from '../../partials/disqus';
+import {Share} from '../../partials/share';
 
 
 @Component({
   selector: 'single',
   template: require('./single.html'),
-  //styles: [require('./single.scss')],
-  directives: [Disqus]
+  directives: [Disqus, Share]
 })
 
 export class Single {
   @Input() post:Post;
   postImageStyle;
+  featuredImageLoaded = false;
 
-  constructor() {
+  constructor(private el:ElementRef) {
   }
 
   ngOnInit() {
-    this.postImageStyle = this.getFeaturedImage();
+    setTimeout(_ => {
+        if (this.post.featuredMedia()) {
+          this.postImageStyle = this.getFeaturedImage();
+          this.featuredImageLoaded = true;
+          this.scrollToTop();
+        }
+      },
+      1000
+    );
+
+  }
+
+  scrollToTop():void {
+    //this fixes navigation to reset the view position specially on firefox
+    window.scrollTo(0, 0);
   }
 
   getFeaturedImage() {
@@ -42,7 +57,7 @@ export class Single {
     return {
       'background-image': 'url(' + this.post.featuredImageUrl('large') + ')'
     };
-    
+
 
   }
 

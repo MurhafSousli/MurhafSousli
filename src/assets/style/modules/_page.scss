@@ -1,0 +1,16 @@
+
+
+.page-title h1{
+  color: $base-font-color;
+  font-size: 3em;
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 40px;
+}
+.page-content{
+  padding: 20px;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

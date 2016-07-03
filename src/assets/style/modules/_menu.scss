@@ -1,5 +1,6 @@
 $color-background: #F5F5F5;
 $color-main: #FF5252;
+//$color-main: #B90504;
 $color-active: #FFF;
 $color-link: #FFF;
 
@@ -166,6 +167,19 @@ $menu-button-width: 35px;
   }
 }
 
-h1{
-  color: white;
+
+.social {
+  z-index: 100;
+  display: flex;
+  justify-content: space-around;
+  a {
+    color: white;
+    margin: 15px;
+    font-size: 30px;
+    opacity: 1;
+    transition: opacity 0.35s;
+    &:hover {
+      opacity: .7;
+    }
+  }
 }

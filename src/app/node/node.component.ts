@@ -7,7 +7,7 @@ import {
   ComponentRef,
   ComponentFactory
 } from '@angular/core';
-import {RouteParams} from '@angular/router-deprecated';
+import {ActivatedRoute} from '@angular/router';
 import {Single} from "../views/single";
 import {WpModel,Helper} from "../service";
 import {Post} from "../service/models";
@@ -28,11 +28,11 @@ export class Node {
 
   @ViewChild('target', {read: ViewContainerRef}) target;
 
-  constructor(private _param: RouteParams,
+  constructor(private route: ActivatedRoute,
               private resolver: ComponentResolver,
               private service:WpModel
   ){
-    this.id = _param.get('id');
+    this.id = this.route.snapshot.params['id'];
     this.service.setEndpoint(Helper.WpEndpoint.Posts);
   }
 

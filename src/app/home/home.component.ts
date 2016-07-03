@@ -1,13 +1,14 @@
-import {Component} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 
 @Component({
   selector: 'home',
   template: require('./home.html')
 })
-export class Home {
+export class Home implements OnDestroy{
 
   profilePic = '../../assets/img/angular-logo.png';
   activeIndex = 0;
+  destroyed: boolean = false;
 
   titles = [
     'Web developer',
@@ -32,5 +33,12 @@ export class Home {
     else {
       return {'is-visible': false, 'is-hidden': true}
     }
+  }
+
+  ngOnDestroy() {
+    this.destroyed = true;
+    setTimeout(_=> {
+
+    }, 2000);
   }
 }
