@@ -2,8 +2,14 @@
 @import url('https://fonts.googleapis.com/css?family=Oswald:400,700|Roboto+Condensed:400,700');
 
 // Breakpoints
-$medium-screen: 600px;
-$large-screen: 900px;
+$x-large-screen: 1200px;
+$large-screen: 769px;
+$medium-screen: 480px;
+$small-screen: 320px;
+
+$device-pc: min-width $large-screen;
+$device-tablet: min-width $medium-screen max-width $large-screen;
+$device-phone: min-width $small-screen max-width $medium-screen;
 
 // Typography
 $base-font-family: 'Roboto Condensed', sans-serif;

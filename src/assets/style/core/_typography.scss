@@ -40,3 +40,16 @@ hr {
   border-top: 0;
   margin: $base-spacing 0;
 }
+@include media($device-tablet){
+  h1{
+    font-size: 2em;
+  }
+}
+@include media($device-pc){
+  h1{
+    font-size: 3em;
+  }
+}
+@include media(320px){
+
+}

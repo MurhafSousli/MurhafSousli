@@ -1,12 +1,17 @@
 <div class="card animated zoomIn">
+  <div class="card-meta">
+    <div class="card-date">
+      {{post.date() | date}}
+    </div>
+  </div>
 
   <div class="card-image">
     <a [routerLink]="['/node/' + post.id()]">
-      <img *ngIf="post.featuredMedia()" [src]="post.featuredImageUrl('medium')"/>
+      <img *ngIf="post.featuredMedia()" [src]="post.featuredImageUrl('large')"/>
     </a>
   </div>
 
-  <div class="card-header">
+  <div class="card-title">
     <h4>{{post.title()}}</h4>
   </div>
 
@@ -15,7 +20,7 @@
   </div>
 
   <div class="card-footer">
-    <a class="card-link" [routerLink]=" ['/node/' + post.id()]">
+    <a class="btn btn-small" [routerLink]=" ['/node/' + post.id()]">
       <i class="fa fa-link fa-1x" aria-hidden="true"></i> Open
     </a>
   </div>

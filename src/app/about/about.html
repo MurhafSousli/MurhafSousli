@@ -1,21 +1,16 @@
-<div class="page animated fadeIn">
-  <div class="page-title">
-    <h1>ABOUT</h1>
+<div class="page">
+  <div class="page-header">
+    <div class="page-overlay" [style.background]="bgPattern">
+      <div class="page-title">
+        <h1>ABOUT</h1>
+      </div>
+    </div>
   </div>
-  <div class="page-content container">
-    <p>I'm web developer, I started to learn computer sciences in a very young age.
-    </p>
-
-    <p>
-      Programming is my life, I spend all my time doing it, it's my favorite habit.
-      I did many application to things I like, and I learned a lot from it.
-    </p>
-
-    <p>
-      I worked in many fields in computers, such as maintenance, install hardware, setup networks and writing applications about networks until I moved to web development
-
-      I love open source community, I'm one of them, I develop my projects there, it's available for all.
-    </p>
+  <div class="page-body container">
+    <div *ngIf="response" class="page-content animated fadeIn" [innerHtml]="response?.content()">
+      Loading...
+    </div>
   </div>
 </div>
+
 

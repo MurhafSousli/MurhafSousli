@@ -1,16 +1,39 @@
-
-
-.page-title h1{
-  color: $base-font-color;
-  font-size: 3em;
-  text-align: center;
-  text-transform: uppercase;
-  margin-top: 40px;
-}
-.page-content{
-  padding: 20px;
-  display:flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.page{
+  @extend .animated, .fadeIn;
+  &-header{
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  &-body{
+    padding: 20px 15px;
+  }
+  &-overlay{
+    @extend .animated, .slideInDown;
+    padding: 20px;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    z-index: 2;
+    color: white;
+    background-color: rgba(black, .5);
+  }
+  &-title{
+    @include media(min-width 320px max-width 480px){
+      padding: 10px 10px;
+    }
+    text-align: center;
+    margin-top: 20px;
+    text-transform: uppercase;
+    text-shadow: 0 0 20px black;
+    padding: 10px 40px;
+    width: 100%;
+  }
+  &-content{
+    margin-top: 15px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+  }
 }

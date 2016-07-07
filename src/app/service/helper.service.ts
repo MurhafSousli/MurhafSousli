@@ -8,7 +8,7 @@ import {AppState} from "../app.service";
 export module Helper {
 
   export function baseUrl() {
-    return 'http://localhost/wordpress/wp-json';
+    return 'http://portfolio.murhafsousli.com/wp-json';
   }
 
   export function getIpUrl() {
@@ -35,7 +35,8 @@ export module Helper {
     Posts = <any>'/wp/v2/posts/',
     Categories = <any>'/wp/v2/categories/'  ,
     Projects = <any>'/wp/v2/projects/',
-    Experiences = <any>'/wp/v2/experiences/'
+    Experiences = <any>'/wp/v2/experiences/',
+    Pages = <any>'/wp/v2/pages/'
   }
 
   export function toUrlEncoded(obj):string {

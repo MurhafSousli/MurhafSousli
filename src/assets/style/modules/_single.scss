@@ -1,16 +1,20 @@
 .post{
+  @extend .animated, .fadeIn;
   &-header{
     position: relative;
-    &.fillheight{
-      align-items: flex-end;
-      height: 100vh;
-      transition: height 0.7s;
-    }
-    height: 300px;
-    transition: height .7s;
     display: flex;
     align-items: flex-start;
     justify-content: center;
+    height: 300px;
+
+    &.fillheight{
+      align-items: flex-end;
+      height: 100vh;
+      transition: height .7s;
+      .post-title{
+        margin-top: 0;
+      }
+    }
   }
 
   &-image{
@@ -22,7 +26,6 @@
     right: 0;
     bottom: 0;
     background-size: cover;
-    background-position: center;
   }
   &-body{
     padding: 20px 15px;
@@ -32,6 +35,7 @@
     justify-content: space-around;
   }
   &-overlay{
+    @extend .animated, .slideInDown;
     padding: 20px;
     display: flex;
     width: 100%;
@@ -41,15 +45,17 @@
     background-color: rgba(black, .5);
   }
   &-title{
+    @include media(min-width 320px max-width 480px){
+      padding: 10px 10px;
+    }
+    margin-top: 20px;
     text-align: center;
     text-shadow: 0 0 20px black;
-    font-size: 3em;
+    padding: 10px 40px;
     width: 100%;
-    h1{
-      margin-bottom: 20px;
-    }
   }
   &-content{
+    margin-top: 15px;
     padding: 20px;
     font-size: 1.3em;
     position: relative;

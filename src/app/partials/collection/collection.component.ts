@@ -2,12 +2,14 @@ import {Component, Input} from '@angular/core';
 import {WpCollection, Helper} from '../../service';
 import {Card} from '../../views/card';
 import {Args} from "../../service/models";
+import {AppState} from "../../app.service";
+import {ScrollSpyService, ScrollSpyDirective} from "ng2-scrollspy";
 
 @Component({
   selector: 'collection',
   template: require('./collection.html'),
-  directives: [Card],
-  providers: [WpCollection]
+  directives: [Card, ScrollSpyDirective],
+  providers: [WpCollection, ScrollSpyService]
 })
 
 export class Collection {
@@ -16,7 +18,10 @@ export class Collection {
   @Input() endpoint:Helper.WpEndpoint;
   @Input() args: Args;
 
-  constructor(public service:WpCollection) {
+  constructor(public service:WpCollection,
+              private appState:AppState,
+              private scrollSpyService:ScrollSpyService) {
+    this.appState.set('loading', true);
   }
 
   ngOnInit() {
@@ -28,6 +33,12 @@ export class Collection {
     this.args._embed = true;
     this.fetchItems();
   }
+  ngAfterViewInit() {
+    this.scrollSpyService.getObservable('window').subscribe((e: any) => {
+      console.log('ScrollSpy::window: ', e);
+      
+    });
+  }
 
   fetchItems() {
     this.data = [];
@@ -35,15 +46,19 @@ export class Collection {
     this.service.fetch(this.args).subscribe(
       (res) => {
         this.data = res;
+        this.appState.set('loading', false);
       },
       err => console.log(err)
     );
   }
 
   fetchMore() {
+    this.appState.set('loading', true);
     this.service.more().subscribe(
+
       res => {
         this.data.concat(res);
+        this.appState.set('loading', false);
       },
       err => console.log(err)
     );

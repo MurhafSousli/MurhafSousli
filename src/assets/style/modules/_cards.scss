@@ -1,21 +1,20 @@
-.brick{
-  width: 50%;
-  @include media(min-width 320px max-width 480px) {
-    width: 100%;
-  }
-}
-
 .card {
   max-width: 400px;
   box-shadow: $base-font-color 0px 0px 2px;
-  border-radius: 2px;
+  border: 1px solid $base-font-color;
+  border-radius: $base-border-radius;
   overflow: hidden;
   margin: 15px auto;
   position: relative;
-  transition: all 0.1s ease-in-out;
-  &-image {
-    overflow: hidden;
 
+  &-meta{
+    background-color: $base-font-color;
+    padding: 5px;
+    font-size: 14px;
+    color: white;
+    text-align: right;
+  }
+  &-image {
     img {
       opacity: 1;
       transition: all 0.4s ease-in-out;
@@ -24,8 +23,9 @@
     }
   }
 
-  &-header {
-    margin-top: 15px;
+  &-title {
+    padding: 20px;
+    margin-top:10px;
     border-radius: $base-border-radius $base-border-radius 0 0;
     font-weight: bold;
     line-height: 1.5em;
@@ -34,6 +34,7 @@
   }
 
   &-copy {
+    padding: 20px;
     font-size: 0.9em;
     line-height: 1.5em;
     padding: ($base-spacing / 2) ($base-spacing / 2);
@@ -43,7 +44,7 @@
     }
   }
   &-footer{
-    padding: 0 10px 10px;
+    padding: 10px;
   }
 
   &:hover{
