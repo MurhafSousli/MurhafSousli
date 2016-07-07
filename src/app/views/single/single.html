@@ -1,8 +1,8 @@
 
-<div class="post animated fadeIn">
-  <div class="post-header" [class.fillheight]="featuredImageLoaded" >
+<div class="post">
+  <div class="post-header" [class.fillheight]="featuredImageLoaded">
 
-    <div class="post-image" [ngStyle]="postImageStyle">
+    <div scrollSpy [scrollSpyParallax]="parallaxOptions" class="post-image" [ngStyle]="postImageStyle">
     </div>
 
     <div class="post-overlay">
@@ -29,7 +29,6 @@
       <!--<div class="post-categories">-->
         <!--<a *ngFor="let cat of post.categories()" class="btn" [routerLink]="['category', {id: cat.id}]">{{cat.name}}</a>-->
       <!--</div>-->
-    <div class="post-share"><share></share></div>
     <div class="post-content" [innerHtml]="post.content()"></div>
     <div class="post-tags">
       <span class="badge-notice" *ngFor="let tag of post.tags()">{{tag.name}}</span>

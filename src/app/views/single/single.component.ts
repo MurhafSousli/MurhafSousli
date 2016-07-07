@@ -1,13 +1,17 @@
-import {Component, Input, ElementRef} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Post} from "../../service/models";
 import {Disqus} from '../../partials/disqus';
 import {Share} from '../../partials/share';
+import {ScrollSpyService, ScrollSpyDirective } from "ng2-scrollspy";
+import {ScrollSpyParallaxDirective, ScrollSpyParallaxOptions } from "ng2-scrollspy/src/plugin/parallax";
+
 
 
 @Component({
   selector: 'single',
   template: require('./single.html'),
-  directives: [Disqus, Share]
+  providers: [ScrollSpyService],
+  directives: [Disqus, Share, ScrollSpyParallaxDirective, ScrollSpyDirective]
 })
 
 export class Single {
@@ -15,7 +19,18 @@ export class Single {
   postImageStyle;
   featuredImageLoaded = false;
 
-  constructor(private el:ElementRef) {
+  private parallaxOptions: ScrollSpyParallaxOptions = {
+    spyId: 'window',
+    horizontal: false,
+    cssKey: 'backgroundPosition',
+    property: 'backgroundPositionY',
+    ratio: -.5,
+    initValue: 0,
+    unit: 'px',
+    axis: 'Y'
+  };
+
+  constructor() {
   }
 
   ngOnInit() {
@@ -23,7 +38,8 @@ export class Single {
         if (this.post.featuredMedia()) {
           this.postImageStyle = this.getFeaturedImage();
           this.featuredImageLoaded = true;
-          this.scrollToTop();
+          window.scrollTo(0, 0);
+          //this fixes navigation to reset the view position specially on firefox
         }
       },
       1000
@@ -31,17 +47,12 @@ export class Single {
 
   }
 
-  scrollToTop():void {
-    //this fixes navigation to reset the view position specially on firefox
-    window.scrollTo(0, 0);
-  }
-
   getFeaturedImage() {
     // 1280-1024    - desktop
     if (window.matchMedia("(min-width: 768px)").matches) {
       console.log('large - screen size: ' + window.outerWidth);
       return {
-        'background-image': 'url(' + this.post.featuredImageUrl('full') + ')'
+       'background-image': 'url(' + this.post.featuredImageUrl('full') + ')'
       };
 
     }
@@ -67,10 +78,6 @@ export class Single {
    */
 }
 
-/*
- TODO: add animations + parallax
- TODO: add post meta + share
- */
 
 
 /*
