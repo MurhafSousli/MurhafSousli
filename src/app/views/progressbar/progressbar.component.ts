@@ -1,5 +1,6 @@
 import {Component, Input, ElementRef} from '@angular/core';
 
+// for usage info, check https://kimmobrunfeldt.github.io/progressbar.js/
 var ProgressBarLib = require('progressbar.js');
 
 @Component({

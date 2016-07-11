@@ -1,0 +1,92 @@
+<div class="resume animated fadeIn">
+  <!--SELF SUMMMARY-->
+  <div class="resume-title container">
+    <h1>RESUME</h1>
+  </div>
+
+  <div class="introduction">
+    <div class="section-title container">
+      <h2>SELF SUMMARY</h2>
+    </div>
+    <div class="section-content container flexpage large-font">
+      <p [innerHtml]="introduction"></p>
+    </div>
+  </div>
+
+  <!--SKILLS PART-->
+
+  <div class="skills-wrapper">
+    <div class="section-title container">
+      <h2>SKILLS</h2>
+    </div>
+    <div class="section-content flexpage container large-font">
+      <skills></skills>
+    </div>
+  </div>
+
+
+  <!--RADAR PART-->
+  <div class="radar-wrapper">
+    <div class="section-content flexpage container large-font">
+      <base-chart id="myChart"
+                  [datasets]="radarChartData"
+                  [labels]="radarChartLabels"
+                  [chartType]="radarChartType"
+                  (chartHover)="chartHovered($event)"
+                  (chartClick)="chartClicked($event)"></base-chart>
+    </div>
+  </div>
+
+
+  <!--EDUCATION PART-->
+  <div class="education-wrapper">
+    <div class="section-title container">
+      <h2>EDUCATION</h2>
+    </div>
+    <div class="section-content flexpage container large-font">
+      <education></education>
+    </div>
+  </div>
+
+  <!--LANGUAGES PART-->
+  <!--<div class="languages-wrapper">-->
+  <!--<div class="section-title container">-->
+  <!--<h2>LANGUAGES</h2>-->
+  <!--</div>-->
+  <!--<div class="section-content flexpage container large-font">-->
+  <!--<languages></languages>-->
+  <!--</div>-->
+  <!--</div>-->
+
+  <!--EXPERIENCE PART-->
+  <div class="experience-wrapper">
+    <div class="section-title container">
+      <h2>EXPERIENCE</h2>
+    </div>
+    <div class="section-content flexpage container large-font">
+      <experience></experience>
+    </div>
+  </div>
+
+  <!--PROJECT PART-->
+  <div class="projects-wrapper">
+    <div class="section-content flexpage container large-font">
+      <!--<projects></projects>-->
+    </div>
+  </div>
+
+  <!--BADGES PART-->
+  <div class="badges-wrapper">
+    <div class="section-title container">
+      <h2>BADGES</h2>
+    </div>
+    <div class="section-content flexpage container large-font">
+      <a href="http://stackoverflow.com/users/1015648/murhaf-sousli">
+        <img src="http://stackoverflow.com/users/flair/1015648.png?theme=clean" width="208" height="58"
+             alt="profile for Murhaf Sousli at Stack Overflow, Q&amp;A for professional and enthusiast programmers"
+             title="profile for Murhaf Sousli at Stack Overflow, Q&amp;A for professional and enthusiast programmers">
+      </a>
+    </div>
+  </div>
+</div>
+

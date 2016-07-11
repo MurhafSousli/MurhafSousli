@@ -4,8 +4,8 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 
 import { AppState } from './app.service';
-import {Header} from './partials/header';
-import {Loader} from'./partials/svg-loader/svg-loader.component';
+import {Header} from './components/header';
+import {Loader} from'./components/svg-loader/svg-loader.component';
 /*
  * App Component
  * Top Level Component
@@ -14,9 +14,7 @@ import {Loader} from'./partials/svg-loader/svg-loader.component';
   selector: 'app',
   encapsulation: ViewEncapsulation.None,
   directives: [Header, Loader],
-  styleUrls: [
-    '../assets/style/style.scss'
-  ],
+  styleUrls: ['../assets/style/style.scss'],
   template: `
     <header></header>
      <main>

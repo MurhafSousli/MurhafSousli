@@ -1,9 +1,10 @@
 import {Component, Input} from '@angular/core';
 import {Post} from "../../service/models";
-import {Disqus} from '../../partials/disqus';
-import {Share} from '../../partials/share';
+import {Disqus} from '../../components/disqus';
+import {Share} from '../../components/share';
 import {ScrollSpyService, ScrollSpyDirective } from "ng2-scrollspy";
 import {ScrollSpyParallaxDirective, ScrollSpyParallaxOptions } from "ng2-scrollspy/src/plugin/parallax";
+import {RelatedPosts} from "../../components/related-posts";
 
 
 
@@ -11,7 +12,7 @@ import {ScrollSpyParallaxDirective, ScrollSpyParallaxOptions } from "ng2-scrolls
   selector: 'single',
   template: require('./single.html'),
   providers: [ScrollSpyService],
-  directives: [Disqus, Share, ScrollSpyParallaxDirective, ScrollSpyDirective]
+  directives: [Disqus, Share, ScrollSpyParallaxDirective, ScrollSpyDirective,RelatedPosts]
 })
 
 export class Single {

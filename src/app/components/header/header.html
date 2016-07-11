@@ -1,0 +1,47 @@
+<div class="button_container" (click)="isActive = !isActive" [class.active]="isActive">
+  <span class="top"></span>
+  <span class="middle"></span>
+  <span class="bottom"></span>
+</div>
+
+<div class="overlay" [class.open]="isActive">
+  <div class="overlay-inner">
+    <div class="overlay-header">
+      <div class="logo">
+        <!--<a [routerLink]="['Index']"><img [src]="logo"/></a>-->
+      </div>
+
+    </div>
+    <nav class="overlay-menu">
+      <ul>
+        <!--<li class="menu-item">-->
+        <!--<div class="searchbox">-->
+        <!--<div class="search-ico">-->
+        <!--<i class="fa fa-search fa-2x"></i>-->
+        <!--</div>-->
+        <!--<div class="search-input">-->
+        <!--<input (keyup.enter)="search($event.target.value)" type="text"/>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</li>-->
+        <li class="menu-item">
+          <a (click)="navigate('./')">Home</a>
+        </li>
+        <li class="menu-item">
+          <a (click)="navigate('./blog')"> Blog</a>
+        </li>
+        <li class="menu-item">
+          <a (click)="navigate('./resume')"> Resume</a>
+        </li>
+        <li class="menu-item">
+          <a (click)="navigate('./about')"> About</a>
+        </li>
+      </ul>
+
+    </nav>
+
+    <div class="social">
+      <a *ngFor="let social of socialLinks" [class]="social.class" [href]="social.link" aria-hidden="true"></a>
+    </div>
+  </div>
+</div>

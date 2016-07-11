@@ -30,16 +30,14 @@
         <!--<a *ngFor="let cat of post.categories()" class="btn" [routerLink]="['category', {id: cat.id}]">{{cat.name}}</a>-->
       <!--</div>-->
     <div class="post-content" [innerHtml]="post.content()"></div>
-    <div class="post-tags">
-      <span class="badge-notice" *ngFor="let tag of post.tags()">{{tag.name}}</span>
-    </div>
     <div class="post-share"><share [shareText]="'Share this article'"></share></div>
   </div>
   <div class="post-footer">
     <div class="post-related">
-
+      <related-posts [postId]="post.id()" [tags]="post.tags()"></related-posts>
     </div>
     <div class="post-comments container">
+      <h4>Comments</h4>
       <disqus [shortname]="'murhafsousli'" [identifier]="post.id()"></disqus>
     </div>
   </div>

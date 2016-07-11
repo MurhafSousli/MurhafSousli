@@ -1,14 +1,14 @@
 import { WebpackAsyncRoute } from '@angularclass/webpack-toolkit';
 import { RouterConfig } from '@angular/router';
 
-import { NoContent } from './no-content';
-import {Home} from './home';
-import {Blog} from './blog';
-import {Node} from './node';
-import {About} from './about';
-import {Resume} from './resume';
-import {Category} from './category';
-import {Search} from './search';
+import { NoContent } from './routes/no-content';
+import {Home} from './routes/home';
+import {Blog} from './routes/blog';
+import {Node} from './routes/node';
+import {About} from './routes/about';
+import {Resume} from './routes/resume';
+import {Category} from './routes/category';
+import {Search} from './routes/search';
 
 export const routes: RouterConfig = [
   {path: '', component: Home},

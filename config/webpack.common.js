@@ -80,6 +80,13 @@ module.exports = {
     // remove other default values
     modulesDirectories: ['node_modules'],
 
+    //I added alias section to fix the problem with flickity carousel
+    alias: {
+      'eventEmitter/EventEmitter': 'wolfy87-eventemitter/EventEmitter',
+      'get-style-property': 'desandro-get-style-property',
+      'matches-selector': 'desandro-matches-selector',
+      'classie': 'desandro-classie'
+    }
   },
 
   /*
@@ -178,9 +185,9 @@ module.exports = {
         test: /\.scss$/,
         loaders: ['raw-loader', 'sass-loader?sourceMap']
       },
-      { test: /.(png|woff(2)?|eot|ttf|svg)(\?[a-z0-9=\.]+)?$/, loader: 'url-loader?limit=100000' }
+      { test: /.(png|woff(2)?|eot|ttf|svg)(\?[a-z0-9=\.]+)?$/, loader: 'url-loader?limit=100000' },
 
-
+      
     ]
 
   },
@@ -273,7 +280,11 @@ module.exports = {
     new HtmlElementsPlugin({
       headTags: require('./head-config.common')
     }),
-
+    // new webpack.ProvidePlugin({
+    //   jQuery: 'jquery',
+    //   $: 'jquery',
+    //   jquery: 'jquery'
+    // })
   ],
 
   /*
@@ -288,6 +299,5 @@ module.exports = {
     module: false,
     clearImmediate: false,
     setImmediate: false
-  }
-
+  },
 };

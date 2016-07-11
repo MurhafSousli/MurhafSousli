@@ -1,19 +1,23 @@
 /**
- * Created by Murhaf on 6/7/2016.
+ * Created by Murhaf on 7/10/2016.
  */
 import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
-import {Helper} from "./helper.service";
+import {WpHelper} from "./helper.service";
 import {AppState} from "../app.service";
 import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class WpCollection {
 
-  private actionUrl:string;
+
 
   //query arguments.
   private args:any;
+
+  //The final url for the http request
+  private actionUrl:string;
+
   //collection pagination properties
   public currentPage:number = 1;
   public totalPages:number = 1;
@@ -22,28 +26,23 @@ export class WpCollection {
   constructor(private http:Http, private appState:AppState) {
   }
 
-  public setEndpoint(endpoint:Helper.WpEndpoint) {
-    this.actionUrl = Helper.baseUrl() + endpoint;
+  /*
+   * Must set the endpoint before fetching posts.
+   * EX: http://localhost/wordpress/wp-json/wp/v2/posts/
+   */
+  public setEndpoint(endpoint:WpHelper.WpEndpoint) {
+    this.actionUrl = WpHelper.baseUrl() + endpoint;
   }
 
   /*
    * fetch() : request the collection
+   * @params: args
+   * @return: observable
    */
   public fetch(args?:any):Observable<any> {
-    //set our args if exists
+    //set our args if exists, required to get more() function to work.
     this.args = args;
-    //generateUrl returns our request URL.
-
-    return this.http.get(this.generateUrl(), {headers: Helper.getHeaders(this.appState)}).map(
-      res => {
-        //set our totalObject and totalPages from res headers
-        this.totalObjects = +res.headers.get('X-WP-Total');
-        this.totalPages = +res.headers.get('X-WP-TotalPages');
-        //return our json data.
-        return res.json();
-      },
-      err => console.log('[WPService]: fetch collection error:' + err)
-    );
+    return this.requestCollection();
   }
 
   /*
@@ -53,17 +52,7 @@ export class WpCollection {
     if (this.hasMore()) {
       //increment our currentPage then assign it to our args.
       this.args.page = ++this.currentPage;
-
-      return this.http.get(this.generateUrl()).map(
-        res => {
-          //set our totalObject and totalPages from res headers
-          this.totalObjects = +res.headers.get('X-WP-Total');
-          this.totalPages = +res.headers.get('X-WP-TotalPages');
-          //return our json data.
-          return res.json();
-        },
-        err => console.log('[WPService]: more collection error:' + err)
-      );
+      return this.requestCollection();
     }
   }
 
@@ -74,32 +63,20 @@ export class WpCollection {
     return this.currentPage < this.totalPages;
   }
 
-  /*
-   * generateUrl returns the final URL with arguments.
-   */
-  private generateUrl():string {
-    var url = this.actionUrl;
-    if (this.args) {
-      //add args to baseURL
-      url += '?' + this.serialize(this.args);
-      //assign currentPage to args.page otherwise to 1
-      this.currentPage = (this.args.page) ? +this.args.page : 1;
-    }
-    console.log('[WPService]: Fetching collection: ' + url);
-    return url;
+  private requestCollection():Observable<any>{
+    return this.http.get(WpHelper.generateUrl(this.actionUrl, this.args)).map(
+      res => {
+        //set our totalObject and totalPages from res headers
+        this.totalObjects = +res.headers.get('X-WP-Total');
+        this.totalPages = +res.headers.get('X-WP-TotalPages');
+        return res.json();
+      }
+    );
   }
 
-  private serialize = function (obj, prefix?):string {
-    var str = [];
-    for (var p in obj) {
-      if (obj.hasOwnProperty(p)) {
-        var k = prefix ? prefix + "[" + p + "]" : p, v = obj[p];
-        str.push(typeof v == "object" ?
-          this.serialize(v, k) :
-        encodeURIComponent(k) + "=" + encodeURIComponent(v));
-      }
-    }
-    return str.join("&");
-  }
 
 }
+
+/*
+ * PS: Requests errors should be handled from the subscribe function in the component
+ */

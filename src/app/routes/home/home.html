@@ -1,0 +1,28 @@
+<div class="home fillheight animated fadeIn">
+  <div class="my-cover">
+    <div class="my-pic">
+      <img [src]="profilePic"/>
+    </div>
+  </div>
+
+  <p class="my-name">
+    My name's Murhaf Sousli
+  </p>
+  <div class="my-job">
+    <span>I'm a </span>
+    <strong class="words-wrapper" [typingCarousel]="titles">
+    </strong>
+    <!--<div class="rotate-title rotate-1">-->
+      <!--<span class="words-wrapper">-->
+        <!--<strong *ngFor="let title of titles let i = index"-->
+                <!--[ngClass]="getClass(i)">{{title}}</strong>-->
+      <!--</span>-->
+    <!--</div>-->
+  </div>
+
+
+  <div class="social">
+    <a *ngFor="let social of socialLinks" [class]="social.class" [href]="social.link" aria-hidden="true"></a>
+  </div>
+</div>
+
