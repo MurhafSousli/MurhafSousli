@@ -41,8 +41,8 @@
     width: 100%;
     flex-direction: column;
     z-index: 2;
-    color: white;
-    background-color: rgba(black, .5);
+    color: $base-background-color;
+    background-color: rgba(black, 0.5);
   }
   &-title{
     @include media(min-width 320px max-width 480px){
@@ -55,6 +55,7 @@
     width: 100%;
   }
   &-content{
+    @extend .animated, .fadeIn;
     margin-top: 15px;
     padding: 20px;
     font-size: 1.3em;

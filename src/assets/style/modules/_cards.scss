@@ -1,7 +1,12 @@
+$card-width: 400px;
+$small-card-dimension: 250px;
+$card-boxshadow: $base-font-color 0px 0px 2px;
+$card-boxshadow-hover: $base-font-color 0px 0px 4px;
+
 .card {
-  max-width: 400px;
-  box-shadow: $base-font-color 0px 0px 2px;
-  border: 1px solid $base-font-color;
+  max-width: $card-width;
+  box-shadow: $card-boxshadow;
+  border: 1px solid $base-border-color;
   border-radius: $base-border-radius;
   overflow: hidden;
   margin: 15px auto;
@@ -11,7 +16,7 @@
     background-color: $base-font-color;
     padding: 5px;
     font-size: 14px;
-    color: white;
+    color: $base-background-color;
     text-align: right;
   }
 
@@ -19,62 +24,47 @@
 
   }
 
-  &-title {
-    margin-top:10px;
-    font-weight: bold;
-    line-height: 1.5em;
+  &-title{
     padding: ($base-spacing / 3) ($base-spacing / 2);
+    margin-top:10px;
   }
-
-  &-copy {
-    font-size: 0.9em;
-    line-height: 1.5em;
-    padding: ($base-spacing / 2) ($base-spacing / 2);
-
-    p {
-      margin: 0 0 ($base-spacing / 2);
-    }
+  &-excerpt{
+    padding: ($base-spacing / 3) ($base-spacing / 2);
+    font-size: $small-font-size;
   }
-  &-footer{
-    padding: 10px
+  &-footer {
+    padding: ($base-spacing / 3) ($base-spacing / 2);
+    font-size: $small-font-size;
   }
 
   &:hover{
-    box-shadow: $base-font-color 0px 0px 4px;
+    box-shadow: $card-boxshadow-hover;
   }
 
 }
 
 
 .small-card{
-  height: 250px;
-  width: 250px;
+  height: $small-card-dimension;
+  width: $small-card-dimension;
   display: flex;
   flex-direction: column;
-  box-shadow: $base-font-color 0px 0px 2px;
-  border: 1px solid $base-font-color;
-  border-radius: $base-border-radius;
-  overflow: hidden;
-  margin: 15px auto;
-  position: relative;
 
   &-image{
     flex: 1 1 auto;
     background-size: cover;
-    background-color: $base-font-color;
+   // background-color: $secondary-background-color;
   }
-  &-title{
+  &-title, &-footer{
     padding: ($base-spacing / 3) ($base-spacing / 2);
     flex: 0 0 auto;
-    h4{
-      margin: 0;
-    }
   }
-  &-footer{
-    padding: 7px;
-    flex: 0 0 auto;
+
+  h4{
+    margin: 0;
   }
+
   &:hover{
-    box-shadow: $base-font-color 0px 0px 4px;
+    box-shadow: $card-boxshadow-hover;
   }
 }

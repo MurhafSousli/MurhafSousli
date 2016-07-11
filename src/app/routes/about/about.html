@@ -1,13 +1,13 @@
-<div class="page">
-  <div class="page-header">
-    <div class="page-overlay" [style.background]="bgPattern">
-      <div class="page-title">
+<div class="post page">
+  <div class="post-header">
+    <div class="post-overlay" [style.background]="bgPattern">
+      <div class="post-title">
         <h1>ABOUT</h1>
       </div>
     </div>
   </div>
-  <div class="page-body container">
-    <div *ngIf="response" class="page-content animated fadeIn" [innerHtml]="response?.content()">
+  <div class="post-body container">
+    <div *ngIf="response" class="post-content" [innerHtml]="response?.content()">
       Loading...
     </div>
   </div>

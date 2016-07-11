@@ -1,5 +1,7 @@
 
 .home {
+  @extend .animated, .fadeIn;
+  height: 100%;
   font-family: $heading-font-family;
   padding: 15px 10px;
   display: flex;
@@ -63,7 +65,7 @@
   .social {
     a {
       color: $base-font-color;
-      font-size: 30px;
+      font-size: 2em;
     }
   }
 }

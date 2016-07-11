@@ -1,21 +1,21 @@
-/*
- *  import bourbon mixins
- */
-@import '~bourbon/app/assets/stylesheets/bourbon';
-/*
- *  import Neat
- */
-@import '~bourbon-neat/app/assets/stylesheets/neat';
-
-
 @import 'vendors/base';
-/*
- *  Import bitters base style .
- */
 @import 'core/base';
-/*
- *  Import style for modules.
- */
 @import 'modules/base';
 
 
+
+//.searchbox {
+//
+//  color: white;
+//}
+//.search-input{
+//  input {
+//    color: white;
+//    max-width: 100%;
+//    text-align: center;
+//    background-color: transparent;
+//    border: 0;
+//    outline: 0;
+//    font-size: 4rem;
+//  }
+//}

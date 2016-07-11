@@ -14,9 +14,7 @@ $tumbler: #36465D;
   button {
     @extend .btn;
     flex: 1 0 40px;
-    background-color: white;
-    font-size: 20px;
-
+    margin: 5px;
   }
 
   .facebook {

@@ -4,7 +4,7 @@ import {Post} from "../../service/models";
 @Component({
   selector: 'small-card',
   template: `
-    <div class="small-card animated zoomIn">
+    <div class="card small-card animated zoomIn">
 
   <div class="small-card-image" [ngStyle]="postImageStyle">
   </div>

@@ -1,8 +1,7 @@
-$color-background: #F5F5F5;
-$color-main: #FF5252;
-//$color-main: #B90504;
-$color-active: #FFF;
-$color-link: #FFF;
+$color-background: $base-background-color;
+$color-main: $action-color;
+$color-active: $base-background-color;
+$color-link: $base-background-color;
 
 $menu-button-height: 27px;
 $menu-button-width: 35px;
@@ -10,8 +9,8 @@ $menu-button-width: 35px;
 
 .button_container {
   position: fixed;
-  top: 25px;
-  left: 25px;
+  top: 1.5em;
+  left: 1.5em;
   height: $menu-button-height;
   width: $menu-button-width;
   cursor: pointer;
@@ -147,27 +146,6 @@ $menu-button-width: 35px;
     }
   }
 }
-
-
-
-
-.searchbox {
-
-  color: white;
-}
-.search-input{
-  input {
-    color: white;
-    max-width: 100%;
-    text-align: center;
-    background-color: transparent;
-    border: 0;
-    outline: 0;
-    font-size: 4rem;
-  }
-}
-
-
 .social {
   z-index: 100;
   display: flex;

@@ -1,21 +1,23 @@
 .btn {
   display: inline-block;
-  margin: 5px;
+  margin: 0 5px 5px 0;
+  background-color: $base-background-color;
   font-family: $heading-font-family;
-  border: 2px solid $base-font-color;
+  border: $base-border;
   border-radius: $base-border-radius;
-  padding: 10px;
+  padding: ($base-spacing / 3);
   color: $base-font-color;
   &:hover {
     background: $base-font-color;
     color: $base-background-color;
-    @include transition(all .5s ease);
+    @include transition(all $base-duration $base-timing);
   }
 }
 
 .btn-inverse {
   color: $base-background-color;
-  border: 2px solid $base-background-color;
+  border: $base-border-hover;
+  background-color: transparent;
   &:hover {
     color: $base-font-color;
     background-color: $base-background-color;
@@ -23,15 +25,17 @@
 }
 
 .btn-small{
-  padding: 7px 10px;
-  font-size: 14px;
+  padding:  ($base-spacing / 3) ($base-spacing / 2) ;
+  font-size: .8em;
 }
 
 button:hover, a:hover {
   cursor: pointer;
   cursor: hand;
 }
-
+/*
+ * to set color on buttons.
+ */
 @mixin btnColor($color){
   color: $color;
   border: 2px solid $color;

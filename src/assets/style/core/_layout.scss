@@ -8,6 +8,11 @@ html {
   box-sizing: inherit;
 }
 
+main{
+  height: 100vh;
+  overflow-y: auto;
+}
+
 .container {
   margin: 0 auto;
   max-width: 810px;
@@ -16,25 +21,12 @@ html {
 collection {
   display: block;
   width: 100%;
-  //justify-content: center;
-  //align-content: center;
-  //align-items: center;
-  //@include outer-container;
 }
 
 
-.fillheight {
-  height: 100vh;
-}
-
-.flexpage {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
 .overlay{
   bottom: 0;
-  background-color: white;
+  background-color: $base-background-color;
 
 }
