@@ -1,53 +1,75 @@
-import {Component, Input} from '@angular/core';
-import {WpCollection, WpHelper} from "../../service";
+import {Component, Input, ViewChild} from '@angular/core';
+import {Collection, WpHelper, QueryArgs} from "ng2-wp-api/ng2-wp-api";
+
 import {AppState} from "../../app.service";
-import {Args} from "../../service/models";
 import {Carousel} from '../carousel';
 import {SmallCard} from '../../views/small-card';
 
 @Component({
   selector: 'related-posts',
   template: require('./related.html'),
-  directives: [Carousel, SmallCard],
-  providers: [WpCollection]
+  directives: [Collection, Carousel, SmallCard],
 })
 
 export class RelatedPosts {
 
-  data;
   @Input() tags;
   @Input() postId;
-  args: Args;
 
-  constructor(private service:WpCollection, private appState:AppState){
+  endpoint = WpHelper.Endpoint.Posts;
+  args:QueryArgs;
+  posts;
+
+  @ViewChild(Collection) collection:Collection;
+
+  constructor(private appState:AppState) {
     appState.set('loading', true);
   }
 
   ngOnInit() {
-    console.log('Related Posts');
-    //check if args is undefined
-    this.args = new Args();
-    //this.args.search = this.tags[0];
-    this.args.filter = {};
-    this.args.filter['post_not_in'] = this.postId;
-    //add embed to args.
-    this.args._embed = true;
-    this.fetchItems();
+    if (!this.postId) {
+      console.log("[Related Posts]: Please provide postId");
+      return;
+    }
+    if (this.tags.length < 1) {
+      console.log("[Related Posts]: current post has no related posts.");
+      return;
+    }
+    /** extract only tags names to tagNames */
+    let tagNames = [];
+    this.tags.map((tag)=> {
+      tagNames.push(tag.slug);
+    });
+    let args = new QueryArgs();
+    args.filter = {
+      tag: tagNames.toString(),
+      //post__not_in: this.postId
+    };
+    args._embed = true;
+    this.args = args;
+
   }
 
-  fetchItems() {
-    this.data = [];
-    this.service.setEndpoint(WpHelper.WpEndpoint.Posts);
-    this.service.fetch(this.args).subscribe(
-      (res) => {
-        this.data = res;
-        this.appState.set('loading', false);
-      },
-      err => console.log(err)
-    );
+  postsData(event) {
+    if (event.error) {
+      /** handle collection requests errors */
+      console.log(event.error);
+    }
+    else {
+      this.posts = event.objects;
+    }
+    this.appState.set("loading", false);
   }
+
 }
 
 /*
-  TODO: current post should not be listed in related posts, fix arguments. 
+ TODO: current post should not be listed in related posts, fix arguments.
+ */
+
+/*
+ * Related Posts Component: gets the related posts to the current post.
+ * basically it will return the posts with the same tag of the current post,
+ * and should NOT list it with them.
+
  */

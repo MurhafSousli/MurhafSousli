@@ -1,10 +1,14 @@
-<div class="related-title container">
-  <h4>Related Posts</h4>
-</div>
-<div class="carousel">
-  <carousel *ngIf="data.length>0">
-    <small-card *ngFor="let item of data" class="carousel-cell" [data]="item"></small-card>
-  </carousel>
-</div>
+<collection [endpoint]="endpoint" [args]="args" (response)="postsData($event)">
+  <div *ngIf="posts && tags.length > 0" class="related">
 
+    <div class="related-title container">
+      <h4>Related Posts</h4>
+    </div>
+    <div class="carousel">
+      <carousel>
+        <small-card *ngFor="let post of posts" class="carousel-cell" [data]="post"></small-card>
+      </carousel>
+    </div>
+  </div>
+</collection>
 

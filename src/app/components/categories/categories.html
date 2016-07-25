@@ -1,0 +1,7 @@
+
+<h2>Categories</h2>
+<collection [args]="args" [endpoint]="endpoint" (response)="catsData($event)">
+  <div class="cats" *ngFor="let cat of cats">
+    <a [routerLink]="['/blog/' + cat.id]">{{cat.name}}</a>
+  </div>
+</collection>

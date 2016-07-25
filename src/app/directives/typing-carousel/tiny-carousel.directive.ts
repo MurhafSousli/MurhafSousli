@@ -1,6 +1,4 @@
-//from https://github.com/zaqqaz/ng2-typing-carousel repo
-
-import {Directive, ElementRef, Input} from '@angular/core';
+import {Directive, ElementRef} from '@angular/core';
 
 @Directive({
   selector: '[typingCarousel]',
@@ -49,3 +47,9 @@ export class TypingCarouselDirective {
     setTimeout(() => this.tick(value, toRotate, period), delta);
   }
 }
+
+
+/*
+ * typing carousel directive, display the text as it's being typed.
+ * more info on https://github.com/zaqqaz/ng2-typing-carousel
+ */

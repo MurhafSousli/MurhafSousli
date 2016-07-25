@@ -56,8 +56,8 @@ select[multiple] {
     }
   }
 
-  &::placeholder {
-    color: $medium-gray;
+  &:placeholder {
+    color: $mediumgray;
   }
 }
 

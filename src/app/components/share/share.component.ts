@@ -1,5 +1,4 @@
 import { Input, Component } from '@angular/core';
-import { Http } from '@angular/http';
 
 @Component({
   selector: 'share',
@@ -20,7 +19,7 @@ export class Share {
   @Input()
   shareText;
 
-  constructor(private http: Http) {
+  constructor() {
     this.windowAttr = 'width=' + this.width + ', height=' + this.height;
   }
   shareFacebook() {
@@ -51,9 +50,22 @@ export class Share {
 
 /*
  TODO: fix facebook button.
+ TODO: add share counts feature.
  */
+
+
 /*
- when I wanted share counts
+ * Share Component display share buttons on the current page
+ * properties:
+ *  - width: window width
+ *  - height: window height
+ *  - shareText: title for the share buttons like "Share this post"
+ *  - featuredImage: to enable featured post image on share links.
+ */
+
+/*
+ To display share counts
+
  fbCount;
  tumblrCount;
  googlePlusCount;

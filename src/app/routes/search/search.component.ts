@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {Args} from "../../service/models";
-import {WpHelper} from '../../service';
+import {WpHelper, QueryArgs} from "ng2-wp-api/ng2-wp-api";
+
 import {Collection} from "../../components/collection";
 
 @Component({
@@ -13,12 +13,17 @@ import {Collection} from "../../components/collection";
 })
 export class Search {
 
-  args: Args;
-  endpoint = WpHelper.WpEndpoint.Posts;
+  args: QueryArgs;
+  endpoint = WpHelper.Endpoint.Posts;
 
   constructor(route: ActivatedRoute){
-    this.args = new Args();
+    this.args = new QueryArgs();
     this.args.search = route.snapshot.params["key"];
   }
 
 }
+
+
+/*
+ * TODO: remove this and integrate search in blog component
+ */

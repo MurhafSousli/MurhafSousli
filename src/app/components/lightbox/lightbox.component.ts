@@ -26,5 +26,5 @@ export class Lightbox {
 }
 
 /*
-  TODO: lightbox should be activated only on node component for displaying images
+  TODO: lightbox for holding anything including slider, image and controls
  */

@@ -1,45 +1,50 @@
+$btn-color: $base-font-color;
+$btn-hover-color: white;
+
+$btn-bg-color: white;
+$btn-bg-hover-color: $action-color;
+
 .btn {
+  outline: 0;
   display: inline-block;
-  margin: 0 5px 5px 0;
-  background-color: $base-background-color;
+  margin-right: 5px;
+  background-color: white;
   font-family: $heading-font-family;
   border: $base-border;
+  //border: 1px solid $base-border-color;
+ // box-shadow: $base-font-color 0px 0px 2px;;
+
   border-radius: $base-border-radius;
   padding: ($base-spacing / 3);
-  color: $base-font-color;
+  color: $btn-color;
   &:hover {
-    background: $base-font-color;
-    color: $base-background-color;
+    background: $btn-bg-hover-color;
+    color: $btn-hover-color;
     @include transition(all $base-duration $base-timing);
   }
 }
 
 .btn-inverse {
-  color: $base-background-color;
+  color: white;
   border: $base-border-hover;
   background-color: transparent;
   &:hover {
     color: $base-font-color;
-    background-color: $base-background-color;
+    background-color: white;
   }
 }
 
 .btn-small{
   padding:  ($base-spacing / 3) ($base-spacing / 2) ;
-  font-size: .8em;
+  font-size: .9em;
+}
+
+.btn-circle{
+  border-radius: 50%;
 }
 
 button:hover, a:hover {
   cursor: pointer;
   cursor: hand;
 }
-/*
- * to set color on buttons.
- */
-@mixin btnColor($color){
-  color: $color;
-  border: 2px solid $color;
-  &:hover {
-    background: $color;
-  }
-}
+

@@ -1,12 +1,12 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'education',
-  template: require('./education.html'),
-  styles: [require('./education.scss')]
+  template: require('./education.html')
 })
 
-export class Education{
+export class Education {
 
-  graduateIcon = require('../../../../assets/img/mortarboard.svg');
+  @Input() data;
+
 }

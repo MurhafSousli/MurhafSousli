@@ -124,7 +124,7 @@ module.exports = {
           helpers.root('node_modules/rxjs'),
           helpers.root('node_modules/@angular'),
           helpers.root('node_modules/@ngrx'),
-          helpers.root('node_modules/@angular2-material'),
+          helpers.root('node_modules/@angular2-material')
         ]
       }
 
@@ -187,7 +187,7 @@ module.exports = {
       },
       { test: /.(png|woff(2)?|eot|ttf|svg)(\?[a-z0-9=\.]+)?$/, loader: 'url-loader?limit=100000' },
 
-      
+
     ]
 
   },

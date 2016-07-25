@@ -1,15 +1,41 @@
-<div class="post page">
+<div class="post page blog">
   <div class="post-header">
-    <div class="post-overlay" [style.background]="bgPattern">
+    <div #overlay class="post-overlay">
       <div class="post-title">
         <h1>BLOG</h1>
       </div>
     </div>
-  </div>
-  <div class="post-body container">
-    <div class="post-content">
-      <collection [endpoint]="endpoint"></collection>
-    </div>
+    <div class="filter-box">
 
+      <div class="filter-btn">
+        <button class="btn btn-circle" (click)="toggleSearch(!activeSearch)">
+          <i class="fa fa-search"></i>
+        </button>
+
+        <button class="btn btn-circle" (click)="toggleCats(!activeCats)">
+          <i class="fa fa-book"></i>
+        </button>
+      </div>
+
+      <div [class.active]="activeSearch" class="search-box">
+        <div *ngIf="activeSearch" class="search">
+          <input (keyup.enter)="search($event.target.value)" type="search" placeholder="Search the blog"/>
+        </div>
+      </div>
+
+      <div #category class="cats-box">
+          <categories *ngIf="activeCats"></categories>
+        </div>
+
+    </div>
+  </div>
+  <div class="post-body">
+    <div class="post-content">
+      <collection [args]="args" [endpoint]="endpoint" (response)="postsData($event)">
+        <div scrollSpy class="list">
+          <card class="item" *ngFor="let post of posts" [data]="post"></card>
+        </div>
+      </collection>
+    </div>
   </div>
 </div>

@@ -28,5 +28,8 @@ export class SvgIconComponent {
         err => { console.error('[svg-icon component]: ' + err); }
       );
   }
-
 }
+
+/*
+ * This component loads the inline SVG as div, used in SVG component.
+ */

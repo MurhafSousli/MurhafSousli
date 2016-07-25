@@ -1,20 +1,20 @@
 <div class="experience">
-  <div class="experience-item" *ngFor="let item of items">
+  <div class="experience-item" *ngFor="let experience of data">
     <div class="experience-company-name">
-      {{item.company}}
+      {{experience.company}}
     </div>
     <div class="experience-company-address">
-      <i>{{item.address}}</i>
+      <i>{{experience.address}}</i>
     </div>
     <div class="experience-job-title">
-      {{item.jobTitle}}
+      {{experience.jobTitle}}
     </div>
     <div class="experience-date">
-      {{item.date}}
+      {{experience.date}}
     </div>
     <div class="experience-content">
       <ul>
-        <li *ngFor="let contentItem of item.content">
+        <li *ngFor="let contentItem of experience.content">
           {{contentItem}}
         </li>
       </ul>

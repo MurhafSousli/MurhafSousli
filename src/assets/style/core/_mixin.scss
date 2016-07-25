@@ -1,0 +1,41 @@
+//Add your mixin here
+
+/*
+ * to set button color
+ */
+@mixin btnColor($color){
+  color: $color;
+  border: $base-border-width solid $color;
+  &:hover {
+    background: $color;
+  }
+}
+
+/*
+ * Zigzag adds zigzag border on the top of a container, takes color as parameter
+ */
+@mixin zigzag($color, $height) {
+  background-color: $color;
+  position: relative;
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: -#{$height};
+    left: 0;
+    width: 100%;
+    height: #{$height};
+    background:
+      linear-gradient(
+          45deg, transparent 33.333%,
+          $color 33.333%, $color 66.667%,
+          transparent 66.667%
+      ),
+      linear-gradient(
+          -45deg, transparent 33.333%,
+          $color 33.333%, $color 66.667%,
+          transparent 66.667%
+      );
+    background-size: 20px 40px;
+  }
+}

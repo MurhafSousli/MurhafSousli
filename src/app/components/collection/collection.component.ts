@@ -1,73 +1,82 @@
-import {Component, Input} from '@angular/core';
-import {WpCollection, WpHelper} from '../../service';
-import {Card} from '../../views/card';
-import {Args} from "../../service/models";
-import {AppState} from "../../app.service";
-import {ScrollSpyService, ScrollSpyDirective} from "ng2-scrollspy";
+import {Component, Input, Output, EventEmitter, SimpleChange} from '@angular/core';
+
+import {WpCollection} from 'ng2-wp-api/ng2-wp-api';
 
 @Component({
   selector: 'collection',
-  template: require('./collection.html'),
-  directives: [Card, ScrollSpyDirective],
-  providers: [WpCollection, ScrollSpyService]
+  providers: [WpCollection],
+  template: `<ng-content></ng-content>`
 })
 
 export class Collection {
 
-  data;
-  @Input() endpoint:WpHelper.WpEndpoint;
-  @Input() args: Args;
+  @Input() endpoint;
+  @Input() args;
 
-  constructor(public service:WpCollection,
-              private appState:AppState,
-              private scrollSpyService:ScrollSpyService) {
-    appState.set('loading', true);
+  @Output() response = new EventEmitter();
+
+  private data;
+
+  constructor(private wpCollection:WpCollection) {
   }
 
-  ngOnInit() {
-    //check if args is undefined
-    if(!this.args){
-      this.args = new Args();
+  ngOnChanges(changes:{[propName:string]:SimpleChange}) {
+    let prevArgs = changes['args'].previousValue;
+    let newArgs = changes['args'].currentValue;
+    if (prevArgs != newArgs) {
+      setTimeout(() => this.fetchItems(newArgs));
     }
-    //add embed to args.
-    this.args._embed = true;
-    this.fetchItems();
-  }
-  ngAfterViewInit() {
-    this.scrollSpyService.getObservable('window').subscribe((e: any) => {
-      console.log('ScrollSpy::window: ', e);
-      
-    });
   }
 
-  fetchItems() {
-    this.data = [];
-    this.service.setEndpoint(this.endpoint);
-    this.service.fetch(this.args).subscribe(
+  fetchItems(args) {
+    this.wpCollection.Endpoint("564654").get(args).subscribe(
       (res) => {
         this.data = res;
-        this.appState.set('loading', false);
+        this.response.emit({
+          objects: this.data,
+          currentPage: this.wpCollection.service.currentPage,
+          totalPages: this.wpCollection.service.totalPages,
+          totalObjects: this.wpCollection.service.totalObjects
+        });
       },
-      err => console.log(err)
+      (err) => {
+        this.response.emit({error: err});
+      }
     );
   }
 
   fetchMore() {
-    this.appState.set('loading', true);
-    this.service.more().subscribe(
-
-      res => {
-        this.data.concat(res);
-        this.appState.set('loading', false);
+    this.wpCollection.Endpoint(this.endpoint).more().subscribe(
+      (res) => {
+        this.data = this.data.concat(res);
+        this.response.emit({
+          objects: this.data,
+          currentPage: this.wpCollection.service.currentPage,
+          totalPages: this.wpCollection.service.totalPages,
+          totalObjects: this.wpCollection.service.totalObjects
+        });
       },
-      err => console.log(err)
+      (err) => {
+        this.response.emit({error: err});
+      }
     );
   }
 
-  /*
-    TODO: Add load on scroll feature with loading animation, check if masonry does that out of the box.
-   */
+  hasMore() {
+    return this.wpCollection.service.hasMore();
+  }
 
 }
 
 
+/*
+ * Collection component fetches data from WpCollection service,
+ * it has 2 properties:
+ *  - @INPUT: args
+ *  - @INPUT: endpoint
+ *  - @OUTPUT: response
+ *  Data are fetched when args changes. (useful for search)
+ *  Automatically loads more posts when user scroll is close to bottom of the page,
+ *  using ng2-scrollspy which listens to user scroll,
+ *  for more info visit : https://github.com/JonnyBGod/ng2-scrollspy
+ */

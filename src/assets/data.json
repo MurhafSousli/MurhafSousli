@@ -1,3 +1,63 @@
 {
-  "value": "AngularClass"
+  "name": "Murhaf Sousli",
+  "profilePic": "../../assets/img/pic.jpg",
+  "logo": "../../../assets/img/owl.svg",
+  "titles": [
+    "Web developer",
+    "Software Engineer",
+    "Blogger"
+  ],
+  "socialLinks": [
+    {
+      "name": "twitter",
+      "link": "https://twitter.com/MurhafSousli",
+      "class": "fa fa-twitter"
+    },
+    {
+      "name": "linkedin",
+      "link": "https://www.linkedin.com/in/murhafsousli",
+      "class": "fa fa-linkedin"
+    },
+    {
+      "name": "github",
+      "link": "https://github.com/MurhafSousli",
+      "class": "fa fa-github-alt"
+    },
+    {
+      "name": "stackoverflow",
+      "link": "https://stackoverflow.com/users/1015648/murhaf-sousli",
+      "class": "fa fa-stack-overflow"
+    },
+    {
+      "name": "mail",
+      "link": "mailto:murhafsousli@gmail.com",
+      "class": "fa fa-envelope"
+    }
+  ],
+  "loader": {
+    "svg": "../assets/img/pie.svg",
+    "gif": "../assets/img/fallback.gif"
+  },
+  "pages": [
+    {
+      "id": "",
+      "title": "Home",
+      "path": "./"
+    },
+    {
+      "id": "",
+      "title": "Blog",
+      "path": "./blog"
+    },
+    {
+      "id": "3124",
+      "title": "Resume",
+      "path": "./resume"
+    },
+    {
+      "id": "174",
+      "title": "About",
+      "path": "./about"
+    }
+  ]
 }

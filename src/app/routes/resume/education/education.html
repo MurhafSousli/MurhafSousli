@@ -1,23 +1,14 @@
 <div class="education-outer">
 
   <div class="education-icon">
-    <img [src]="graduateIcon"/>
+    <img [src]="data?.icon"/>
   </div>
   <div class="education">
-    <div class="education-item">
-      <span class="education-date">JANUARY 2016 - CURRENT</span>
+    <div *ngFor="let certificate of data?.certificates" class="education-item">
+      <span class="education-date">{{certificate.date}}</span>
       <div class="education-content">
-        <h3>Information Technology</h3><i> - Master degree</i>
-        <p>Bahcesehir University</p>
-      </div>
-    </div>
-
-
-    <div class="education-item">
-      <span class="education-date">SEPTEMBER 2012 - JUNE 2015</span>
-      <div class="education-content">
-        <h3>Software Engineering</h3><i> - Bachelor degree</i>
-        <p>Bahcesehir University</p>
+        <h3>{{certificate.title}}</h3><i>{{certificate.degree}}</i>
+        <p>{{certificate.university}}</p>
       </div>
     </div>
   </div>

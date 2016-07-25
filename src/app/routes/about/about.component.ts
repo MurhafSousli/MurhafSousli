@@ -1,32 +1,44 @@
 import {Component} from '@angular/core';
-import {WpModel, WpHelper} from "../../service";
-import {Post} from "../../service/models/post.model";
 import {AppState} from "../../app.service";
 
+import {Model, WpHelper, Post} from 'ng2-wp-api/ng2-wp-api';
+
 @Component({
-  providers: [WpModel],
   selector: 'about',
-  template: require('./about.html')
+  template: require('./about.html'),
+  directives: [Model]
 })
 export class About {
 
-  pageId = 174;
-  response: any;
-  bgPattern = "url('../../assets/img/77558ed2.png') repeat";
-  constructor(private service:WpModel, private appState: AppState) {
+  endpoint = WpHelper.Endpoint.Pages;
+  id;
+  page;
+
+  constructor(private appState:AppState) {
     appState.set('loading', true);
   }
-  ngOnInit(){
-    this.fetchPage();
+
+  ngOnInit() {
+    this.id = (<any>this.appState.get("data").pages[3]).id;
   }
 
-  fetchPage() {
-    this.service.setEndpoint(WpHelper.WpEndpoint.Pages);
-    this.service.getSingle(this.pageId).subscribe(
-      (res)=> {
-        this.response = new Post(res);
-        this.appState.set('loading', false);
-      },
-      err=> console.log(err));
+  pageData(event) {
+    if (event.error) {
+      /** handle collection requests errors */
+      console.log(event.error);
+    }
+    else {
+      this.page = new Post(event.object);
+    }
+    this.appState.set("loading", false);
   }
+
 }
+
+/*
+ * About component displays about page, we get the page Id from appState.data.pages.about
+ *
+ *  TODO: change about component to dynamic page component which displays page by ID.
+ *
+ *  TODO: display sub pages if available.
+ *  */

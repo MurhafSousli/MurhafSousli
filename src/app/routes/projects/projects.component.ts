@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
-import {Collection} from '../../components/collection';
-import {WpHelper} from '../../service';
+import {Collection, WpHelper} from 'ng2-wp-api/ng2-wp-api';
 
 @Component({
   selector: 'projects',
@@ -16,9 +15,11 @@ import {WpHelper} from '../../service';
 })
 export class Projects {
 
-  endpoint = WpHelper.WpEndpoint.Posts;
+  endpoint = WpHelper.Endpoint.Posts;
 
-  constructor() {
-
-  }
 }
+
+/*
+ * Project Component displays Projects page, currently used in Resume Component.
+    TODO: add projects to navigation menu
+ */

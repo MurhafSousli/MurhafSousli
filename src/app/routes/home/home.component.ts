@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {TypingCarouselDirective} from "../../directives/typing-carousel";
+import {AppState} from "../../app.service";
 
 @Component({
   selector: 'home',
@@ -8,51 +9,57 @@ import {TypingCarouselDirective} from "../../directives/typing-carousel";
 })
 export class Home {
 
-  profilePic = '../../assets/img/angular-logo.png';
-  activeIndex = 0;
-  destroyed:boolean = false;
-  socialLinks = [
-    {
-      name: 'twitter',
-      link: 'https://twitter.com/MurhafSousli',
-      class: 'fa fa-twitter'
-    },
-    {
-      name: 'linkedin',
-      link: 'https://www.linkedin.com/in/murhafsousli',
-      class: 'fa fa-linkedin'
-    },
-    {
-      name: 'github',
-      link: 'https://github.com/MurhafSousli',
-      class: 'fa fa-github-alt'
-    },
-    {
-      name: 'stackoverflow',
-      link: 'https://stackoverflow.com/users/1015648/murhaf-sousli',
-      class: 'fa fa-stack-overflow'
-    },
-    {
-      name: 'mail',
-      link: 'mailto:murhafsousli@gmail.com',
-      class: 'fa fa-envelope'
-    }
-  ];
+  data;
 
-  titles = [
-    'Web developer',
-    'Software Engineer',
-    'Blogger'
-  ];
+  constructor(private appState: AppState){
+
+  }
 
   ngOnInit() {
-    // setInterval(_ => {
-    //
-    //   this.activeIndex++;
-    //   if (this.activeIndex >= this.titles.length) {
-    //     this.activeIndex = 0;
-    //   }
-    // }, 2000);
+    this.data = this.appState.get("data");
+  }
+
+}
+
+/*
+ *  Home component is opinionated component to display the home page
+ *
+ * TypingCarouselDirective is a simple typing carousel directive for angular2.
+ * I use it here to display titles as it is being written
+    Check it out on https://github.com/zaqqaz/ng2-typing-carousel
+
+    another cool alternative to "ng2-typing-carousel" is rotation_words.scss
+    which you has couple of animation effects and it is located in assets directory.
+    'src/assets/style/vendors/_rotation_words.scss'
+ */
+
+
+/*
+ * To use rotate.css instead of "TypingCarouselDirective" to animate text;
+ *
+ * Add the following to the template
+ *
+  <div class="rotate-title rotate-1">
+    <span class="words-wrapper">
+     <strong *ngFor="let title of titles let i = index" [ngClass]="getClass(i)">
+        {{title}}
+     </strong>
+    </span>
+  </div>
+
+  =================================================
+  and in the component:
+  =================================================
+
+  activeIndex = 0;
+
+  ngOnInit(){
+    setInterval(_ => {
+     this.activeIndex++;
+     if (this.activeIndex >= this.titles.length) {
+       this.activeIndex = 0;
+     }
+    }, 2000);
   }
 
   getClass(index) {
@@ -64,4 +71,4 @@ export class Home {
     }
   }
 
-}
+ */

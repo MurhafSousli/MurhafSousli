@@ -1,23 +1,28 @@
-.post{
-  @extend .animated, .fadeIn;
-  &-header{
+.post {
+  @extend .animated, .bounceInUp;
+  background-color: white;
+  /*
+   *  Post Header
+   */
+  &-header {
     position: relative;
     display: flex;
-    align-items: flex-start;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
     height: 300px;
 
-    &.fillheight{
-      align-items: flex-end;
+    &.fillheight {
+      justify-content: flex-end;
       height: 100vh;
-      transition: height .7s;
-      .post-title{
+      transition: height ease .7s;
+      .post-title {
         margin-top: 0;
       }
     }
   }
 
-  &-image{
+  &-image {
     z-index: 1;
     overflow: hidden;
     position: absolute;
@@ -27,84 +32,104 @@
     bottom: 0;
     background-size: cover;
   }
-  &-body{
-    padding: 20px 15px;
-  }
-  &-meta{
-    display: flex;
-    justify-content: space-around;
-  }
-  &-overlay{
+
+  &-overlay {
     @extend .animated, .slideInDown;
     padding: 20px;
     display: flex;
     width: 100%;
     flex-direction: column;
     z-index: 2;
-    color: $base-background-color;
-    background-color: rgba(black, 0.5);
+    color: $overlay-color;
+    background-color: $overlay-bg-color;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
   }
-  &-title{
-    @include media(min-width 320px max-width 480px){
-      padding: 10px 10px;
-    }
-    margin-top: 20px;
+
+  &-title {
+    max-width: 1000px;
+    margin: auto;
     text-align: center;
-    text-shadow: 0 0 20px black;
-    padding: 10px 40px;
+    text-shadow: $base-text-shadow;
+    padding: 0 40px;
     width: 100%;
+    @include media(min-width 320px max-width 480px) {
+      padding: 0;
+    }
   }
-  &-content{
+
+  &-meta {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &-categories {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+    a {
+      font-size: 1.3em;
+      font-family: $heading-font-family;
+    }
+  }
+
+  &-date {
+    text-align: center;
+    font-size: 1em;
+    text-transform: uppercase;
+  }
+
+  /*
+   * Post Body
+   */
+
+  &-body {
+    @extend .container;
+  }
+
+  &-content {
     @extend .animated, .fadeIn;
     margin-top: 15px;
     padding: 20px;
     font-size: 1.3em;
     position: relative;
     overflow: hidden;
-    img{
-      //max-width: 90%;
+    img {
+
     }
   }
-  &-categories{
-    display: flex;
-    justify-content: center;
-    margin-bottom: 15px;
-    a{
-      font-size: 1.3em;
-      font-family: $heading-font-family;
+
+  &-share {
+    padding: 15px;
+  }
+
+  /*
+   * Post Body
+   */
+  &-footer {
+
+  }
+  &-related {
+    @include zigzag($crush-light, "10px");
+    background-color: $crush-light;
+    margin-top: 20px;
+    padding-top: 10px;
+  }
+  &-comments {
+    margin-top: -30px;
+    @include zigzag($cyprus, "10px");
+    background-color: $cyprus;
+    h4{
+      color: $crush;
+    }
+    .comments{
+      @extend .container;
+      padding: 30px 15px 15px;
     }
   }
-  &-share{
-
-  }
-  &-date{
-    text-align: center;
-    font-size: 1em;
-    text-transform: uppercase;
-  }
-  &-related{
-    padding: 30px 0;
-  }
-  &-comments{
-    padding: 20px;
-  }
 }
 
-carousel{
-  display: block;
-  height: 300px;
-  margin-bottom: 50px;
-}
-.flickity-viewport{
-  padding: 0 50px;
-}
-.carousel-cell {
-  //width: 250px;
-  height: 100%; /* height of carousel */
-  padding: 10px;
-}
-.related-title{
-    padding: 0 15px;
-}
+
 
 

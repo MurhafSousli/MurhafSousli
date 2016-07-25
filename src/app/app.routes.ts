@@ -7,15 +7,14 @@ import {Blog} from './routes/blog';
 import {Node} from './routes/node';
 import {About} from './routes/about';
 import {Resume} from './routes/resume';
-import {Category} from './routes/category';
 import {Search} from './routes/search';
 
 export const routes: RouterConfig = [
   {path: '', component: Home},
   {path: 'blog', component: Blog},
+  {path: 'blog/:id', component: Blog},
   {path: 'node/:id', component: Node},
   {path: 'search/:key', component: Search},
-  {path: 'category/:id', component: Category},
   {path: 'about', component: About},
   {path: 'resume', component: Resume},
   {path: '**', component: NoContent},

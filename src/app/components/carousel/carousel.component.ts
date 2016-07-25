@@ -8,7 +8,7 @@ var Flickity = require('flickity');
   template: `<ng-content></ng-content>`
 })
 export class Carousel {
-  
+
   @Input() options;
   carousel: any;
   defaultOptions: any = {
@@ -32,3 +32,9 @@ export class Carousel {
     this.carousel = null;
   }
 }
+
+
+/*
+ * Carousel Component for flickity carousel, for more info visit http://flickity.metafizzy.co/
+
+ */

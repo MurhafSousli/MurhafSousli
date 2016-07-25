@@ -11,3 +11,7 @@ import { Component } from '@angular/core';
 export class NoContent {
 
 }
+
+/*
+ * NoContent component displays 404 page.
+ */

@@ -18,14 +18,12 @@ export class Disqus {
   }
 
   ngOnInit() {
-    setTimeout(_=> {
-      if (window['DISQUS'] === undefined) {
-        this._addScriptTag();
-      }
-      else {
-        this._reset();
-      }
-    }, 2000);
+    if (window['DISQUS'] === undefined) {
+      this._addScriptTag();
+    }
+    else {
+      this._reset();
+    }
   }
 
   /**
@@ -45,7 +43,6 @@ export class Disqus {
     (<any>window).disqus_config = this._getConfig();
     let script = this._buildScriptTag(`//${this.shortname}.disqus.com/embed.js`);
     this._dom.appendChild(script);
-    console.log(this._getConfig());
   }
 
   /**

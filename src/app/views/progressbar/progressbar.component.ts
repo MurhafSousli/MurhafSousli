@@ -21,7 +21,7 @@ export class ProgressBar {
 
   ngOnInit() {
     if (this.type == "line") {
-      this.bar = new ProgressBarLib.Line(this.elementRef.nativeElement, this.args);
+      this.bar = new ProgressBarLib.Line(this.elementRef.nativeElement,  this.args);
     }
     else if (this.type == "circle") {
       this.bar = new ProgressBarLib.Circle(this.elementRef.nativeElement, this.args);

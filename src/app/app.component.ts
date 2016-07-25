@@ -1,33 +1,56 @@
-/*
- * Angular 2 decorators and services
- */
-import { Component, ViewEncapsulation } from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
+import {Http} from "@angular/http";
+import {WORDPRESS_PROVIDERS, WpState} from "ng2-wp-api/ng2-wp-api";
 
-import { AppState } from './app.service';
+import {AppState} from './app.service';
 import {Header} from './components/header';
-import {Loader} from'./components/svg-loader/svg-loader.component';
-/*
- * App Component
- * Top Level Component
- */
+import {SvgLoader} from'./components/svg-loader/svg-loader.component';
+
+
 @Component({
   selector: 'app',
+  providers:[WORDPRESS_PROVIDERS],
   encapsulation: ViewEncapsulation.None,
-  directives: [Header, Loader],
+  directives: [Header, SvgLoader],
   styleUrls: ['../assets/style/style.scss'],
-  template: `
-    <header></header>
-     <main>
-      <router-outlet></router-outlet>
-     </main>
-     <svg-loader *ngIf="appState.get('loading')" [src]="loaderSvg" [fallback]="loaderGif" class="animated zoomIn"></svg-loader>
-  `
+  template: require('./app.html')
 })
 export class App {
-  loaderSvg = require('../assets/img/pie.svg');
-  loaderGif = '../assets/img/pie.gif';
-  constructor(public appState: AppState){
+
+  data;
+  constructor(public appState: AppState, private http:Http, wpState: WpState){
+    //Initialize loading state
     appState.set('loading', false);
+    wpState.setBaseUrl(" http://portfolio.murhafsousli.com");
+  }
+
+  ngOnInit(){
+    this.fetchData();
+  }
+
+  /*
+   *  fetch app config data.
+   */
+  fetchData(){
+    this.http.get('../../assets/data.json').map(res => res.json()).subscribe(
+      (res:any) => {
+        this.data = res;
+        this.appState.set("data", res);
+      },
+      err => console.log("[Failed to load config data]: ", err)
+    );
   }
 
 }
+
+
+/*
+ * Put the initial configuration for the app in data.json located in "src/assets/data.json"
+   This will be fetched only once and stored in AppState service,
+   so it can be available to all components.
+
+    <svg-loader> renders any SVG file, Here it is used to show loading while fetching data from the service.
+   the loader need SVG as source and GIF as fallback (for IE)
+    Use data.loader.svg for SVG source path
+    and data.loader.gif for GIF source path
+ */

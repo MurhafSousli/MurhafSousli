@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Post} from "../../service/models";
+import {Post} from "ng2-wp-api/ng2-wp-api";
 
 @Component({
   selector: 'card',

@@ -5,12 +5,14 @@ $card-boxshadow-hover: $base-font-color 0px 0px 4px;
 
 .card {
   max-width: $card-width;
-  box-shadow: $card-boxshadow;
-  border: 1px solid $base-border-color;
+  border: $base-border;
+  //box-shadow: $card-boxshadow;
+  //border: 1px solid $base-border-color;
   border-radius: $base-border-radius;
   overflow: hidden;
   margin: 15px auto;
   position: relative;
+  background-color: $overlay-color;
 
   &-meta{
     background-color: $base-font-color;
@@ -25,20 +27,25 @@ $card-boxshadow-hover: $base-font-color 0px 0px 4px;
   }
 
   &-title{
-    padding: ($base-spacing / 3) ($base-spacing / 2);
-    margin-top:10px;
+    padding: $base-spacing/2;
   }
   &-excerpt{
-    padding: ($base-spacing / 3) ($base-spacing / 2);
+    padding: $base-spacing/1.5;
     font-size: $small-font-size;
   }
   &-footer {
-    padding: ($base-spacing / 3) ($base-spacing / 2);
+    padding: $base-spacing/1.5;
     font-size: $small-font-size;
+    padding-top: 0;
   }
 
   &:hover{
-    box-shadow: $card-boxshadow-hover;
+    //box-shadow: $card-boxshadow-hover;
+  }
+
+  h4{
+    margin-bottom: 0;
+    color: $base-font-color;
   }
 
 }
@@ -49,22 +56,29 @@ $card-boxshadow-hover: $base-font-color 0px 0px 4px;
   width: $small-card-dimension;
   display: flex;
   flex-direction: column;
+  background-color: $ripple;
 
   &-image{
     flex: 1 1 auto;
     background-size: cover;
-   // background-color: $secondary-background-color;
   }
   &-title, &-footer{
-    padding: ($base-spacing / 3) ($base-spacing / 2);
+    padding: $base-spacing/1.5;
     flex: 0 0 auto;
+  }
+  &-footer{
+    padding-top: 0;
   }
 
   h4{
     margin: 0;
   }
 
+  //button{
+  //  background-color: $ripple;
+  //}
+
   &:hover{
-    box-shadow: $card-boxshadow-hover;
+    //box-shadow: $card-boxshadow-hover;
   }
 }

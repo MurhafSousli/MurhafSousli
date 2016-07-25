@@ -1,5 +1,9 @@
 .page{
+  background-color: $base-background-color;
   .post-header{
     height: auto;
+  }
+  .post-overlay{
+    background-color: $page-title-background;
   }
 }

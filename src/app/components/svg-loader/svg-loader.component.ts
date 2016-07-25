@@ -4,7 +4,7 @@ import {SvgIconComponent} from './svg-icon.component';
 @Component({
   selector: 'svg-loader',
   template: `
-    <div [ngStyle]="setStyle()" >
+    <div [ngStyle]="defaultArgs" >
       <svg-icon *ngIf="!isFallback" [src]="src"></svg-icon>
       <img *ngIf="isFallback" [src]="fallback"/>
     </div>
@@ -17,14 +17,16 @@ import {SvgIconComponent} from './svg-icon.component';
   directives: [SvgIconComponent]
 })
 
-export class Loader {
+export class SvgLoader {
 
   @Input() src = '';
   @Input() fallback = '';
-  @Input() strokeColor = '';
-  @Input() fillColor = '';
-  @Input() width = '100px';
-  @Input() height = '100px';
+  @Input() args;
+
+  defaultArgs = {
+    width: '90px',
+    height: '90px'
+  };
 
   isFallback: any = false;
 
@@ -32,18 +34,26 @@ export class Loader {
      this.isFallback = detectIE();
   }
 
-  setStyle() {
-    let styles = {
-      'fill': this.fillColor,
-      'stroke': this.strokeColor,
-      'width': this.width,
-      'height': this.height,
+  ngOnInit(){
+    for (var key in this.args) {
+      this.defaultArgs[key] = this.args[key];
     }
-    return styles;
   }
 
 }
-//
+/*
+    SVG component let you display inline SVG which gives you the option to modify the style of the image using css
+    Inline SVG is not supporting in IE browsers including Edge,
+    this component detect which browser is used and fallback to gif image if its svg is not supported
+    SVG component has 3 properties:
+    - "src" for SVG source file.
+    - "fallback" for GIF source file.
+    - "args" to override SVG style.
+ */
+/*
+ * this function detects which browser the user are using.
+
+ */
 function detectIE():any {
   let ua = window.navigator.userAgent;
 

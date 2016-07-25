@@ -1,11 +1,10 @@
-$color-background: $base-background-color;
-$color-main: $action-color;
-$color-active: $base-background-color;
-$color-link: $base-background-color;
+$color-background: $ripple;
+$color-main: $ripple;
+$color-active: $action-color;
+$color-link: $base-font-color;
 
 $menu-button-height: 27px;
 $menu-button-width: 35px;
-
 
 .button_container {
   position: fixed;
@@ -24,28 +23,28 @@ $menu-button-width: 35px;
   &.active {
     .top {
       transform: translateY(11px) translateX(0) rotate(45deg);
-      background: $color-active;
+      background: $color-link;
     }
     .middle {
       opacity: 0;
-      background: $color-active;
+      background: $color-link;
     }
 
     .bottom {
       transform: translateY(-11px) translateX(0) rotate(-45deg);
-      background: $color-active;
+      background: $color-link;
     }
   }
 
   span {
-    background: $color-main;
+    background: $color-active;
     border: none;
     height: 5px;
     width: 100%;
     position: absolute;
     top: 0;
     left: 0;
-    transition:  all .35s ease;
+    transition: all .35s ease;
     cursor: pointer;
 
     &:nth-of-type(2) {
@@ -56,13 +55,6 @@ $menu-button-width: 35px;
       top: 22px;
     }
   }
-}
-.overlay-inner{
-  flex: 1 1 auto;
-  display: flex;
-  max-width: 400px;
-  justify-content: center;
-  flex-direction: column;
 }
 
 .overlay {
@@ -76,25 +68,57 @@ $menu-button-width: 35px;
   top: 0;
   left: 0;
   width: 100%;
-  height: 0%;
+  height: 0;
   opacity: 0;
   visibility: hidden;
   transition: opacity .35s, visibility .35s, height .35s;
   overflow: hidden;
 
   &.open {
+    border-bottom: 4px solid $color-link;
     opacity: .9;
     visibility: visible;
     height: 100%;
 
-    li {
+    img{
       @extend .animated, .jello;
     }
 
-    .social{
+    .social {
       @extend .animated, .jello;
     }
   }
+
+  &-inner {
+    flex: 1 1 auto;
+    display: flex;
+    max-width: 400px;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  &-header {
+    transform: rotate(180deg);
+    .logo {
+      margin: auto;
+      display: flex;
+      border-bottom: 3px solid $color-link;
+      span {
+        padding: 15px;
+        text-transform: initial;
+        color: $cyprus;
+        font-size: 2em;
+        text-align: right;
+        transform: rotate(-180deg);
+      }
+
+      img{
+        height: 100px;
+        width: 100px;
+      }
+    }
+  }
+
   nav {
     width: 100%;
     margin: 0 auto;
@@ -113,7 +137,6 @@ $menu-button-width: 35px;
     display: flex;
     justify-content: space-around;
     flex-direction: column;
-
 
     li {
       position: relative;
@@ -136,7 +159,7 @@ $menu-button-width: 35px;
           position: absolute;
           bottom: 0;
           left: 50%;
-          width: 0%;
+          width: 0;
           transform: translateX(-50%);
           height: 3px;
           background: $color-link;
@@ -146,12 +169,13 @@ $menu-button-width: 35px;
     }
   }
 }
+
 .social {
   z-index: 100;
   display: flex;
   justify-content: space-around;
   a {
-    color: white;
+    color: $cyprus;
     margin: 15px;
     font-size: 30px;
     opacity: 1;

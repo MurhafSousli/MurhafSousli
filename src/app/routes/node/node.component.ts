@@ -8,9 +8,9 @@ import {
   ComponentFactory
 } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import {WpModel, Post, QueryArgs} from "ng2-wp-api/ng2-wp-api";
+
 import {Single} from "../../views/single";
-import {WpModel, WpHelper} from "../../service";
-import {Post} from "../../service/models";
 import {AppState} from "../../app.service";
 
 @Component({
@@ -23,7 +23,8 @@ export class Node {
 
   private id:string;
   private isViewInitialized:boolean = false;
-  private response:Post;
+  private response:Post;args: QueryArgs;
+
   private sub: any;
 
   cmpRef:ComponentRef<any>;
@@ -35,14 +36,15 @@ export class Node {
               private service:WpModel,
               private appState:AppState) {
 
-    this.appState.set('loading', true);
- //   this.id = this.route.snapshot.params['id'];
-    this.service.setEndpoint(WpHelper.WpEndpoint.Posts);
   }
 
   ngOnInit(){
+    let args = new QueryArgs();
+    args._embed = true;
+    this.args = args;
+
     this.sub = this.route.params.subscribe(params => {
-      //update the id whenever it changes and update the component.
+      /** update the component when id changes */
       this.id = params['id'];
       this.updateComponent();
     });
@@ -55,7 +57,8 @@ export class Node {
     if (this.cmpRef) {
       this.cmpRef.destroy();
     }
-    this.fetchPost();
+
+    setTimeout(()=>this.fetchPost());
   }
 
   ngAfterViewInit() {
@@ -71,9 +74,8 @@ export class Node {
   }
 
   fetchPost() {
-
-    console.log(this.id);
-    this.service.getSingle(this.id + '?_embed=1').subscribe(
+    this.appState.set('loading', true);
+    this.service.Posts().get(this.id, this.args).subscribe(
       (res) => {
         this.response = new Post(res);
 

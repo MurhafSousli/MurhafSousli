@@ -1,52 +1,46 @@
-<div class="resume animated fadeIn">
-  <!--SELF SUMMMARY-->
-  <div class="resume-title container">
+<div class="resume">
+  <div class="resume-title">
     <h1>RESUME</h1>
   </div>
 
-  <div class="introduction">
-    <div class="section-title container">
+  <!--SELF SUMMMARY-->
+  <section class="introduction" [class.extendheight]="data">
+    <div class="section-title">
       <h2>SELF SUMMARY</h2>
     </div>
-    <div class="section-content container flexpage large-font">
-      <p [innerHtml]="introduction"></p>
+    <div class="section-content">
+      <div *ngIf="data" [innerHtml]="data.summary"></div>
     </div>
-  </div>
+  </section>
 
   <!--SKILLS PART-->
-
-  <div class="skills-wrapper">
-    <div class="section-title container">
+  <section class="skills-wrapper">
+    <div class="section-title">
       <h2>SKILLS</h2>
     </div>
-    <div class="section-content flexpage container large-font">
-      <skills></skills>
+    <div class="section-content">
+      <skills [data]="data?.skills"></skills>
     </div>
-  </div>
-
+  </section>
 
   <!--RADAR PART-->
-  <div class="radar-wrapper">
-    <div class="section-content flexpage container large-font">
-      <base-chart id="myChart"
-                  [datasets]="radarChartData"
-                  [labels]="radarChartLabels"
-                  [chartType]="radarChartType"
-                  (chartHover)="chartHovered($event)"
-                  (chartClick)="chartClicked($event)"></base-chart>
+  <section class="chart-wrapper">
+    <div class="section-title">
+      <h2>WORKFLOW</h2>
     </div>
-  </div>
-
+    <div class="section-content">
+    </div>
+  </section>
 
   <!--EDUCATION PART-->
-  <div class="education-wrapper">
-    <div class="section-title container">
+  <section class="education-wrapper">
+    <div class="section-title">
       <h2>EDUCATION</h2>
     </div>
-    <div class="section-content flexpage container large-font">
-      <education></education>
+    <div class="section-content">
+      <education [data]="data?.education"></education>
     </div>
-  </div>
+  </section>
 
   <!--LANGUAGES PART-->
   <!--<div class="languages-wrapper">-->
@@ -59,34 +53,37 @@
   <!--</div>-->
 
   <!--EXPERIENCE PART-->
-  <div class="experience-wrapper">
-    <div class="section-title container">
+  <section class="experience-wrapper">
+    <div class="section-title">
       <h2>EXPERIENCE</h2>
     </div>
-    <div class="section-content flexpage container large-font">
-      <experience></experience>
+    <div class="section-content">
+      <experience [data]="data?.experiences"></experience>
     </div>
-  </div>
+  </section>
 
   <!--PROJECT PART-->
-  <div class="projects-wrapper">
-    <div class="section-content flexpage container large-font">
-      <!--<projects></projects>-->
+  <section class="projects-wrapper">
+    <div class="section-title">
+      <h2>PROJECTS</h2>
     </div>
-  </div>
+    <div class="section-content">
+      <collection [args]="projectArgs" [endpoint]="projectEndpoint"></collection>
+    </div>
+  </section>
 
   <!--BADGES PART-->
-  <div class="badges-wrapper">
-    <div class="section-title container">
+  <section class="badges-wrapper">
+    <div class="section-title">
       <h2>BADGES</h2>
     </div>
-    <div class="section-content flexpage container large-font">
-      <a href="http://stackoverflow.com/users/1015648/murhaf-sousli">
-        <img src="http://stackoverflow.com/users/flair/1015648.png?theme=clean" width="208" height="58"
-             alt="profile for Murhaf Sousli at Stack Overflow, Q&amp;A for professional and enthusiast programmers"
-             title="profile for Murhaf Sousli at Stack Overflow, Q&amp;A for professional and enthusiast programmers">
+    <div class="section-content">
+      <a href="http://stackexchange.com/users/1000753">
+        <img src="http://stackexchange.com/users/flair/1000753.png" width="208" height="58"
+             alt="profile for Murhaf Sousli on Stack Exchange, a network of free, community-driven Q&amp;A sites"
+             title="profile for Murhaf Sousli on Stack Exchange, a network of free, community-driven Q&amp;A sites">
       </a>
     </div>
-  </div>
+  </section>
 </div>
 
