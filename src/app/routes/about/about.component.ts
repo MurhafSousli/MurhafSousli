@@ -18,8 +18,12 @@ export class About {
     appState.set('loading', true);
   }
 
-  ngOnInit() {
-    this.id = (<any>this.appState.get("data").pages[3]).id;
+  ngDoCheck(){
+    /** check if appState have received app data */
+    let data = this.appState.get("data");
+    if(data.hasOwnProperty('pages') && !this.id){
+      this.id = (<any>this.appState.get("data").pages[3]).id;
+    }
   }
 
   pageData(event) {
@@ -36,9 +40,6 @@ export class About {
 }
 
 /*
- * About component displays about page, we get the page Id from appState.data.pages.about
+ * About component displays about page
  *
- *  TODO: change about component to dynamic page component which displays page by ID.
- *
- *  TODO: display sub pages if available.
- *  */
+ */

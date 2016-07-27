@@ -44,19 +44,15 @@ export class Blog {
   ngOnInit() {
 
     this.categoryDom = this.categoryRef.nativeElement;
-    /** default blog arguments */
-    let args = new QueryArgs();
-    args._embed = true;
-    args.per_page = 4;
-    this.args = args;
+    // /** default blog arguments */
+    // let args = new QueryArgs();
+    // args._embed = true;
+    // args.per_page = 4;
+    // this.args = args;
 
     this.sub = this.route.params.subscribe(params => {
-      /** update the blog when category id changes. **/
-      this.appState.set('loading', true);
-      args = JSON.parse(JSON.stringify(this.args));
-      args.filter = {cat: params['id']};
 
-      this.args = args;
+      this.updateCategory(params['id']);
     });
   }
 
@@ -80,6 +76,22 @@ export class Blog {
 
   }
 
+  updateCategory(id) {
+    /** default blog arguments */
+    let args = new QueryArgs();
+    args._embed = true;
+    args.per_page = 4;
+    this.args = args;
+    /** update the blog when category id changes. **/
+    this.appState.set('loading', true);
+    args = JSON.parse(JSON.stringify(this.args));
+    args.filter = {cat: id};
+
+    this.args = args;
+    this.toggleSearch(false);
+    this.toggleCats(false);
+  }
+
   postsData(event) {
     if (event.error) {
       /** handle collection requests errors */
@@ -99,8 +111,8 @@ export class Blog {
     this.appState.set('loading', true);
     this.args = args;
 
-    this.activeSearch = false;
-    this.activeCats = false;
+    this.toggleSearch(false);
+    this.toggleCats(false);
   }
 
   toggleSearch(flag) {
@@ -113,10 +125,10 @@ export class Blog {
     this.activeCats = flag;
     this.activeSearch = false;
 
-    if(this.activeCats){
+    if (this.activeCats) {
       this.categoryDom.style.height = this.categoryHeight();
     }
-    else{
+    else {
       this.categoryDom.style.height = '0';
     }
   }

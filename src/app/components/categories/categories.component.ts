@@ -1,4 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
+import {Router} from "@angular/router";
 import {Collection, WpHelper, QueryArgs} from 'ng2-wp-api/ng2-wp-api';
 
 import {AppState} from "../../app.service";
@@ -17,15 +18,18 @@ export class Categories {
 
   @ViewChild(Collection) collection:Collection;
 
-  constructor(private appState:AppState
+  constructor(private appState:AppState,
+              private router:Router
   ) {
 
     setTimeout(()=> this.appState.state['loading'] = true);
   }
 
   ngOnInit() {
-    this.args = new QueryArgs();
-    /** TODO: add filter to get all categories at once */
+    /**  to get all categories at once */
+    let args = new QueryArgs();
+    args.per_page = 100;
+    this.args = args;
   }
 
   catsData(event) {
@@ -36,6 +40,10 @@ export class Categories {
       this.cats = event.objects;
     }
     this.appState.set("loading", false);
+  }
+
+  navigate(catId){
+    this.router.navigate(['/blog/', catId]);
   }
 
 }

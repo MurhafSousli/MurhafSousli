@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {TypingCarouselDirective} from "../../directives/typing-carousel";
 import {AppState} from "../../app.service";
 
@@ -15,14 +15,18 @@ export class Home {
 
   }
 
-  ngOnInit() {
-    this.data = this.appState.get("data");
+  ngDoCheck(){
+    /** check if appState have received app data */
+    let data = this.appState.get("data");
+    if(data.hasOwnProperty('titles') && !this.data){
+      this.data = data;
+    }
   }
 
 }
 
 /*
- *  Home component is opinionated component to display the home page
+ *  Home component for home page
  *
  * TypingCarouselDirective is a simple typing carousel directive for angular2.
  * I use it here to display titles as it is being written

@@ -1,4 +1,4 @@
-import { Component, Input, ElementRef } from '@angular/core';
+import {Component, Input, ElementRef} from '@angular/core';
 
 // for usage info check flickity carousel http://flickity.metafizzy.co/
 var Flickity = require('flickity');
@@ -9,15 +9,14 @@ var Flickity = require('flickity');
 })
 export class Carousel {
 
-  @Input() options;
-  carousel: any;
-  defaultOptions: any = {
-    wrapAround: true,
-    freeScroll: true,
-    prevNextButtons: false
-  };
+  @Input() options:any;
+  carousel:any;
 
-  constructor(private el: ElementRef) {}
+  defaultOptions:any = {}
+
+  constructor(private el:ElementRef) {
+
+  }
 
   ngAfterViewInit() {
     for (var key in this.options) {

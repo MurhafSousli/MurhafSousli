@@ -22,6 +22,12 @@ export class RelatedPosts {
 
   @ViewChild(Collection) collection:Collection;
 
+  flickityOptions: any = {
+    //wrapAround : true,
+    freeScroll :true,
+    prevNextButtons: false
+  }
+
   constructor(private appState:AppState) {
     appState.set('loading', true);
   }
@@ -43,7 +49,7 @@ export class RelatedPosts {
     let args = new QueryArgs();
     args.filter = {
       tag: tagNames.toString(),
-      //post__not_in: this.postId
+      post__not_in: [this.postId]
     };
     args._embed = true;
     this.args = args;
@@ -64,12 +70,7 @@ export class RelatedPosts {
 }
 
 /*
- TODO: current post should not be listed in related posts, fix arguments.
- */
-
-/*
  * Related Posts Component: gets the related posts to the current post.
- * basically it will return the posts with the same tag of the current post,
- * and should NOT list it with them.
+ * basically it will return the posts with the same tag of the current post except the current one.
 
  */

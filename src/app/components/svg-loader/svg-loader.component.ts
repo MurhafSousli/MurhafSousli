@@ -6,7 +6,8 @@ import {SvgIconComponent} from './svg-icon.component';
   template: `
     <div [ngStyle]="defaultArgs" >
       <svg-icon *ngIf="!isFallback" [src]="src"></svg-icon>
-      <img *ngIf="isFallback" [src]="fallback"/>
+      <!--<img *ngIf="isFallback" [src]="fallback"/>-->
+      <i *ngIf="isFallback" [class]="fallback" aria-hidden="true"></i>
     </div>
   `,
   styles: [`

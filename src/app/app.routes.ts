@@ -4,19 +4,19 @@ import { RouterConfig } from '@angular/router';
 import { NoContent } from './routes/no-content';
 import {Home} from './routes/home';
 import {Blog} from './routes/blog';
-import {Node} from './routes/node';
+import {Posts} from './routes/posts';
 import {About} from './routes/about';
 import {Resume} from './routes/resume';
-import {Search} from './routes/search';
+import {Projects} from './routes/projects';
 
 export const routes: RouterConfig = [
   {path: '', component: Home},
   {path: 'blog', component: Blog},
   {path: 'blog/:id', component: Blog},
-  {path: 'node/:id', component: Node},
-  {path: 'search/:key', component: Search},
+  {path: 'posts/:id', component: Posts},
   {path: 'about', component: About},
   {path: 'resume', component: Resume},
+  {path: 'projects', component: Projects},
   {path: '**', component: NoContent},
 ];
 

@@ -1,25 +1,27 @@
 import {Component} from '@angular/core';
-import {Collection, WpHelper} from 'ng2-wp-api/ng2-wp-api';
+
+import {ProjectsList} from '../../components/projects';
 
 @Component({
   selector: 'projects',
-  directives: [Collection],
+  directives: [ProjectsList],
   template: `
-    <div class="page-title">
-      <h1>Projects</h1>
-    </div>
-    <div class="page-content container">
-      <collection [endpoint]="endpoint"></collection>
+    <div class="post page blog">
+      <div class="post-header">
+        <div #overlay class="post-overlay">
+          <div class="post-title">
+            <h1>PROJECTS</h1>
+          </div>
+        </div>
+      </div>
+      <div class="post-body">
+        <div class="post-content">
+          <projects></projects>
+        </div>
+      </div>
     </div>
   `
 })
 export class Projects {
 
-  endpoint = WpHelper.Endpoint.Posts;
-
 }
-
-/*
- * Project Component displays Projects page, currently used in Resume Component.
-    TODO: add projects to navigation menu
- */

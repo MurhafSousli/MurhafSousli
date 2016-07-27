@@ -17,10 +17,12 @@ import {SvgLoader} from'./components/svg-loader/svg-loader.component';
 })
 export class App {
 
-  data;
-  constructor(public appState: AppState, private http:Http, wpState: WpState){
+  data:any;
+
+  constructor(public appState: AppState, private http:Http, public wpState: WpState){
     //Initialize loading state
     appState.set('loading', false);
+    appState.set('data', false);
     wpState.setBaseUrl(" http://portfolio.murhafsousli.com");
   }
 

@@ -90,9 +90,10 @@
 
   &-content {
     @extend .animated, .fadeIn;
-    margin-top: 15px;
+    margin-top: 40px;
     padding: 20px;
     font-size: 1.3em;
+    line-height: 1.3em;
     position: relative;
     overflow: hidden;
     img {

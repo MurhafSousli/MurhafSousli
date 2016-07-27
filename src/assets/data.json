@@ -36,7 +36,7 @@
   ],
   "loader": {
     "svg": "../assets/img/pie.svg",
-    "gif": "../assets/img/fallback.gif"
+    "fallback": "fa fa-spinner fa-spin fa-3x fa-fw"
   },
   "pages": [
     {
@@ -48,6 +48,11 @@
       "id": "",
       "title": "Blog",
       "path": "./blog"
+    },
+    {
+      "id": "",
+      "title": "Projects",
+      "path": "./projects"
     },
     {
       "id": "3124",

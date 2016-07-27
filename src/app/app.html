@@ -3,8 +3,9 @@
   <router-outlet></router-outlet>
 </main>
 <loading>
-  <svg-loader *ngIf="appState.get('loading')" [src]="data.loader.svg"
-              [fallback]="data.loader.gif">
+  <svg-loader *ngIf="appState.get('loading')"
+              [src]="data?.loader?.svg"
+              [fallback]="data?.loader?.fallback">
   </svg-loader>
 </loading>
 <footer></footer>

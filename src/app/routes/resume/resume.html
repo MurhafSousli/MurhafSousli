@@ -38,7 +38,7 @@
       <h2>EDUCATION</h2>
     </div>
     <div class="section-content">
-      <education [data]="data?.education"></education>
+      <education *ngIf="data" [data]="data?.education"></education>
     </div>
   </section>
 
@@ -68,7 +68,7 @@
       <h2>PROJECTS</h2>
     </div>
     <div class="section-content">
-      <collection [args]="projectArgs" [endpoint]="projectEndpoint"></collection>
+      <projects></projects>
     </div>
   </section>
 

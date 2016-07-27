@@ -1,6 +1,6 @@
 {
   "id": "",
-  "summary": "I'm a Freelance Web Designer & Developer living in Istanbul, Turkey. I'm an enthusiastic, creative designer with $ years experience and I'm  passionate about creating beautiful, accessible websites using Web Standards.",
+  "summary": "I'm a Freelance Web Designer & Developer living in Istanbul, Turkey. I'm an enthusiastic, creative designer and I'm  passionate about creating beautiful, accessible websites using Web Standards.",
   "skills": [
     {
       "name": "Javascript",
@@ -61,17 +61,6 @@
     ]
   },
   "experiences": [
-    {
-      "company": "Freelancing",
-      "address": "Remote",
-      "jobTitle": "WordPress theme developer",
-      "date": "MAY 2014 - PRESENT",
-      "content": [
-        "Communicating with clients remotely and face to face",
-        "Creating custom theme design on demand",
-        "Coding using backend technologies such as PHP to extend WordPress functionality"
-      ]
-    },
     {
       "company": "Skymar Investment",
       "address": "Maslak Uniq Istanbul",

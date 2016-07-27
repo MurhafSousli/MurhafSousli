@@ -8,11 +8,12 @@ import {Skills} from './skills';
 import {Experience} from './experience';
 
 import {AppState} from "../../app.service";
+import {ProjectsList} from "../../components/projects";
 
 @Component({
   selector: 'resume',
   template: require('./resume.html'),
-  directives: [Education, Languages, Skills, Experience, Collection]
+  directives: [Education, Languages, Skills, Experience, Collection, ProjectsList]
 })
 
 export class Resume {
@@ -39,16 +40,23 @@ export class Resume {
   getProjects() {
     this.projectEndpoint = WpHelper.Endpoint.Posts;
     let args = new QueryArgs();
-    args = new QueryArgs()
     args._embed = true;
     args.per_page = 4;
     this.projectArgs = args;
   }
 
-
 }
 
 
-/*
- TODO: Make unique endpoint for resume data.
- */
+
+/*{
+ "company": "Freelancing",
+ "address": "Remote",
+ "jobTitle": "WordPress theme developer",
+ "date": "MAY 2014 - PRESENT",
+ "content": [
+ "Communicating with clients remotely and face to face",
+ "Creating custom theme design on demand",
+ "Coding using backend technologies such as PHP to extend WordPress functionality"
+ ]
+ },*/

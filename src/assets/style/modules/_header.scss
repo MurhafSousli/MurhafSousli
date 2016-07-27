@@ -1,10 +1,13 @@
-$color-background: $ripple;
-$color-main: $ripple;
-$color-active: $action-color;
-$color-link: $base-font-color;
+$menu-bg: $seafloor;
+$menu-body-bg: $crush;
+$menu-color-main: $ripple;
+$menu-color-active: $action-color;
+$menu-color-link: $base-font-color;
 
 $menu-button-height: 27px;
 $menu-button-width: 35px;
+
+$menu-container-width: 400px;
 
 .button_container {
   position: fixed;
@@ -23,21 +26,21 @@ $menu-button-width: 35px;
   &.active {
     .top {
       transform: translateY(11px) translateX(0) rotate(45deg);
-      background: $color-link;
+      background: $menu-color-link;
     }
     .middle {
       opacity: 0;
-      background: $color-link;
+      background: $menu-color-link;
     }
 
     .bottom {
       transform: translateY(-11px) translateX(0) rotate(-45deg);
-      background: $color-link;
+      background: $menu-color-link;
     }
   }
 
   span {
-    background: $color-active;
+    background: $menu-color-active;
     border: none;
     height: 5px;
     width: 100%;
@@ -59,12 +62,11 @@ $menu-button-width: 35px;
 
 .overlay {
   text-transform: uppercase;
-  font-family: $heading-font-family;
   display: flex;
   justify-content: center;
   z-index: 999;
   position: fixed;
-  background: $color-main;
+  background-color: $menu-bg;
   top: 0;
   left: 0;
   width: 100%;
@@ -75,12 +77,11 @@ $menu-button-width: 35px;
   overflow: hidden;
 
   &.open {
-    border-bottom: 4px solid $color-link;
     opacity: .9;
     visibility: visible;
     height: 100%;
 
-    img{
+    img {
       @extend .animated, .jello;
     }
 
@@ -92,17 +93,19 @@ $menu-button-width: 35px;
   &-inner {
     flex: 1 1 auto;
     display: flex;
-    max-width: 400px;
     justify-content: center;
     flex-direction: column;
   }
 
   &-header {
+    display: flex;
+    margin: 0 auto 40px;
+    width: 100%;
     transform: rotate(180deg);
     .logo {
       margin: auto;
       display: flex;
-      border-bottom: 3px solid $color-link;
+      border-bottom: 3px solid $menu-color-link;
       span {
         padding: 15px;
         text-transform: initial;
@@ -112,76 +115,96 @@ $menu-button-width: 35px;
         transform: rotate(-180deg);
       }
 
-      img{
+      img {
         height: 100px;
         width: 100px;
       }
     }
   }
 
-  nav {
-    width: 100%;
-    margin: 0 auto;
+  &-body {
+    @include zigzag($menu-color-active, 10px);
+    background-color: $menu-body-bg;
     flex: 1 1 auto;
-    position: relative;
-    font-size: 2em;
-    font-weight: bold;
-    text-align: center;
     display: flex;
-  }
-  ul {
-    flex: 1 1 auto;
-    list-style: none;
-    padding: 40px 0;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
 
-    li {
+    nav {
+      flex: 1 1 auto;
+      max-width: $menu-container-width;
+      margin: 0 auto;
       position: relative;
+      font-size: 1.6em;
+      font-weight: bold;
+      text-align: center;
+      display: flex;
+    }
 
-      a {
-        display: inline-block;
-        position: relative;
-        color: $color-link;
-        text-decoration: none;
-        overflow: hidden;
-
-        &:hover:after,
-        &:focus:after,
-        &:active:after {
-          width: 100%;
-        }
-
-        &:after {
-          content: '';
-          position: absolute;
-          bottom: 0;
-          left: 50%;
-          width: 0;
-          transform: translateX(-50%);
-          height: 3px;
-          background: $color-link;
-          transition: .35s;
-        }
-      }
+  }
+  &-footer {
+    background-color: $menu-body-bg;
+    display: flex;
+    justify-content: center;
+    .social a{
+      color: white;
     }
   }
 }
 
 .social {
+  max-width: $menu-container-width;
   z-index: 100;
   display: flex;
   justify-content: space-around;
   a {
-    color: $cyprus;
+    //color: $action-color;
     margin: 15px;
     font-size: 30px;
     opacity: 1;
     transition: opacity 0.35s;
     &:hover {
       opacity: .7;
+    }
+  }
+}
+
+.menu {
+  font-family: $heading-font-family;
+  flex: 1 1 auto;
+  list-style: none;
+  padding: 40px 0;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+
+  li {
+    position: relative;
+
+    a {
+      display: inline-block;
+      position: relative;
+      color: white;
+      text-decoration: none;
+      overflow: hidden;
+      padding: 6px;
+
+      &:hover:after,
+      &:focus:after,
+      &:active:after {
+        width: 100%;
+      }
+
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        transform: translateX(-50%);
+        height: 3px;
+        background: white;
+        transition: .35s;
+      }
     }
   }
 }
