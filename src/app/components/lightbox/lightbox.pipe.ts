@@ -29,7 +29,6 @@ export class LightboxPipe implements PipeTransform {
   }
 
   showLightbox(e) {
-    console.log(this.images);
     let id = e.target.getAttribute('lightbox-id');
     this.appState.set('lightbox', {selectedIndex: id, images: this.images});
   }

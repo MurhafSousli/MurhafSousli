@@ -1,4 +1,4 @@
-import {Component, ViewEncapsulation, enableProdMode} from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 import {Http} from "@angular/http";
 import {WpState} from "ng2-wp-api/ng2-wp-api";
 
@@ -9,13 +9,11 @@ import {Header} from './components/header';
 import {SvgLoader} from'./components/svg-loader';
 import {Lightbox} from './components/lightbox';
 
-enableProdMode();
-
 @Component({
   selector: 'app',
   encapsulation: ViewEncapsulation.None,
   directives: [Header, SvgLoader, Lightbox],
-  styleUrls: ['../assets/style/style.scss'],
+  styleUrls: ['./style/style.scss'],
   template: require('./app.html')
 })
 export class App {

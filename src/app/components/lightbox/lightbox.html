@@ -7,8 +7,8 @@
 
   <carousel [options]="flickityOptions">
     <div *ngFor="let img of images let i = index" class="lightbox-image">
-      <img [src]="img.src"/>
-      <p>{{img.alt}}</p>
+      <img [src]="img?.src"/>
+      <p>{{img?.alt}}</p>
     </div>
   </carousel>
 </div>
