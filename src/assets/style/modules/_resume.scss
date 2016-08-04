@@ -73,8 +73,8 @@ section{
 
 .education-wrapper {
   position: relative;
-  background-color: $crush-light;
-  @include zigzag($crush-light, "10px");
+  background-color: $crush;
+  @include zigzag($crush, "10px");
   //padding: 50px 0 60px 0;
   // @include background-image(linear-gradient(left, $crush 0%, $crush 50%, $crush-light 50%, $crush-light 100%));
 
@@ -88,7 +88,7 @@ section{
     margin-bottom: 50px;
     display: flex;
     position: relative;
-    border: 4px solid $crush;
+    border: 4px solid rgba($cyprus, .05);;
     border-radius: 10px;
     justify-content: space-between;
     &-item {
@@ -97,7 +97,7 @@ section{
       text-align: center;
       color: $seafloor;
       &:nth-child(2){
-        background-color: $crush;
+        background-color: rgba($cyprus, .05);
       }
     }
     &-date {

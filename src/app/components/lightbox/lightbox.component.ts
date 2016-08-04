@@ -1,30 +1,34 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AppState} from "../../app.service";
+import {Carousel} from '../carousel';
 
 @Component({
   selector: 'lightbox',
-  template: `
-    <div class="lightbox" *ngIf="appState.lightbox">
-      <ng-content></ng-content>
-      <div class="close">
-        <button (click)="close()" class="fa fa-close fa-2x"></button>
-      </div>
-    </div>
-  `,
-  styles: [require('./lightbox.scss')]
+  template: require('./lightbox.html'),
+  directives: [Carousel]
 })
 
-export class Lightbox {
+export class Lightbox implements OnInit {
+
+  flickityOptions:any;
+  images;
 
   constructor(public appState:AppState) {
   }
 
+  ngOnInit() {
+    let lightboxArgs = this.appState.get('lightbox');
+    if (lightboxArgs) {
+      this.images = lightboxArgs.images;
+      /** let Flickity Carousel slider to display images[selectedIndex] */
+      this.flickityOptions = {
+        initialIndex: lightboxArgs.selectedIndex,
+        setGallerySize: false
+      }
+    }
+  }
+
   close() {
-    console.log('closed');
-    this.appState['lightbox'] = false;
+    this.appState.set('lightbox', false);
   }
 }
-
-/*
-  TODO: lightbox for holding anything including slider, image and controls
- */

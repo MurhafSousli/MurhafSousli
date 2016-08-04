@@ -1,0 +1,37 @@
+<div class="post animated slideInUp">
+  <div class="post-header" [class.fillheight]="featuredImage">
+
+    <div scrollSpy [scrollSpyParallax]="parallaxOptions" class="post-image" [ngStyle]="featuredImage">
+    </div>
+
+    <div class="post-overlay">
+      <div class="post-title">
+        <h1>{{post.title()}}</h1>
+      </div>
+      <div class="post-categories">
+        <a *ngFor="let cat of post.categories()" class="btn btn-inverse" [routerLink]="['/blog/' + cat.id]">{{cat.name}}</a>
+      </div>
+      <div class="post-date">
+        posted on {{post.date() | date}}
+      </div>
+    </div>
+
+  </div>
+  <div class="post-body">
+
+    <div class="post-content" [innerHtml]="post.content()"></div>
+    <div class="post-share">
+      <share [shareText]="'Share this post'"></share>
+    </div>
+  </div>
+  <div class="post-footer">
+    <div class="post-comments">
+      <div class="comments">
+        <h4>Comments</h4>
+        <disqus *ngIf="showDisqus" [shortname]="'murhafsousli'" [identifier]="post.id()"></disqus>
+      </div>
+    </div>
+  </div>
+
+
+</div>

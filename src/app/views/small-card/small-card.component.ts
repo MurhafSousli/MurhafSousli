@@ -7,17 +7,18 @@ import {Post} from "ng2-wp-api/ng2-wp-api";
 })
 
 export class SmallCard {
-  @Input() data;
-  post:Post;
-  postImageStyle;
 
-  ngOnInit() {
-    this.post = new Post(this.data);
+  post:Post;
+  postImageStyle: any;
+
+  @Input()
+  set data(data:any) {
+    this.post = new Post(data);
     this.postImageStyle = this.getFeaturedImage();
   }
 
   getFeaturedImage() {
-    return {
+    return  {
       'background-image': 'url(' + this.post.featuredImageUrl('medium') + ')'
     };
   }

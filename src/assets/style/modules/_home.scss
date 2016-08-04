@@ -1,3 +1,5 @@
+$home-font-size: 1.7em;
+$home-bg: white;
 
 .home {
   @extend .animated, .fadeIn;
@@ -8,49 +10,48 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  background-color: $home-bg;
 
   .my-cover {
     @extend .animated, .pulse;
     flex: 1 1 100%;
     display: flex;
+    align-items: center;
+    margin-bottom: 20px;
     position: relative;
-    margin-bottom: 40px;
     max-width: 280px;
 
     &:after {
       content: 'Hi';
       position: absolute;
-      top: 60%;
+      top: 65%;
       left: 0;
       right: 0;
       text-align: center;
-      font-size: 10em;
+      font-size: 9em;
       z-index: 100;
       font-weight: bold;
-      text-shadow: 9px -9px 0 $ripple;
+      text-shadow: 9px -9px 0 $home-bg;
       font-family: $base-font-family;
     }
 
     .my-pic {
-      border: 3px solid;
-      margin: auto;
+      width: 280px;
+      height: 280px;
       border-radius: 50%;
       background-color: $crush;
+      background-size: cover;
       overflow: hidden;
-      img {
-        background-position: center;
-        width: 100%;
-      }
     }
   }
 
   .my-name {
     margin: 10px;
-    font-size: 2em;
+    font-size: $home-font-size;
   }
   .my-job {
     margin: 10px;
-    font-size: 2em;
+    font-size: $home-font-size;
     .rotate-title {
       width: 200px;
       display: inline-block;
@@ -59,7 +60,43 @@
   .social {
     a {
       color: $base-font-color;
-      font-size: 2em;
+      font-size: $home-font-size;
+    }
+  }
+
+  .menu {
+    position: absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    top:0;
+
+    margin: -100px -300px;
+
+    flex-flow: wrap;
+    display: none;
+    &-item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
+      padding: 20px;
+      flex: 1;
+      a{
+        color: $seafloor;
+        font-size: 1.5em;
+        transition: opacity ease 0.35s;
+        &:hover{
+          opacity: .5;
+        }
+      }
+    }
+
+    @media screen and (min-width: $medium-screen) {
+      display: flex;
+      &-item {
+        flex-basis: 50%;
+      }
     }
   }
 }

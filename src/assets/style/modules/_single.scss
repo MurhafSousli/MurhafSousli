@@ -1,5 +1,5 @@
 .post {
-  @extend .animated, .bounceInUp;
+  //@extend .animated, .slideInDown;
   background-color: white;
   /*
    *  Post Header
@@ -97,7 +97,9 @@
     position: relative;
     overflow: hidden;
     img {
-
+      cursor: zoom-in;
+      max-width: 100%;
+      height: auto;
     }
   }
 
@@ -112,14 +114,14 @@
 
   }
   &-related {
-    @include zigzag($crush-light, "10px");
-    background-color: $crush-light;
+    //@include zigzag($crush-light, "10px");
+    background-color: $crush;
     margin-top: 20px;
     padding-top: 10px;
   }
   &-comments {
     margin-top: -30px;
-    @include zigzag($cyprus, "10px");
+    //@include zigzag($cyprus, "10px");
     background-color: $cyprus;
     h4{
       color: $crush;

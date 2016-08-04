@@ -1,7 +1,7 @@
-<div class="post">
-  <div class="post-header" [class.fillheight]="featuredImageLoaded">
+<div class="post animated slideInUp">
+  <div class="post-header" [class.fillheight]="featuredImage">
 
-    <div scrollSpy [scrollSpyParallax]="parallaxOptions" class="post-image" [ngStyle]="postImageStyle">
+    <div scrollSpy [scrollSpyParallax]="parallaxOptions" class="post-image" [ngStyle]="featuredImage">
     </div>
 
     <div class="post-overlay">
@@ -18,8 +18,7 @@
 
   </div>
   <div class="post-body">
-
-    <div class="post-content" [innerHtml]="post.content()"></div>
+    <div #postContent class="post-content" >{{post.content() | lightboxPipe: postContent}}</div>
     <div class="post-share">
       <share [shareText]="'Share this post'"></share>
     </div>

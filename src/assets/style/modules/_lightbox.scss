@@ -1,0 +1,76 @@
+.lightbox {
+  @extend .animated, .fadeIn;
+  z-index: 9999;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &-image {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    img {
+      max-height: 85%;
+      max-width: 85%;
+      margin-bottom: 20px;
+    }
+
+  }
+  carousel {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    .carousel {
+      height: 100%;
+    }
+    /* big buttons, no circle */
+    .flickity-prev-next-button {
+      width: 60px;
+      height: 60px;
+      background: transparent;
+
+    }
+    @media screen and (max-width: $medium-screen) {
+      .flickity-prev-next-button {
+        top: 90%;
+      }
+      .flickity-prev-next-button.next {
+        right: 15px;
+      }
+      .flickity-prev-next-button.previous {
+        left: 15px;
+      }
+    }
+
+    /* arrow color */
+    .flickity-prev-next-button .arrow {
+      fill: white;
+    }
+    .flickity-prev-next-button.no-svg {
+      color: white;
+    }
+    /* hide disabled button */
+    .flickity-prev-next-button:disabled {
+      display: none;
+    }
+
+  }
+}
+
+.close {
+  @extend .button_container, .active;
+  span {
+    background: white !important;
+  }
+}

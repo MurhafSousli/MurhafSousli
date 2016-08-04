@@ -1,6 +1,6 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, AfterContentInit} from '@angular/core';
 
-import {ProgressBar} from "../../../views/progressbar";
+import {ProgressBar} from "../../../components/progressbar";
 
 @Component({
   selector: 'skills',
@@ -8,11 +8,11 @@ import {ProgressBar} from "../../../views/progressbar";
   directives: [ProgressBar]
 })
 
-export class Skills{
+export class Skills implements AfterContentInit {
 
+  @Input() data:any;
 
-  @Input() data;
-  progessBarArgs;
+  progessBarArgs:any;
 
   ngAfterContentInit() {
     this.getSkills();

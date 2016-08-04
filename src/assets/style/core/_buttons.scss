@@ -10,9 +10,8 @@ $btn-bg-hover-color: $action-color;
   margin-right: 5px;
   background-color: white;
   font-family: $heading-font-family;
+
   border: $base-border;
-  //border: 1px solid $base-border-color;
- // box-shadow: $base-font-color 0px 0px 2px;;
 
   border-radius: $base-border-radius;
   padding: ($base-spacing / 3);
@@ -43,7 +42,13 @@ $btn-bg-hover-color: $action-color;
   border-radius: 50%;
 }
 
-button:hover, a:hover {
+button{
+  background-color: transparent;
+  &:focus{
+    outline: 0;
+  }
+}
+button, a:hover {
   cursor: pointer;
   cursor: hand;
 }

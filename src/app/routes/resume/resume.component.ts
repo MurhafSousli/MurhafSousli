@@ -1,9 +1,8 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Http} from "@angular/http";
 import {Collection, WpHelper, QueryArgs} from "ng2-wp-api/ng2-wp-api";
 
 import {Education} from './education';
-import {Languages} from './languages';
 import {Skills} from './skills';
 import {Experience} from './experience';
 
@@ -13,10 +12,10 @@ import {ProjectsList} from "../../components/projects";
 @Component({
   selector: 'resume',
   template: require('./resume.html'),
-  directives: [Education, Languages, Skills, Experience, Collection, ProjectsList]
+  directives: [Education, Skills, Experience, Collection, ProjectsList]
 })
 
-export class Resume {
+export class Resume implements OnInit {
 
   data;
   projectEndpoint;
@@ -27,6 +26,11 @@ export class Resume {
   }
 
   ngOnInit() {
+    this.fetchResumeData();
+    this.getProjects();
+  }
+
+  fetchResumeData() {
     this.http.get("../../../assets/resume-data.json").map(res => res.json()).subscribe(
       (res) => {
         this.data = res;
@@ -34,19 +38,17 @@ export class Resume {
       },
       err => console.log("[Resume]: ", err)
     );
-    this.getProjects();
   }
 
   getProjects() {
     this.projectEndpoint = WpHelper.Endpoint.Posts;
-    let args = new QueryArgs();
-    args._embed = true;
-    args.per_page = 4;
-    this.projectArgs = args;
+    this.projectArgs = new QueryArgs({
+      _embed: true,
+      per_page: 4
+    });
   }
 
 }
-
 
 
 /*{

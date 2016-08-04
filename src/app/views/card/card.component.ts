@@ -1,4 +1,5 @@
 import {Component, Input} from '@angular/core';
+import {Router} from '@angular/router';
 import {Post} from "ng2-wp-api/ng2-wp-api";
 
 @Component({
@@ -7,10 +8,21 @@ import {Post} from "ng2-wp-api/ng2-wp-api";
 })
 
 export class Card {
-  @Input() data;
   post: Post;
 
-  ngOnInit() {
-    this.post = new Post(this.data);
+  @Input()
+  set data(data: any) {
+    this.post = new Post(data);
+  }
+
+  constructor(private router:Router){
+
+  }
+
+  navigate(post){
+    if(post.type() == "project")
+      this.router.navigate(['/projects/' + post.id()])
+    else
+      this.router.navigate(['/posts/' + post.id()])
   }
 }

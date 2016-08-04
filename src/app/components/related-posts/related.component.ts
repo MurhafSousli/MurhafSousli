@@ -13,32 +13,32 @@ import {SmallCard} from '../../views/small-card';
 
 export class RelatedPosts {
 
-  @Input() tags;
-  @Input() postId;
+  @Input() tags:any;
+  @Input() postId:string;
 
   endpoint = WpHelper.Endpoint.Posts;
   args:QueryArgs;
-  posts;
+  posts:any;
 
   @ViewChild(Collection) collection:Collection;
 
-  flickityOptions: any = {
-    //wrapAround : true,
-    freeScroll :true,
-    prevNextButtons: false
-  }
+  flickityOptions:any;
 
   constructor(private appState:AppState) {
+    this.flickityOptions = {
+      contain: true,
+      prevNextButtons: false
+    }
     appState.set('loading', true);
   }
 
   ngOnInit() {
     if (!this.postId) {
-      console.log("[Related Posts]: Please provide postId");
+      console.warn("[Related Posts]: Please provide postId");
       return;
     }
     if (this.tags.length < 1) {
-      console.log("[Related Posts]: current post has no related posts.");
+      console.warn("[Related Posts]: current post has no related posts.");
       return;
     }
     /** extract only tags names to tagNames */
@@ -46,23 +46,27 @@ export class RelatedPosts {
     this.tags.map((tag)=> {
       tagNames.push(tag.slug);
     });
-    let args = new QueryArgs();
-    args.filter = {
-      tag: tagNames.toString(),
-      post__not_in: [this.postId]
-    };
-    args._embed = true;
-    this.args = args;
+
+    this.args = new QueryArgs({
+      filter: {
+        tag: tagNames.toString(),
+        post__not_in: [this.postId]
+      },
+      _embed: true
+    });
 
   }
 
   postsData(event) {
     if (event.error) {
       /** handle collection requests errors */
-      console.log(event.error);
+      console.warn("[Related] : " + event.error);
     }
     else {
-      this.posts = event.objects;
+      /** handle empty response */
+      if(event.objects.length){
+        this.posts = event.objects;
+      }
     }
     this.appState.set("loading", false);
   }

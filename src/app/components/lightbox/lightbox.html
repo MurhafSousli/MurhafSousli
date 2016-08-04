@@ -1,0 +1,14 @@
+<div class="lightbox" (keyup.esc)="close()">
+  <div class="close" (click)="close()">
+    <span class="top"></span>
+    <span class="middle"></span>
+    <span class="bottom"></span>
+  </div>
+
+  <carousel [options]="flickityOptions">
+    <div *ngFor="let img of images let i = index" class="lightbox-image">
+      <img [src]="img.src"/>
+      <p>{{img.alt}}</p>
+    </div>
+  </carousel>
+</div>

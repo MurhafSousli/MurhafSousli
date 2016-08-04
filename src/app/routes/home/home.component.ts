@@ -1,4 +1,6 @@
-import {Component, Input} from '@angular/core';
+import {Component, OnInit, DoCheck} from '@angular/core';
+import {Title} from '@angular/platform-browser';
+
 import {TypingCarouselDirective} from "../../directives/typing-carousel";
 import {AppState} from "../../app.service";
 
@@ -7,18 +9,22 @@ import {AppState} from "../../app.service";
   template: require('./home.html'),
   directives: [TypingCarouselDirective]
 })
-export class Home {
+export class Home implements OnInit, DoCheck {
 
   data;
 
-  constructor(private appState: AppState){
+  constructor(private appState:AppState, private titleService:Title) {
 
   }
 
-  ngDoCheck(){
+  ngOnInit() {
+    this.titleService.setTitle("Murhaf Sousli");
+  }
+
+  ngDoCheck() {
     /** check if appState have received app data */
     let data = this.appState.get("data");
-    if(data.hasOwnProperty('titles') && !this.data){
+    if (!this.data && data.hasOwnProperty('titles')) {
       this.data = data;
     }
   }
@@ -30,11 +36,11 @@ export class Home {
  *
  * TypingCarouselDirective is a simple typing carousel directive for angular2.
  * I use it here to display titles as it is being written
-    Check it out on https://github.com/zaqqaz/ng2-typing-carousel
+ Check it out on https://github.com/zaqqaz/ng2-typing-carousel
 
-    another cool alternative to "ng2-typing-carousel" is rotation_words.scss
-    which you has couple of animation effects and it is located in assets directory.
-    'src/assets/style/vendors/_rotation_words.scss'
+ another cool alternative to "ng2-typing-carousel" is rotation_words.scss
+ which you has couple of animation effects and it is located in assets directory.
+ 'src/assets/style/vendors/_rotation_words.scss'
  */
 
 
@@ -43,36 +49,36 @@ export class Home {
  *
  * Add the following to the template
  *
-  <div class="rotate-title rotate-1">
-    <span class="words-wrapper">
-     <strong *ngFor="let title of titles let i = index" [ngClass]="getClass(i)">
-        {{title}}
-     </strong>
-    </span>
-  </div>
+ <div class="rotate-title rotate-1">
+ <span class="words-wrapper">
+ <strong *ngFor="let title of titles let i = index" [ngClass]="getClass(i)">
+ {{title}}
+ </strong>
+ </span>
+ </div>
 
-  =================================================
-  and in the component:
-  =================================================
+ =================================================
+ and in the component:
+ =================================================
 
-  activeIndex = 0;
+ activeIndex = 0;
 
-  ngOnInit(){
-    setInterval(_ => {
-     this.activeIndex++;
-     if (this.activeIndex >= this.titles.length) {
-       this.activeIndex = 0;
-     }
-    }, 2000);
-  }
+ ngOnInit(){
+ setInterval(_ => {
+ this.activeIndex++;
+ if (this.activeIndex >= this.titles.length) {
+ this.activeIndex = 0;
+ }
+ }, 2000);
+ }
 
-  getClass(index) {
-    if (this.activeIndex == index) {
-      return {'is-visible': true, 'is-hidden': false}
-    }
-    else {
-      return {'is-visible': false, 'is-hidden': true}
-    }
-  }
+ getClass(index) {
+ if (this.activeIndex == index) {
+ return {'is-visible': true, 'is-hidden': false}
+ }
+ else {
+ return {'is-visible': false, 'is-hidden': true}
+ }
+ }
 
  */

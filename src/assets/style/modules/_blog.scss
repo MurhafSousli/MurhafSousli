@@ -11,25 +11,43 @@
 
     .search {
       padding: 40px;
+      position: relative;
       input {
-        margin: 0;
+        margin: 0 auto;
         text-align: center;
-        height: 60px;
         font-size: 2em;
         background-color: transparent;
         color: $base-background-color;
         border: 0;
         outline: 0;
         box-shadow: none;
+        z-index: 50;
         &:hover, &:focus {
           box-shadow: none;
+        }
+      }
+      .placeholder{
+        @extend .animated;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top:0;
+        left:0;
+        right:0;
+        bottom:0;
+        z-index: 5;
+        p{
+          color: rgba($base-background-color, 0.5);
+          font-size: 2em;
+          margin: 0;
         }
       }
     }
   }
 
   .cats-box {
-
+    border-bottom: $base-border;
     background-color: $seafloor;
     color: white;
     height: 0;
@@ -44,7 +62,7 @@
     }
     .menu {
       text-align: center;
-      a {
+      button {
         font-size: 1.2em;
         margin: 10px;
         color: white;
@@ -52,6 +70,7 @@
 
         &:after {
           height: 2px;
+          background: white;
         }
       }
     }

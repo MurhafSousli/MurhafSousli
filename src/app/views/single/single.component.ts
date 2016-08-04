@@ -1,25 +1,30 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, AfterViewInit, ElementRef, ViewChild} from '@angular/core';
+import {Post} from "ng2-wp-api/ng2-wp-api";
+import {MetaService} from 'ng2-meta';
+
 import {ScrollSpyService, ScrollSpyDirective} from "ng2-scrollspy";
 import {ScrollSpyParallaxDirective, ScrollSpyParallaxOptions} from "ng2-scrollspy/src/plugin/parallax";
-import {Post} from "ng2-wp-api/ng2-wp-api";
 
 import {Disqus} from '../../components/disqus';
 import {Share} from '../../components/share';
 import {RelatedPosts} from "../../components/related-posts";
-
+import {LightboxPipe} from '../../components/lightbox';
 
 @Component({
   selector: 'single',
+  viewProviders: [ScrollSpyService],
   template: require('./single.html'),
-  providers: [ScrollSpyService],
-  directives: [Disqus, Share, ScrollSpyParallaxDirective, ScrollSpyDirective, RelatedPosts]
+  directives: [Disqus, Share,ScrollSpyParallaxDirective, ScrollSpyDirective, RelatedPosts],
+  pipes: [LightboxPipe]
 })
 
-export class Single {
-  @Input() post:Post;
-  postImageStyle;
-  featuredImageLoaded = false;
-  showDisqus = false;
+export class Single implements AfterViewInit{
+
+  post:Post;
+  featuredImage:any;
+  showDisqus:boolean = false;
+
+  @ViewChild('postContent') postContent:ElementRef;
 
   private parallaxOptions:ScrollSpyParallaxOptions = {
     spyId: 'window',
@@ -32,34 +37,29 @@ export class Single {
     axis: 'Y'
   };
 
-  constructor(private scrollSpyService:ScrollSpyService) {
+  @Input()
+  set data(data:any) {
+    this.post = new Post(data);
+    /** set meta tags */
+    this.metaService.setTitle(this.post.title());
+    this.metaService.setTag('og:image',this.post.featuredImageUrl('medium'));
+    this.metaService.setTag('description',this.post.excerpt());
+  }
+
+  constructor(private metaService:MetaService, private scrollSpyService:ScrollSpyService) {
+
   }
 
   ngAfterViewInit() {
-    setTimeout(_ => {
+    setTimeout(() => {
         if (this.post.featuredMedia()) {
-          this.postImageStyle = this.getFeaturedImage();
-          this.featuredImageLoaded = true;
+          this.featuredImage = this.getFeaturedImage();
           window.scrollTo(0, 0);
-          //this fixes navigation to reset the view position specially on firefox
         }
       },
       1000
     );
-
-    this.scrollSpyService.getObservable('window').subscribe((e:any) => {
-      if(e.target) {
-        let currPos = e.target.scrollingElement.scrollTop + window.innerHeight + 200;
-        let targetPos = e.target.scrollingElement.scrollHeight;
-        /*
-         It will fire when the user scroll >= 200px from page bottom
-         && showDisqus is false
-         */
-        if (currPos >= targetPos && !this.showDisqus) {
-          this.showDisqus = true;
-        }
-      }
-    });
+    this.trackScroll();
   }
 
   getFeaturedImage() {
@@ -84,13 +84,26 @@ export class Single {
       'background-image': 'url(' + this.post.featuredImageUrl('large') + ')'
     };
 
-
   }
 
+  /** Track page scroll */
+  trackScroll() {
 
-  /*
-   *  UI animation & functions here
-   */
+    this.scrollSpyService.getObservable('window').subscribe((e:any) => {
+      if(e.target) {
+        let currPos = e.target.scrollingElement.scrollTop + window.innerHeight + 200;
+        let targetPos = e.target.scrollingElement.scrollHeight;
+        /*
+         It will fire when the user scroll >= 200px from page bottom
+         && showDisqus is false
+         */
+        if (currPos >= targetPos && !this.showDisqus) {
+          this.showDisqus = true;
+        }
+      }
+    });
+  }
+
 }
 
 

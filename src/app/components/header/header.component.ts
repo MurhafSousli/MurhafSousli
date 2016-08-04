@@ -8,8 +8,8 @@ import {Router} from '@angular/router';
 
 export class Header{
 
-  isActive = false;
-  @Input() data;
+  isActive:boolean = false;
+  @Input() data:any;
 
   constructor(public router: Router){
   }

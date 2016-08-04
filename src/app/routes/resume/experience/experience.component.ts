@@ -7,6 +7,6 @@ import {Component, Input} from '@angular/core';
 
 export class Experience {
 
-  @Input() data;
+  @Input() data:any;
 }
 

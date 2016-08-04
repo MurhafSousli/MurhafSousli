@@ -9,24 +9,27 @@ import {Http, Response} from '@angular/http';
 
 
 export class SvgIconComponent {
-  @Input() src:string;
 
-  private iconData:string = '';
+  private iconData: string = '';
+
+  @Input()
+  set src(src: string) {
+    if (src) {
+      this.http.get(src)
+        .map((res: Response) => res.text())
+        .subscribe(
+          data => {
+            this.iconData = data;
+          },
+          err => {
+            console.error('[svg-icon component]: ' + err);
+          }
+        );
+    }
+  }
+
 
   constructor(private http: Http) {
-  }
-
-  ngOnInit() {
-    this.loadSvg();
-  }
-
-  loadSvg() {
-    this.http.get( this.src )
-      .map( (res: Response) => res.text() )
-      .subscribe(
-        data => { this.iconData = data; },
-        err => { console.error('[svg-icon component]: ' + err); }
-      );
   }
 }
 

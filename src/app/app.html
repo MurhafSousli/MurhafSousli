@@ -2,10 +2,13 @@
 <main>
   <router-outlet></router-outlet>
 </main>
-<loading>
-  <svg-loader *ngIf="appState.get('loading')"
-              [src]="data?.loader?.svg"
-              [fallback]="data?.loader?.fallback">
-  </svg-loader>
-</loading>
-<footer></footer>
+<footer>
+  <loading>
+    <svg-loader *ngIf="appState.state?.loading"
+                [src]="data?.loader?.svg"
+                [fallback]="data?.loader?.fallback">
+    </svg-loader>
+  </loading>
+  <lightbox *ngIf="appState.state?.lightbox"></lightbox>
+  <div class="copyright"> © 2016 Murhaf Sousli. All rights reserved </div>
+</footer>

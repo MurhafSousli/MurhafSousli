@@ -1,0 +1,31 @@
+<div class="post-item animated slideInRight">
+  <div class="post-item-meta">
+    <div class="post-item-cat">
+      <span *ngFor="let cat of post.categories()">{{cat.name}}  •</span>
+    </div>
+    <div class="post-item-date">
+      {{post.date() | date}}
+    </div>
+  </div>
+
+  <div class="post-item-image">
+    <a [routerLink]="['/posts/' + post.id()]">
+      <img *ngIf="post.featuredMedia()" [src]="post.featuredImageUrl('large')"/>
+    </a>
+  </div>
+
+  <div class="post-item-title">
+    <h4>{{post.title()}}</h4>
+  </div>
+
+  <div class="post-item-excerpt">
+    <div [innerHtml]="post.excerpt()"></div>
+  </div>
+
+  <div class="post-item-footer">
+    <a class="btn btn-small" [routerLink]=" ['/posts/' + post.id()]">
+      <i class="fa fa-link fa-1x" aria-hidden="true"></i> Open
+    </a>
+  </div>
+
+</div>

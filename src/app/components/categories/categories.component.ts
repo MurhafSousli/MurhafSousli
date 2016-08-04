@@ -19,22 +19,22 @@ export class Categories {
   @ViewChild(Collection) collection:Collection;
 
   constructor(private appState:AppState,
-              private router:Router
-  ) {
+              private router:Router) {
 
-    setTimeout(()=> this.appState.state['loading'] = true);
+    setTimeout(()=> this.appState.set('loading', true));
   }
 
   ngOnInit() {
     /**  to get all categories at once */
-    let args = new QueryArgs();
-    args.per_page = 100;
-    this.args = args;
+    this.args = new QueryArgs({
+      per_page: 100
+    });
   }
 
   catsData(event) {
     if (event.error) {
-      console.log(event.error);
+      console.log('[Categories] : ' + event.error);
+      this.router.navigate(['/404']);
     }
     else {
       this.cats = event.objects;
@@ -42,8 +42,8 @@ export class Categories {
     this.appState.set("loading", false);
   }
 
-  navigate(catId){
-    this.router.navigate(['/blog/', catId]);
+  navigate(catSlug) {
+    this.router.navigate(['/blog/', catSlug]);
   }
 
 }

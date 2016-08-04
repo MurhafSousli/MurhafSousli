@@ -1,5 +1,6 @@
 <collection [args]="args" [endpoint]="'/wp-json/wp/v2/projects'" (response)="projectsData($event)">
-  <div scrollSpy class="list">
+  <div class="list">
     <card class="item" *ngFor="let project of projects" [data]="project"></card>
   </div>
 </collection>
+<h3 *ngIf="empty" style="text-align: center" class="animated fadeIn">Coming Soon...</h3>

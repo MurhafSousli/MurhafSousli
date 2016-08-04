@@ -1,7 +1,6 @@
 loading{
 
   svg-loader{
-    @extend  .animated, .zoomIn;
     position: fixed;
     display: flex;
     justify-content: center;
@@ -11,22 +10,27 @@ loading{
     left: 0;
     right: 0;
     z-index: 10000;
+    color: $crush;
   }
 }
 
-//styling the loader with our color palette.
-.uil-pie path {
-  &:nth-of-type(1) {
-    fill: $crush;
-  }
-  &:nth-of-type(2) {
-    fill: $seafloor;
-  }
-  &:nth-of-type(3) {
-    fill: $cyprus;
-  }
-  &:nth-of-type(4) {
-    fill: $ripple;
-  }
-
+.loading-bubbles{
+  //stroke: $crush;
+  fill: $crush;
 }
+
+//.uil-pie path {
+//  &:nth-of-type(1) {
+//    fill: $crush;
+//  }
+//  &:nth-of-type(2) {
+//    fill: $seafloor;
+//  }
+//  &:nth-of-type(3) {
+//    fill: $cyprus;
+//  }
+//  &:nth-of-type(4) {
+//    fill: $ripple;
+//  }
+//
+//}

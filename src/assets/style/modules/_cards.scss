@@ -1,35 +1,42 @@
 $card-width: 400px;
 $small-card-dimension: 250px;
-$card-boxshadow: $base-font-color 0px 0px 2px;
-$card-boxshadow-hover: $base-font-color 0px 0px 4px;
 
 .card {
   max-width: $card-width;
   border: $base-border;
-  //box-shadow: $card-boxshadow;
-  //border: 1px solid $base-border-color;
   border-radius: $base-border-radius;
   overflow: hidden;
   margin: 15px auto;
   position: relative;
   background-color: $overlay-color;
+  transition: box-shadow ease 0.3s;
 
-  &-meta{
-    background-color: $base-font-color;
+  &-meta {
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(white, 0.8);
+    font-size: 16px;
     padding: 5px;
-    font-size: 14px;
-    color: $base-background-color;
-    text-align: right;
   }
-
+  &-cat span {
+    color: $crush;
+    margin-right: 5px;
+  }
+  &-date {
+    margin: 5px;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
   &-image {
 
   }
 
-  &-title{
+  &-title {
     padding: $base-spacing/2;
   }
-  &-excerpt{
+  &-excerpt {
     padding: $base-spacing/1.5;
     font-size: $small-font-size;
   }
@@ -39,46 +46,32 @@ $card-boxshadow-hover: $base-font-color 0px 0px 4px;
     padding-top: 0;
   }
 
-  &:hover{
-    //box-shadow: $card-boxshadow-hover;
-  }
-
-  h4{
+  h4 {
     margin-bottom: 0;
     color: $base-font-color;
   }
-
 }
 
-
-.small-card{
+.small-card {
   height: $small-card-dimension;
   width: $small-card-dimension;
   display: flex;
   flex-direction: column;
-  background-color: $ripple;
+  background-color: white;
 
-  &-image{
+  &-image {
     flex: 1 1 auto;
     background-size: cover;
   }
-  &-title, &-footer{
+  &-title, &-footer {
     padding: $base-spacing/1.5;
     flex: 0 0 auto;
   }
-  &-footer{
+  &-footer {
     padding-top: 0;
   }
 
-  h4{
+  h4 {
     margin: 0;
-  }
-
-  //button{
-  //  background-color: $ripple;
-  //}
-
-  &:hover{
-    //box-shadow: $card-boxshadow-hover;
   }
 }

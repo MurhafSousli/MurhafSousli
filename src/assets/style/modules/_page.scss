@@ -2,6 +2,9 @@
   background-color: $base-background-color;
   .post-header{
     height: auto;
+    h1{
+      text-shadow: none;
+    }
   }
   .post-overlay{
     background-color: $page-title-background;

@@ -1,10 +1,10 @@
-import {Directive, ElementRef} from '@angular/core';
+import {Directive, ElementRef, OnInit} from '@angular/core';
 
 @Directive({
   selector: '[typingCarousel]',
   inputs: ['typingCarousel', 'period']
 })
-export class TypingCarouselDirective {
+export class TypingCarouselDirective implements OnInit{
   element:ElementRef;
   loopNum:number;
   period:number;
@@ -20,7 +20,6 @@ export class TypingCarouselDirective {
   }
 
   ngOnInit() {
-    console.log(this.period);
     this.tick('', this.typingCarousel, this.period);
   }
 

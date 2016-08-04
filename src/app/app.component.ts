@@ -1,17 +1,20 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import {Component, ViewEncapsulation, enableProdMode} from '@angular/core';
 import {Http} from "@angular/http";
-import {WORDPRESS_PROVIDERS, WpState} from "ng2-wp-api/ng2-wp-api";
+import {WpState} from "ng2-wp-api/ng2-wp-api";
+
+import { MetaService } from 'ng2-meta';
 
 import {AppState} from './app.service';
 import {Header} from './components/header';
-import {SvgLoader} from'./components/svg-loader/svg-loader.component';
+import {SvgLoader} from'./components/svg-loader';
+import {Lightbox} from './components/lightbox';
 
+enableProdMode();
 
 @Component({
   selector: 'app',
-  providers:[WORDPRESS_PROVIDERS],
   encapsulation: ViewEncapsulation.None,
-  directives: [Header, SvgLoader],
+  directives: [Header, SvgLoader, Lightbox],
   styleUrls: ['../assets/style/style.scss'],
   template: require('./app.html')
 })
@@ -19,21 +22,22 @@ export class App {
 
   data:any;
 
-  constructor(public appState: AppState, private http:Http, public wpState: WpState){
-    //Initialize loading state
+  constructor(private appState: AppState,
+              private http:Http,
+              private metaService:MetaService,
+              public wpState: WpState){
+    //Initialize loading and lightbox state
     appState.set('loading', false);
-    appState.set('data', false);
+    appState.set('lightbox', false);
     wpState.setBaseUrl(" http://portfolio.murhafsousli.com");
   }
 
   ngOnInit(){
-    this.fetchData();
+    this.fetchAppData();
   }
 
-  /*
-   *  fetch app config data.
-   */
-  fetchData(){
+  /**  fetch app config data. */
+  fetchAppData(){
     this.http.get('../../assets/data.json').map(res => res.json()).subscribe(
       (res:any) => {
         this.data = res;

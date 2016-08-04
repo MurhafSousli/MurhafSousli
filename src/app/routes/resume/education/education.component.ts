@@ -7,6 +7,6 @@ import {Component, Input} from '@angular/core';
 
 export class Education {
 
-  @Input() data;
+  @Input() data:any;
 
 }
