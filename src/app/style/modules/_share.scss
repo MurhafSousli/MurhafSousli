@@ -6,6 +6,8 @@ $linkedin: #0e76a8;
 $pinterest: #C92228;
 $reddit: #FF4006;
 $tumbler: #36465D;
+$github: #800080;
+$stackoverflow: #F48023;
 
 .share-buttons {
   display: flex;
@@ -16,6 +18,7 @@ $tumbler: #36465D;
     @extend .btn;
     flex: 1 0 40px;
     margin: 5px;
+    font-size: 1.2em;
   }
 
   .facebook {
@@ -49,22 +52,48 @@ $tumbler: #36465D;
   .tumblr {
     @include btnColor($tumbler);
   }
-  //@include media($device-pc){
-  //  position: fixed;
-  //  left: 0;
-  //  top: 0;
-  //  bottom: 0;
-  //  //right: 0;
-  //  padding: 4%;
-  //  flex-direction: column;
-  //  max-height: 350px;
-  //  margin: auto 0;
-  //  button {
-  //    border-radius: 50%;
-  //    flex: 0 0 50px;
-  //    width: 50px;
-  //  }
-  //
-  //}
+
+  .github {
+    @include btnColor($github);
+  }
+
+  .stackoverflow {
+    @include btnColor($stackoverflow);
+  }
+}
+
+.twitter {
+  color: $twitter;
+  &:hover {
+    color: rgba($twitter, 0.8);
+  }
+}
+
+.linkedin {
+  color: $linkedin;
+  &:hover {
+    color: rgba($linkedin, 0.8);
+  }
+}
+
+.pinterest {
+  color: $pinterest;
+  &:hover {
+    color: rgba($pinterest, 0.8);
+  }
+}
+
+.github {
+  color: $github;
+  &:hover {
+    color: rgba($github, 0.8);
+  }
+}
+
+.stackoverflow {
+  color: $stackoverflow;
+  &:hover {
+    color: rgba($stackoverflow, 0.8);
+  }
 }
 

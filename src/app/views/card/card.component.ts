@@ -9,7 +9,6 @@ import {Post} from "ng2-wp-api/ng2-wp-api";
 
 export class Card {
   post: Post;
-
   @Input()
   set data(data: any) {
     this.post = new Post(data);

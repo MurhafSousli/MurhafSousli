@@ -33,6 +33,7 @@ export class RelatedPosts {
   }
 
   ngOnInit() {
+
     if (!this.postId) {
       console.warn("[Related Posts]: Please provide postId");
       return;

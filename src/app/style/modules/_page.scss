@@ -1,5 +1,9 @@
 .page{
-  background-color: $base-background-color;
+  background-color: white;
+  min-height: 100vh;
+  &.blog{
+    background-color: $base-background-color;
+  }
   .post-header{
     height: auto;
     h1{
@@ -8,5 +12,7 @@
   }
   .post-overlay{
     background-color: $page-title-background;
+  }
+  .post-content{
   }
 }

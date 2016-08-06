@@ -21,7 +21,7 @@ export class Resume implements OnInit {
   projectEndpoint;
   projectArgs;
 
-  constructor(private http:Http, private appState:AppState) {
+  constructor(private http: Http, private appState: AppState) {
     appState.set('loading', true);
   }
 
@@ -48,8 +48,23 @@ export class Resume implements OnInit {
     });
   }
 
+  scrollTop(duration) {
+    scrollToTop(duration);
+  }
+
 }
 
+var scrollToTop = (duration): void => {
+  if (duration <= 0) return;
+  var difference = -document.body.scrollTop;
+  var perTick = difference / duration * 10;
+
+  setTimeout(function () {
+    document.body.scrollTop = document.body.scrollTop + perTick;
+    if (document.body.scrollTop == 0) return;
+    scrollToTop(duration - 10);
+  }, 10);
+}
 
 /*{
  "company": "Freelancing",

@@ -9,12 +9,13 @@ import {Disqus} from '../../components/disqus';
 import {Share} from '../../components/share';
 import {RelatedPosts} from "../../components/related-posts";
 import {LightboxPipe} from '../../components/lightbox';
+import {Author} from '../author';
 
 @Component({
   selector: 'single',
   viewProviders: [ScrollSpyService],
   template: require('./single.html'),
-  directives: [Disqus, Share,ScrollSpyParallaxDirective, ScrollSpyDirective, RelatedPosts],
+  directives: [Disqus, Share,ScrollSpyParallaxDirective, ScrollSpyDirective, RelatedPosts, Author],
   pipes: [LightboxPipe]
 })
 
@@ -22,7 +23,7 @@ export class Single implements AfterViewInit{
 
   post:Post;
   featuredImage:any;
-  showDisqus:boolean = false;
+  showFooter:boolean = false;
 
   @ViewChild('postContent') postContent:ElementRef;
 
@@ -90,15 +91,15 @@ export class Single implements AfterViewInit{
   trackScroll() {
 
     this.scrollSpyService.getObservable('window').subscribe((e:any) => {
-      if(e.target) {
+      if(e.target && e.target.scrollingElement) {
         let currPos = e.target.scrollingElement.scrollTop + window.innerHeight + 200;
         let targetPos = e.target.scrollingElement.scrollHeight;
         /*
          It will fire when the user scroll >= 200px from page bottom
          && showDisqus is false
          */
-        if (currPos >= targetPos && !this.showDisqus) {
-          this.showDisqus = true;
+        if (currPos >= targetPos && !this.showFooter) {
+          this.showFooter = true;
         }
       }
     });

@@ -4,7 +4,6 @@ import {Model, WpHelper, Post} from 'ng2-wp-api/ng2-wp-api';
 
 import {AppState} from "../../app.service";
 
-
 @Component({
   selector: 'about',
   template: require('./about.html'),

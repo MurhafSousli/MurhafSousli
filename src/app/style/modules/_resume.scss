@@ -1,8 +1,8 @@
-$resume-bg-color: $ripple;
+$resume-bg-color: white;
 $section-title-color: $cyprus;
 $section-body-color: $seafloor;
 
-$education-icon-dimension: 96px;
+//$education-icon-dimension: 96px;
 
 section{
   padding: 20px;
@@ -75,17 +75,17 @@ section{
   position: relative;
   background-color: $crush;
   @include zigzag($crush, "10px");
-  //padding: 50px 0 60px 0;
-  // @include background-image(linear-gradient(left, $crush 0%, $crush 50%, $crush-light 50%, $crush-light 100%));
 
   .education-icon {
-    width: $education-icon-dimension;
-    height: $education-icon-dimension;
-    margin: 15px auto 30px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    color: $ripple;
   }
 
   .education {
-    margin-top: 50px;
+    margin-top: 30px;
     margin-bottom: 50px;
     display: flex;
     position: relative;
@@ -96,18 +96,23 @@ section{
       flex: 1 1 auto;
       padding: 50px 10px;
       text-align: center;
-      color: $seafloor;
+      color: $ripple;
       &:nth-child(2){
         background-color: rgba($cyprus, .05);
       }
     }
     &-date {
-      color: $light-yellow;
+      //color: $light-yellow;
+      //color: $cyprus;
     }
     &-content {
-
       margin: 15px 0;
-      color: white;
+      h3{
+        color: $light-yellow;
+      }
+      i{
+        color: $cyprus;
+      }
     }
   }
 
@@ -115,12 +120,11 @@ section{
 
 .experience-wrapper {
   @include zigzag($ripple, "10px");
-  //padding: 50px 0 60px 0;
 
   .experience {
     color: $cyprus;
     &-item {
-      margin: 15px 0;
+      margin: 30px 0 15px;
       padding: 15px;
     }
     &-company-name {
@@ -139,7 +143,43 @@ section{
   }
 }
 
+.projects-wrapper{
+  @include zigzag($cyprus, '10px');
+  background-color: $cyprus;
+  color: white;
+  .section-title{
+    color: white;
+  }
+  .section-content{
+    padding: 50px 0;
+    margin-bottom: 100px;
+  }
+}
 
+.badges-wrapper{
+  background-color: white;
+  margin-top: -60px;
+  margin-bottom: -50px;
+  padding-top: 25px;
+  padding-bottom: -100px;
+  transform: skew(0deg, -5deg);
+  .section-title{
+  }
+  .section-content{
+    text-align: center;
+    padding: 40px 0 40px;
+    transform: skew(0deg, 5deg);
+  }
+}
+
+.top-button-wrapper{
+  margin-right: 15px;
+  text-align: right;
+  .section-content{
+    font-weight: bold;
+  }
+
+}
 
 
 

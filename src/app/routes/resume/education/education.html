@@ -1,14 +1,16 @@
 <div class="education-outer">
 
-  <!--<div class="education-icon">-->
+  <div class="education-icon">
     <!--<img [src]="data?.icon"/>-->
-  <!--</div>-->
+    <i class="fa fa-graduation-cap fa-5x" aria-hidden="true"></i>
+  </div>
   <div class="education">
     <div *ngFor="let certificate of data?.certificates" class="education-item">
       <span class="education-date">{{certificate.date}}</span>
       <div class="education-content">
-        <h3>{{certificate.title}}</h3><i>{{certificate.degree}}</i>
+        <h3>{{certificate.title}}</h3>
         <p>{{certificate.university}}</p>
+        <i>{{certificate.degree}}</i>
       </div>
     </div>
   </div>

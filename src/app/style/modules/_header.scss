@@ -2,7 +2,7 @@ $menu-bg: white;
 $menu-body-bg: white;
 $menu-color-main: $ripple;
 $menu-color-active: $action-color;
-$menu-color-link: $cyprus;
+$menu-color-link: $seafloor;
 
 $menu-btn-color: $cyprus;
 
@@ -88,12 +88,14 @@ $menu-container-width: 400px;
     visibility: visible;
     height: 100%;
 
-    img {
-      @extend .animated, .jello;
-    }
-
     .social {
       @extend .animated, .jello;
+      a {
+       // color: $menu-btn-color;
+        &:hover {
+          color: rgba($menu-btn-color, 0.8);
+        }
+      }
     }
   }
 
@@ -129,7 +131,6 @@ $menu-container-width: 400px;
   }
 
   &-body {
-    //@include zigzag($menu-body-bg, 10px);
     background-color: $menu-body-bg;
     flex: 1 1 auto;
     display: flex;
@@ -150,9 +151,6 @@ $menu-container-width: 400px;
     background-color: $menu-body-bg;
     display: flex;
     justify-content: center;
-    .social a{
-      color: $menu-btn-color;
-    }
   }
 }
 
@@ -162,7 +160,6 @@ $menu-container-width: 400px;
   display: flex;
   justify-content: space-around;
   a {
-    //color: $action-color;
     margin: 15px;
     font-size: 30px;
     opacity: 1;

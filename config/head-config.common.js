@@ -18,7 +18,7 @@ module.exports = {
      /* Murhaf's style imports */
     { rel: "stylesheet", type: "text/css", href: "https://fonts.googleapis.com/css?family=Karla:400,700" },
     { rel: "stylesheet", integrity: "sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1", crossorigin: "anonymous", href: "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" },
-    
+
     /** <link> tags for "apple-touch-icon" (AKA Web Clips). **/
     { rel: "apple-touch-icon", sizes: "57x57", href: "/assets/icon/apple-icon-57x57.png" },
     { rel: "apple-touch-icon", sizes: "60x60", href: "/assets/icon/apple-icon-60x60.png" },
@@ -37,6 +37,7 @@ module.exports = {
     { rel: "icon", type: "image/png", sizes: "32x32", href: "/assets/icon/favicon-32x32.png" },
     { rel: "icon", type: "image/png", sizes: "96x96", href: "/assets/icon/favicon-96x96.png" },
     { rel: "icon", type: "image/png", sizes: "16x16", href: "/assets/icon/favicon-16x16.png" },
+    { rel: "shortcut icon", type:"image/x-icon", href: "/assets/icon/favicon.ico" },
 
     /** <link> tags for a Web App Manifest **/
     { rel: "manifest", href: "/assets/manifest.json" }
@@ -44,6 +45,15 @@ module.exports = {
   meta: [
     { name: "msapplication-TileColor", content: "#00bcd4" },
     { name: "msapplication-TileImage", content: "/assets/icon/ms-icon-144x144.png", "=content": true },
-    { name: "theme-color", content: "#00bcd4" }
+
+    /** Open Graph default properties */
+    { name: "og:site_name", content: "Murhaf Sousli"},
+    { name: "og:title", content: "Murhaf Sousli | Web Developer" },
+    { name: "og:description", content: "Murhaf Sousli | Web Developer" },
+    { name: "og:url", content: "http://murhafsousli.com" },
+    { name: "og:image", content: "/assets/img/logo.png" },
+    { name: "og:type",content: "website"}
+    // { name: "fb:app_id", content: "568610499915720"},
+    // { name: "twitter:site", content: "@MurhafSousli"}
   ]
 };

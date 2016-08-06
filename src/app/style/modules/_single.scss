@@ -97,7 +97,7 @@
     position: relative;
     overflow: hidden;
     img {
-      cursor: zoom-in;
+      cursor: pointer;
       max-width: 100%;
       height: auto;
     }
@@ -113,20 +113,23 @@
   &-footer {
 
   }
+  &-author {
+    background-color: $ripple;
+
+  }
   &-related {
     //@include zigzag($crush-light, "10px");
     background-color: $crush;
-    margin-top: 20px;
     padding-top: 10px;
   }
   &-comments {
     margin-top: -30px;
     //@include zigzag($cyprus, "10px");
     background-color: $cyprus;
-    h4{
+    h4 {
       color: $crush;
     }
-    .comments{
+    .comments {
       @extend .container;
       padding: 30px 15px 15px;
     }

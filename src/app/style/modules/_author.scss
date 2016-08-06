@@ -1,0 +1,41 @@
+
+
+.author {
+  @extend .container;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 15px;
+  &-title {
+  }
+  &-body {
+    display: flex;
+    margin: 30px 0;
+  }
+  &-image {
+    display: flex;
+    flex: 0 0 96px;
+    height: 96px;
+    overflow: hidden;
+    border-radius: 50%;
+  }
+  &-content {
+    margin-left: 15px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 1.3em;
+  }
+  &-name {
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    a{
+      margin-right: 20px;
+    }
+
+  }
+  &-description {
+      //border-top: 1px solid $seafloor;
+    padding-top: 10px;
+  }
+}

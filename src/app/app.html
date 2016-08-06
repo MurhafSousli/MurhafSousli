@@ -4,11 +4,11 @@
 </main>
 <footer>
   <loading>
-    <svg-loader *ngIf="appState.state?.loading"
+    <svg-loader *ngIf="loadState"
                 [src]="data?.loader?.svg"
                 [fallback]="data?.loader?.fallback">
     </svg-loader>
   </loading>
-  <lightbox *ngIf="appState.state?.lightbox"></lightbox>
+  <lightbox *ngIf="lightboxState"></lightbox>
   <div class="copyright"> © 2016 Murhaf Sousli. All rights reserved </div>
 </footer>

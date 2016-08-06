@@ -7,48 +7,48 @@ import {Component, Input, ElementRef} from '@angular/core';
 
 export class Disqus {
 
-  _dom;
+  dom:HTMLElement;
 
   @Input() public identifier:string;
 
   @Input() public shortname:string;
 
-  constructor(private _el:ElementRef) {
-    this._dom = _el.nativeElement;
+  constructor(el:ElementRef) {
+    this.dom = el.nativeElement;
   }
 
   ngOnInit() {
-    if (window['DISQUS'] === undefined) {
-      this._addScriptTag();
+    if ((<any>window).DISQUS === undefined) {
+      this.addScriptTag();
     }
     else {
-      this._reset();
+      this.reset();
     }
   }
 
   /**
    * Reset Disqus with new information.
    */
-  _reset() {
+  reset() {
     (<any>window).DISQUS.reset({
       reload: true,
-      config: this._getConfig()
+      config: this.getConfig()
     });
   }
 
   /**
    * Add the Disqus script to the document.
    */
-  _addScriptTag() {
-    (<any>window).disqus_config = this._getConfig();
-    let script = this._buildScriptTag(`//${this.shortname}.disqus.com/embed.js`);
-    this._dom.appendChild(script);
+  addScriptTag() {
+    (<any>window).disqus_config = this.getConfig();
+    let script = this.buildScriptTag(`//${this.shortname}.disqus.com/embed.js`);
+    this.dom.appendChild(script);
   }
 
   /**
    * Get Disqus config
    */
-  _getConfig() {
+  getConfig() {
     let _self = this;
     return function () {
       this.page.url = window.location.href;
@@ -62,7 +62,7 @@ export class Disqus {
    * @param  {string} src
    * @return {HTMLScriptElement}
    */
-  _buildScriptTag(src:string):HTMLScriptElement {
+  buildScriptTag(src:string):HTMLScriptElement {
     let script = document.createElement("script");
     script.src = src;
     script.async = true;

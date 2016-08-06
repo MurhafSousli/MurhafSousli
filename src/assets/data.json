@@ -11,27 +11,27 @@
     {
       "name": "twitter",
       "link": "https://twitter.com/MurhafSousli",
-      "class": "fa fa-twitter"
+      "class": "fa fa-twitter twitter"
     },
     {
       "name": "linkedin",
       "link": "https://www.linkedin.com/in/murhafsousli",
-      "class": "fa fa-linkedin"
+      "class": "fa fa-linkedin linkedin"
     },
     {
       "name": "github",
       "link": "https://github.com/MurhafSousli",
-      "class": "fa fa-github-alt"
+      "class": "fa fa-github-alt github"
     },
     {
       "name": "stackoverflow",
       "link": "https://stackoverflow.com/users/1015648/murhaf-sousli",
-      "class": "fa fa-stack-overflow"
+      "class": "fa fa-stack-overflow stackoverflow"
     },
     {
       "name": "mail",
       "link": "mailto:murhafsousli@gmail.com",
-      "class": "fa fa-envelope"
+      "class": "fa fa-envelope email"
     }
   ],
   "loader": {

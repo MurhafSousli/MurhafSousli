@@ -83,6 +83,7 @@
     position: relative;
 
     .filter-btn {
+      @extend .animated, .slideInDown;
       position: absolute;
       top: -30px;
       width: 100%;
