@@ -60,7 +60,7 @@ section{
   }
 }
 
-.chart-wrapper {
+.workflow-wrapper {
   flex: 1 1 auto;
   background-color: $seafloor-light;
   @include zigzag($seafloor, "20px");
@@ -172,14 +172,6 @@ section{
   }
 }
 
-.top-button-wrapper{
-  margin-right: 15px;
-  text-align: right;
-  .section-content{
-    font-weight: bold;
-  }
-
-}
 
 
 

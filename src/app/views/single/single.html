@@ -19,11 +19,13 @@
 
   </div>
   <div class="post-body">
-    <div #postContent class="post-content">{{post.content() | lightboxPipe: postContent}}</div>
+    <div #postContent class="post-content" ></div>
+    <!--{{post.content() | lightboxPipe: postContent}}-->
     <div class="post-share">
       <share [shareTitle]="'Share'"></share>
     </div>
   </div>
+
   <div *ngIf="showFooter" class="post-footer">
     <div class="post-author">
         <author [authors]="post.author()"></author>
@@ -38,6 +40,5 @@
       </div>
     </div>
   </div>
-
 
 </div>

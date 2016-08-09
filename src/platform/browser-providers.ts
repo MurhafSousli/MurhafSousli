@@ -23,23 +23,6 @@ import { APP_RESOLVER_PROVIDERS } from '../app/app.resolver';
 * providers/directives/pipes that only live in our browser environment
 */
 
-//Disable the new Sanitizer
-import {NO_SANITIZATION_PROVIDERS} from '../app/directives/disable-sanitizer';
-//WordPress Service
-import {WORDPRESS_PROVIDERS} from "ng2-wp-api/ng2-wp-api";
-// To set site title on navigation
-import {Title} from '@angular/platform-browser';
-
-//import dynamic meta service and set default meta tags.
-import { MetaConfig, MetaService } from 'ng2-meta';
-
-let metaConfig = new MetaConfig({
-  defaults: {
-    title: 'Murhaf Sousli | Blog & Resume'
-  }
-});
-
-
 export const APPLICATION_PROVIDERS = [
   // new Angular 2 forms
   disableDeprecatedForms(),
@@ -51,15 +34,7 @@ export const APPLICATION_PROVIDERS = [
   provideWebpack(asyncRoutes),
   providePrefetchIdleCallbacks(prefetchRouteCallbacks),
 
-  ...HTTP_PROVIDERS,
-
-  NO_SANITIZATION_PROVIDERS,
-  WORDPRESS_PROVIDERS,
-  Title,
-  MetaService,
-  {provide: 'meta.config', useValue: metaConfig},
-
-  //{ provide: LocationStrategy, useClass: HashLocationStrategy }
+  ...HTTP_PROVIDERS
 ];
 
 export const PROVIDERS = [

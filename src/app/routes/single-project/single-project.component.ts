@@ -9,7 +9,7 @@ import {
   ComponentFactory,
   ViewChild
 } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Model, QueryArgs} from "ng2-wp-api/ng2-wp-api";
 
 import {Project} from "../../views/project";
@@ -36,6 +36,7 @@ export class SingleProject implements OnInit, OnDestroy {
 
   constructor(private route:ActivatedRoute,
               private resolver:ComponentResolver,
+              private router:Router,
               private appState:AppState) {
     appState.set('loading', true);
   }
@@ -70,10 +71,12 @@ export class SingleProject implements OnInit, OnDestroy {
     });
   }
 
-  /** Handle received post */
+
+  /** Handle received project */
   postData(event) {
     if (event.error) {
-      console.log("[Blog]: " + event.error);
+      console.log("[Projects]: " + event.error);
+      this.router.navigate(['/404']);
     }
     else {
       this.resolver.resolveComponent(<Type>Project).then((factory:ComponentFactory<any>) => {

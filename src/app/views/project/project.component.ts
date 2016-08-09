@@ -86,10 +86,7 @@ export class Project implements AfterViewInit{
       if (e.target) {
         let currPos = e.target.scrollingElement.scrollTop + window.innerHeight + 200;
         let targetPos = e.target.scrollingElement.scrollHeight;
-        /*
-         It will fire when the user scroll >= 200px from page bottom
-         && showDisqus is false
-         */
+
         if (currPos >= targetPos && !this.showDisqus) {
           this.showDisqus = true;
         }

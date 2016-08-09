@@ -44,7 +44,7 @@ module.exports = {
    *
    * See: http://webpack.github.io/docs/configuration.html#cache
    */
-   //cache: false,
+  //cache: false,
 
   /*
    * The entry point for the bundle
@@ -101,7 +101,7 @@ module.exports = {
        *
        * See: https://github.com/wbuchwalter/tslint-loader
        */
-       // { test: /\.ts$/, loader: 'tslint-loader', exclude: [ helpers.root('node_modules') ] },
+      // { test: /\.ts$/, loader: 'tslint-loader', exclude: [ helpers.root('node_modules') ] },
 
       /*
        * Source map loader support for *.js files
@@ -135,8 +135,10 @@ module.exports = {
 
       /*
        * Typescript loader support for .ts and Angular 2 async routes via .async.ts
+       * Replace templateUrl and stylesUrl with require()
        *
        * See: https://github.com/s-panferov/awesome-typescript-loader
+       * See: https://github.com/TheLarkInn/angular2-template-loader
        */
       {
         test: /\.ts$/,
@@ -174,12 +176,18 @@ module.exports = {
         loader: 'raw-loader',
         exclude: [helpers.root('src/index.html')]
       },
+
+      /* File loader for supporting images, for example, in CSS files.
+       */
+      {
+        test: /\.(jpg|png|gif)$/,
+        loader: 'file'
+      },
       {
         test: /\.scss$/,
-        loaders: ['raw-loader', 'sass-loader?sourceMap']
+        loaders: ['raw-loader', 'autoprefixer-loader', 'sass-loader?sourceMap']
       },
-      { test: /.(png|woff(2)?|eot|ttf|svg)(\?[a-z0-9=\.]+)?$/, loader: 'url-loader?limit=100000' },
-
+      { test: /.(png|woff(2)?|eot|ttf|svg)(\?[a-z0-9=\.]+)?$/, loader: 'url-loader?limit=100000' }
     ]
 
   },
@@ -284,6 +292,7 @@ module.exports = {
   node: {
     global: 'window',
     crypto: 'empty',
+    process: true,
     module: false,
     clearImmediate: false,
     setImmediate: false

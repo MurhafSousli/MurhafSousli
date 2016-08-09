@@ -8,3 +8,22 @@
   opacity: .2;
   text-transform: uppercase;
 }
+.top-button{
+  @extend .animated, .slideInRight;
+  opacity: 0.3;
+  position: fixed;
+  right: 2em;
+  bottom: 1.5em;
+  transition: opacity ease .35s;
+  &:hover{
+    opacity: 1;
+  }
+  a{
+    color: $seafloor;
+    text-align: center;
+    p{
+      font-weight: bold;
+      margin:  0;
+    }
+  }
+}

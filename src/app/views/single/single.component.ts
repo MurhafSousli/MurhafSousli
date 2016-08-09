@@ -8,30 +8,33 @@ import {ScrollSpyParallaxDirective, ScrollSpyParallaxOptions} from "ng2-scrollsp
 import {Disqus} from '../../components/disqus';
 import {Share} from '../../components/share';
 import {RelatedPosts} from "../../components/related-posts";
-import {LightboxPipe} from '../../components/lightbox';
 import {Author} from '../author';
+import {LightboxPipe} from '../../components/lightbox';
+import {AppState} from "../../app.service";
 
 @Component({
   selector: 'single',
   viewProviders: [ScrollSpyService],
   template: require('./single.html'),
-  directives: [Disqus, Share,ScrollSpyParallaxDirective, ScrollSpyDirective, RelatedPosts, Author],
-  pipes: [LightboxPipe]
+  directives: [ScrollSpyParallaxDirective, ScrollSpyDirective, Disqus, Share, RelatedPosts, Author],
+  // pipes: [LightboxPipe]
 })
 
-export class Single implements AfterViewInit{
+export class Single implements AfterViewInit {
 
-  post:Post;
-  featuredImage:any;
-  showFooter:boolean = false;
+  post: Post;
+  featuredImage: any;
+  showFooter: boolean = false;
+  private images:any;
 
-  @ViewChild('postContent') postContent:ElementRef;
+  /** To append the content with lightbox */
+  @ViewChild('postContent') postContent: ElementRef;
 
-  private parallaxOptions:ScrollSpyParallaxOptions = {
+  private parallaxOptions: ScrollSpyParallaxOptions = {
     spyId: 'window',
     horizontal: false,
     cssKey: 'backgroundPosition',
-    property: 'backgroundPositionY',
+    property: 'backgroundPositionY:center',
     ratio: .5,
     initValue: 0,
     unit: 'px',
@@ -39,16 +42,41 @@ export class Single implements AfterViewInit{
   };
 
   @Input()
-  set data(data:any) {
+  set data(data: any) {
     this.post = new Post(data);
+    this.activateLightbox(this.post.content());
     /** set meta tags */
     this.metaService.setTitle(this.post.title());
-    this.metaService.setTag('og:image',this.post.featuredImageUrl('medium'));
-    this.metaService.setTag('description',this.post.excerpt());
+    this.metaService.setTag('og:image', this.post.featuredImageUrl('medium'));
+    this.metaService.setTag('description', this.post.excerpt());
   }
 
-  constructor(private metaService:MetaService, private scrollSpyService:ScrollSpyService) {
+  constructor(private metaService: MetaService, private scrollSpyService: ScrollSpyService, private appState: AppState) {
 
+  }
+
+  activateLightbox(value: string) {
+
+    let div = document.createElement('div');
+    div.innerHTML = value;
+    this.images = [];
+    [].forEach.call(div.getElementsByTagName("img"), (img, i) => {
+
+      img.setAttribute('lightbox-id', i);
+      this.images.push(img);
+      let a = img.parentElement;
+      a.removeAttribute('href');
+      a.onclick = (e) => this.showLightbox(e);
+    });
+
+    this.postContent.nativeElement.appendChild(div);
+  }
+
+  showLightbox(e) {
+    let id = e.target.getAttribute('lightbox-id');
+    this.appState.set('lightboxImages', this.images);
+    this.appState.set('lightboxIndex', id);
+    this.appState.set('lightbox', true);
   }
 
   ngAfterViewInit() {
@@ -90,14 +118,12 @@ export class Single implements AfterViewInit{
   /** Track page scroll */
   trackScroll() {
 
-    this.scrollSpyService.getObservable('window').subscribe((e:any) => {
-      if(e.target && e.target.scrollingElement) {
+    this.scrollSpyService.getObservable('window').subscribe((e: any) => {
+      if (e.target) {
+        /** currPos = userScrollingPos + 100hv + 200px */
         let currPos = e.target.scrollingElement.scrollTop + window.innerHeight + 200;
         let targetPos = e.target.scrollingElement.scrollHeight;
-        /*
-         It will fire when the user scroll >= 200px from page bottom
-         && showDisqus is false
-         */
+
         if (currPos >= targetPos && !this.showFooter) {
           this.showFooter = true;
         }

@@ -9,23 +9,19 @@ import {SvgIconComponent} from './svg-icon.component';
       <i *ngIf="isFallback" [class]="fallback" aria-hidden="true"></i>
     </div>
   `,
-  styles: [`
-   div{
-    margin: auto;
-   }
-   `],
   directives: [SvgIconComponent]
 })
 
 export class SvgLoader {
 
-  @Input() src;
-  @Input() fallback;
-  @Input() args;
+  @Input() src:string;
+  @Input() fallback:string;
+  @Input() args:any;
 
   defaultArgs = {
     width: '90px',
-    height: '90px'
+    height: '90px',
+    margin: 'auto'
   };
 
   isFallback: any = false;
@@ -44,10 +40,10 @@ export class SvgLoader {
 /*
     SVG component let you display inline SVG which gives you the option to modify the style of the image using css
     Inline SVG is not supporting in IE browsers including Edge,
-    this component detect which browser is used and fallback to gif image if its svg is not supported
+    this component detect which browser is used and fallback to fontawesome icon if it's ie or edge
     SVG component has 3 properties:
     - "src" for SVG source file.
-    - "fallback" for GIF source file.
+    - "fallback" for fontawesome icon class.
     - "args" to override SVG style.
  */
 /*

@@ -8,23 +8,28 @@ import {Carousel} from '../carousel';
   directives: [Carousel]
 })
 
-export class Lightbox implements OnInit {
+export class Lightbox implements OnInit{
 
-  flickityOptions:any;
-  images;
+  flickityOptions: any;
+  images:any;
 
-  constructor(public appState:AppState) {
+  constructor(public appState: AppState) {
   }
 
   ngOnInit() {
-    let lightboxArgs = this.appState.get('lightbox');
-    if (lightboxArgs) {
-      this.images = lightboxArgs.images;
-      /** let Flickity Carousel slider to display images[selectedIndex] */
+    let lightboxImages = this.appState.get('lightboxImages');
+    console.log(lightboxImages);
+    if(lightboxImages && lightboxImages.length > 1){
+      this.images = lightboxImages;
+      let index = +this.appState.get('lightboxIndex');
+
       this.flickityOptions = {
-        initialIndex: lightboxArgs.selectedIndex,
+        initialIndex: index,
         setGallerySize: false
       }
+    }
+    else{
+      console.error("[lightbox]: images data is invalid!");
     }
   }
 
@@ -32,3 +37,4 @@ export class Lightbox implements OnInit {
     this.appState.set('lightbox', false);
   }
 }
+

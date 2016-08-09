@@ -2,7 +2,7 @@ $menu-bg: white;
 $menu-body-bg: white;
 $menu-color-main: $ripple;
 $menu-color-active: $action-color;
-$menu-color-link: $seafloor;
+$menu-color-link: $cyprus;
 
 $menu-btn-color: $cyprus;
 
@@ -68,34 +68,32 @@ $menu-container-width: 400px;
 }
 
 .overlay {
+  animation-duration: .45s;
   text-transform: uppercase;
-  display: flex;
+  display:flex;
   justify-content: center;
   z-index: 999;
   position: fixed;
   background-color: $menu-bg;
-  top: 0;
   left: 0;
-  width: 100%;
-  height: 0;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  top: -100vh;
   opacity: 0;
   visibility: hidden;
-  transition: opacity .35s, visibility .35s, height .35s;
-  overflow: hidden;
+  transition: opacity .35s, visibility .35s, top .35s;
+  .menu li a {
+    z-index: 1000;
+  }
 
   &.open {
     opacity: .9;
     visibility: visible;
-    height: 100%;
+    top: 0;
 
     .social {
       @extend .animated, .jello;
-      a {
-       // color: $menu-btn-color;
-        &:hover {
-          color: rgba($menu-btn-color, 0.8);
-        }
-      }
     }
   }
 
@@ -184,7 +182,6 @@ $menu-container-width: 400px;
     position: relative;
 
     button {
-      display: inline-block;
       background-color: transparent;
       border: 0;
       position: relative;
@@ -192,23 +189,9 @@ $menu-container-width: 400px;
       text-decoration: none;
       overflow: hidden;
       padding: 6px;
-
-      &:hover:after,
-      &:focus:after,
-      &:active:after {
-        width: 100%;
-      }
-
-      &:after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        width: 0;
-        transform: translateX(-50%);
-        height: 3px;
-        background: $menu-btn-color;
-        transition: .35s;
+      transition: opacity ease .35s;
+      &:hover {
+        opacity: 0.7;
       }
     }
   }

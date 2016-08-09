@@ -4,7 +4,30 @@
 import { enableDebugTools, disableDebugTools } from '@angular/platform-browser';
 import { enableProdMode } from '@angular/core';
 // Environment Providers
+
+//Disable the new Sanitizer
+import {NO_SANITIZATION_PROVIDERS} from '../app/directives/disable-sanitizer';
+//WordPress Service
+import {WORDPRESS_PROVIDERS} from "ng2-wp-api/ng2-wp-api";
+// To set site title on navigation
+import {Title} from '@angular/platform-browser';
+
+//import dynamic meta service and set default meta tags.
+import { MetaConfig, MetaService } from 'ng2-meta';
+
+let metaConfig = new MetaConfig({
+  defaults: {
+    title: 'Murhaf Sousli | Blog & Resume'
+  }
+});
+
 let PROVIDERS = [
+
+  NO_SANITIZATION_PROVIDERS,
+  WORDPRESS_PROVIDERS,
+  Title,
+  MetaService,
+  {provide: 'meta.config', useValue: metaConfig},
   // common env directives
 ];
 
@@ -23,14 +46,15 @@ if ('production' === ENV) {
   ];
 
 } else {
-
-  _decorateComponentRef = (cmpRef) => {
-    let _ng = (<any>window).ng;
-    enableDebugTools(cmpRef);
-    (<any>window).ng.probe = _ng.probe;
-    (<any>window).ng.coreTokens = _ng.coreTokens;
-    return cmpRef;
-  };
+  // _decorateComponentRef = (cmpRef) => {
+  //   let _ng = (<any>window).ng;
+  //   enableDebugTools(cmpRef);
+  //   (<any>window).ng.probe = _ng.probe;
+  //   (<any>window).ng.coreTokens = _ng.coreTokens;
+  //   return cmpRef;
+  // };
+  disableDebugTools();
+  enableProdMode();
 
   // Development
   PROVIDERS = [

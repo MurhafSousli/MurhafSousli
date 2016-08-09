@@ -5,6 +5,7 @@ import {Collection, WpHelper, QueryArgs} from "ng2-wp-api/ng2-wp-api";
 import {Education} from './education';
 import {Skills} from './skills';
 import {Experience} from './experience';
+import {Workflow} from './workflow';
 
 import {AppState} from "../../app.service";
 import {ProjectsList} from "../../components/projects";
@@ -12,7 +13,7 @@ import {ProjectsList} from "../../components/projects";
 @Component({
   selector: 'resume',
   template: require('./resume.html'),
-  directives: [Education, Skills, Experience, Collection, ProjectsList]
+  directives: [Education, Skills, Experience, Collection, ProjectsList, Workflow]
 })
 
 export class Resume implements OnInit {
@@ -48,22 +49,6 @@ export class Resume implements OnInit {
     });
   }
 
-  scrollTop(duration) {
-    scrollToTop(duration);
-  }
-
-}
-
-var scrollToTop = (duration): void => {
-  if (duration <= 0) return;
-  var difference = -document.body.scrollTop;
-  var perTick = difference / duration * 10;
-
-  setTimeout(function () {
-    document.body.scrollTop = document.body.scrollTop + perTick;
-    if (document.body.scrollTop == 0) return;
-    scrollToTop(duration - 10);
-  }, 10);
 }
 
 /*{

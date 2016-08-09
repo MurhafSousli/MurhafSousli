@@ -1,5 +1,4 @@
 .post {
-  //@extend .animated, .slideInDown;
   background-color: white;
   /*
    *  Post Header
@@ -31,6 +30,7 @@
     right: 0;
     bottom: 0;
     background-size: cover;
+    background-position: center top;
   }
 
   &-overlay {
@@ -114,17 +114,17 @@
 
   }
   &-author {
+    @include zigzag($ripple, "10px");
     background-color: $ripple;
-
   }
   &-related {
-    //@include zigzag($crush-light, "10px");
+    @include zigzag($crush, "10px");
     background-color: $crush;
     padding-top: 10px;
   }
   &-comments {
     margin-top: -30px;
-    //@include zigzag($cyprus, "10px");
+    @include zigzag($cyprus, "10px");
     background-color: $cyprus;
     h4 {
       color: $crush;
