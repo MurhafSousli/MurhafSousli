@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 
-Component({
+@Component({
   selector: 'workflow',
   template: require('./workflow.html')
 })

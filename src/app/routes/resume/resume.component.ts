@@ -13,7 +13,7 @@ import {ProjectsList} from "../../components/projects";
 @Component({
   selector: 'resume',
   template: require('./resume.html'),
-  directives: [Education, Skills, Experience, Collection, ProjectsList, Workflow]
+  directives: [Skills, Workflow, Education, Experience, Collection, ProjectsList]
 })
 
 export class Resume implements OnInit {

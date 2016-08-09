@@ -109,8 +109,6 @@ export class Blog implements OnInit, OnDestroy {
        * check when user scroll is 200px to bottom of the page
        */
       if (currPos >= targetPos && !this.appState.get('loading')) {
-        console.log(currPos, ' >= ', targetPos, '    | loading: ',this.appState.get('loading'));
-        console.log(this.collection.hasMore());
         if (this.collection.hasMore()) {
           this.appState.set('loading', true);
           this.collection.more();
