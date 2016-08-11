@@ -5,16 +5,17 @@
       <div class="author-image">
         <img [src]="avatar"/>
       </div>
-      <a href="https://twitter.com/MurhafSousli" class="twitter-follow-button" data-show-count="false">Follow
-        @MurhafSousli</a>
     </div>
     <div class="author-content">
       <p class="author-name">
-        <a [href]="author.url">{{author.name}}</a>
+        <a [routerLink]="['/']">{{author.name}}</a>
 
       </p>
-      <p class="author-description">{{author.description}} </p>
+      <p class="author-description">{{author.description}}
 
+      <!--<a href="https://twitter.com/MurhafSousli" class="twitter-follow-button" data-show-count="false">Follow-->
+        <!--@MurhafSousli</a>-->
+      </p>
     </div>
   </div>
 </div>

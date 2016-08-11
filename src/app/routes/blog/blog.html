@@ -40,7 +40,7 @@
     <div class="post-content">
       <collection [args]="args" [endpoint]="endpoint" (response)="postsData($event)">
         <div class="list">
-          <card class="item" *ngFor="let post of posts" [data]="post"></card>
+          <wide-card class="item" *ngFor="let post of posts" [data]="post"></wide-card>
         </div>
       </collection>
       <h3 *ngIf="empty" style="text-align: center" class="animated fadeIn">{{empty}}</h3>

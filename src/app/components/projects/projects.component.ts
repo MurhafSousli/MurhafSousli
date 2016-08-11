@@ -3,12 +3,12 @@ import {Router} from '@angular/router';
 import {Collection, QueryArgs} from 'ng2-wp-api/ng2-wp-api';
 
 import {AppState} from "../../app.service";
-import {Card} from '../../views/card';
+import {WideCard} from '../../views';
 
 @Component({
   selector: 'projects',
   template: require('./projects.html'),
-  directives: [Collection, Card],
+  directives: [Collection, WideCard],
 })
 
 export class ProjectsList {

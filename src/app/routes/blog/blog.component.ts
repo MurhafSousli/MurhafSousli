@@ -2,14 +2,14 @@ import {Component, ViewChild, ElementRef, OnInit, OnDestroy, HostListener} from 
 import {ActivatedRoute, Router} from "@angular/router";
 import {Collection, WpHelper, QueryArgs} from 'ng2-wp-api/ng2-wp-api';
 
-import {Card} from "../../views/card";
+import {WideCard} from "../../views";
 import {AppState} from "../../app.service";
 import {Categories} from "../../components/categories";
 
 @Component({
   selector: 'blog',
   template: require('./blog.html'),
-  directives: [Card, Collection, Categories]
+  directives: [WideCard, Collection, Categories]
 })
 
 export class Blog implements OnInit, OnDestroy {
@@ -42,7 +42,6 @@ export class Blog implements OnInit, OnDestroy {
     /** create categoryDom to change the style height */
     this.categoryDom = this.categoryRef.nativeElement;
     this.overlayDom = this.overlayRef.nativeElement;
-
     /** listen for parameter id changes */
     this.paramsObs = this.route.params.subscribe(params => {
       this.updateComponent(params['id']);
@@ -78,7 +77,6 @@ export class Blog implements OnInit, OnDestroy {
     }
     else {
       this.posts = event.objects;
-
       /** if response is empty */
       if (event.objects.length) {
         this.empty = false;
@@ -122,6 +120,7 @@ export class Blog implements OnInit, OnDestroy {
     this.appState.set('loading', true)
     /** Keep previous args, remove cat filter and add search key */
     let args = new QueryArgs(this.args);
+    args.page = undefined;
     args.filter = {};
     args.search = key;
     this.args = args;

@@ -1,4 +1,4 @@
-import {Component, Input, ElementRef, OnDestroy} from '@angular/core';
+import {Component, Input, ElementRef} from '@angular/core';
 import {User} from "ng2-wp-api/classes/user/user.model";
 
 @Component({
@@ -6,9 +6,9 @@ import {User} from "ng2-wp-api/classes/user/user.model";
   template: require('./author.html')
 })
 
-export class Author implements OnDestroy{
+export class Author{
 
-  private dom;
+  //private dom;
   author:User;
   avatar: string;
 
@@ -18,31 +18,31 @@ export class Author implements OnDestroy{
       this.author = authors[0];
       this.avatar = authors[0].avatar_urls['96'];
 
-      /** Check if script is already loaded */
-      if(!window['twttr'] && !window['__twttr']){
-        this.twitterScript();
-      }
+      // /** Check if script is already loaded */
+      // if(!window['twttr'] && !window['__twttr']){
+      //   this.twitterScript();
+      // }
     }
   }
-
-  constructor(el: ElementRef) {
-    this.dom = el.nativeElement;
-  }
-
-  ngOnDestroy(){
-    /** dispose twitter widget js */
-      window['twttr'] = undefined;
-      window['__twttr'] = undefined;
-  }
-
-  /** Add twitter widget js to ElementRef */
-  twitterScript() {
-    let script = document.createElement("script");
-    script.src = '//platform.twitter.com/widgets.js';
-    script.async = true;
-    script.type = 'text/javascript';
-    this.dom.appendChild(script);
-  }
+  //
+  // constructor(el: ElementRef) {
+  //   this.dom = el.nativeElement;
+  // }
+  //
+  // ngOnDestroy(){
+  //   /** dispose twitter widget js */
+  //     window['twttr'] = undefined;
+  //     window['__twttr'] = undefined;
+  // }
+  //
+  // /** Add twitter widget js to ElementRef */
+  // twitterScript() {
+  //   let script = document.createElement("script");
+  //   script.src = '//platform.twitter.com/widgets.js';
+  //   script.async = true;
+  //   script.type = 'text/javascript';
+  //   this.dom.appendChild(script);
+  // }
 
 
 }

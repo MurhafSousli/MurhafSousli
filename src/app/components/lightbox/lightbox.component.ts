@@ -18,8 +18,7 @@ export class Lightbox implements OnInit{
 
   ngOnInit() {
     let lightboxImages = this.appState.get('lightboxImages');
-    console.log(lightboxImages);
-    if(lightboxImages && lightboxImages.length > 1){
+    if(lightboxImages && lightboxImages.length > 0){
       this.images = lightboxImages;
       let index = +this.appState.get('lightboxIndex');
 

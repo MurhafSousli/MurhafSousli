@@ -19,7 +19,7 @@
 
   </div>
   <div class="post-body">
-    <div #postContent class="post-content" ></div>
+    <div #postContent class="post-content"></div>
     <!--{{post.content() | lightboxPipe: postContent}}-->
     <div class="post-share">
       <share [shareTitle]="'Share'"></share>
@@ -28,7 +28,7 @@
 
   <div *ngIf="showFooter" class="post-footer">
     <div class="post-author">
-        <author [authors]="post.author()"></author>
+      <author [authors]="post.author()"></author>
     </div>
     <div class="post-related">
       <related-posts [postId]="post.id()" [tags]="post.tags()"></related-posts>
@@ -40,5 +40,4 @@
       </div>
     </div>
   </div>
-
 </div>

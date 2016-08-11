@@ -12,7 +12,7 @@ import {
 import {ActivatedRoute, Router} from '@angular/router';
 import {Model, QueryArgs, WpHelper} from "ng2-wp-api/ng2-wp-api";
 
-import {Single} from "../../views/single";
+import {Single} from "../../views";
 import {AppState} from "../../app.service";
 
 @Component({

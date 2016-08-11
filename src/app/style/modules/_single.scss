@@ -111,7 +111,7 @@
    * Post Body
    */
   &-footer {
-
+   @extend .animated, .zoomInUp;
   }
   &-author {
     @include zigzag($ripple, "10px");
@@ -123,7 +123,7 @@
     padding-top: 10px;
   }
   &-comments {
-    margin-top: -30px;
+    margin-top: -15px;
     @include zigzag($cyprus, "10px");
     background-color: $cyprus;
     h4 {

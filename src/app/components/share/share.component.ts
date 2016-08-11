@@ -16,7 +16,9 @@ export class Share implements OnInit{
   /** Share buttons container title, ex: Sharing is caring */
   @Input() shareTitle: string;
 
-  /** Share meta tags */
+  /** Share meta tags
+   *  Leave those Inputs empty if OG meta tags are already set.
+   * */
   @Input() title;
   @Input() description;
   @Input() image;
@@ -86,6 +88,7 @@ export class Share implements OnInit{
 
 /*
  TODO: add share counts feature.
+ TODO: write testing file
  */
 
 

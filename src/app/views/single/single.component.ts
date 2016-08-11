@@ -9,15 +9,13 @@ import {Disqus} from '../../components/disqus';
 import {Share} from '../../components/share';
 import {RelatedPosts} from "../../components/related-posts";
 import {Author} from '../author';
-import {LightboxPipe} from '../../components/lightbox';
 import {AppState} from "../../app.service";
 
 @Component({
   selector: 'single',
   viewProviders: [ScrollSpyService],
   template: require('./single.html'),
-  directives: [ScrollSpyParallaxDirective, ScrollSpyDirective, Disqus, Share, RelatedPosts, Author],
-  // pipes: [LightboxPipe]
+  directives: [ScrollSpyParallaxDirective, ScrollSpyDirective, Disqus, Share, RelatedPosts, Author]
 })
 
 export class Single implements AfterViewInit {

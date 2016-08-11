@@ -124,7 +124,6 @@ section{
 
 .experience-wrapper {
   @include zigzag($ripple, "10px");
-
   .experience {
     color: $cyprus;
     &-item {
