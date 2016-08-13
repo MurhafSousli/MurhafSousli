@@ -51,7 +51,7 @@
     max-width: 1000px;
     margin: auto;
     text-align: center;
-    text-shadow: $base-text-shadow;
+    text-shadow: $title-text-shadow;
     padding: 0 40px;
     width: 100%;
     @include media(min-width 320px max-width 480px) {

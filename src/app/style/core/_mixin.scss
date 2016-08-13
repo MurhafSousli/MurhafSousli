@@ -39,3 +39,17 @@
     background-size: 20px 40px;
   }
 }
+
+/** reverse spin direction for fontawesome */
+.fa-reverse {
+  transform: scaleX(-1);
+  animation: spin-reverse 2s infinite linear;
+}
+@keyframes spin-reverse {
+  0% {
+    transform: scaleX(-1) rotate(-360deg);
+  }
+  100% {
+    transform: scaleX(-1) rotate(0deg);
+  }
+}

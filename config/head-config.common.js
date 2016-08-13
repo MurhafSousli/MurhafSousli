@@ -47,13 +47,14 @@ module.exports = {
     { name: "msapplication-TileImage", content: "/assets/icon/ms-icon-144x144.png", "=content": true },
 
     /** Open Graph default properties */
-    { name: "og:site_name", content: "Murhaf Sousli"},
-    { name: "og:title", content: "Murhaf Sousli | Web Developer" },
-    { name: "og:description", content: "Murhaf Sousli | Web Developer" },
-    { name: "og:url", content: "http://murhafsousli.com" },
-    { name: "og:image", content: "/assets/img/logo.png" },
-    { name: "og:type",content: "website"}
-    // { name: "fb:app_id", content: "568610499915720"},
-    // { name: "twitter:site", content: "@MurhafSousli"}
+    { name: 'og:site_name', content: 'Murhaf Sousli'},
+    { name: 'og:title', content: 'Murhaf Sousli | Web Developer' },
+    { name: 'og:description', content: 'writes about web development and design trends.' },
+    { name: 'og:url', content: 'http://murhafsousli.com' },
+    { name: 'og:image', content: 'http://murhafsousli.com/assets/img/og.jpg' },
+    { name: 'og:type',content: 'website'},
+    { name: 'fb:app_id', content: '568610499915720'},
+    { name: 'twitter:site', content: '@MurhafSousli'},
+    { name: 'twitter:creator', content: '@MurhafSousli'}
   ]
 };

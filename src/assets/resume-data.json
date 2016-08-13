@@ -1,6 +1,6 @@
 {
   "id": "",
-  "summary": "I'm a Freelance Web Designer & Developer living in Istanbul, Turkey. I'm an enthusiastic, creative designer and I'm  passionate about creating beautiful, accessible websites using Web Standards.",
+  "summary": "<p><i class='fa fa-quote-left fa-3x fa-pull-left'></i>A <strong>Front-end Web Developer&nbsp;</strong>living in Istanbul, Turkey.&nbsp;he is&nbsp;enthusiastic, creative designer and passionate about creating beautiful, accessible websites using Web Standards.</p>",
   "skills": [
     {
       "name": "Javascript",
@@ -41,22 +41,64 @@
     {
       "name": "Node",
       "percentage": "60"
+    },
+    {
+      "name": "Python",
+      "percentage": "25"
+    }
+  ],
+  "workflow": [
+    {
+      "name": "CMD",
+      "image": "../../../../assets/img/workflow/terminal.png"
+    },
+    {
+      "name": "Github",
+      "image": "../../../../assets/img/workflow/github.png"
+    },
+    {
+      "name": "Filezilla",
+      "image": "../../../../assets/img/workflow/filezilla.png"
+    },
+    {
+      "name": "WebStorm",
+      "image":  "../../../../assets/img/workflow/webstorm.png"
+    },
+    {
+      "name": "PhpStorm",
+      "image": "../../../../assets/img/workflow/phpstorm.svg"
+    },
+    {
+      "name": "VSCode",
+      "image": "../../../../assets/img/workflow/vscode.ico"
+    },
+    {
+      "name": "Spotify",
+      "image": "../../../../assets/img/workflow/spotify.svg"
+    },
+    {
+      "name": "Photoshop",
+      "image": "../../../../assets/img/workflow/photoshop.png"
+    },
+    {
+      "name": "Illustrator",
+      "image": "../../../../assets/img/workflow/illustrator.png"
     }
   ],
   "education": {
-    "icon": "../../../../assets/img/mortarboard.svg",
+    "signature": "../../../../assets/img/signature.png",
     "certificates": [
       {
         "title": "Software Engineering",
-        "university" : "Bahcesehir University",
-        "date" : "SEPTEMBER 2012 - JUNE 2015",
-        "degree" : "Bachelor degree"
+        "university": "Bahcesehir University",
+        "date": "SEPTEMBER 2012 - JUNE 2015",
+        "degree": "Bachelor degree"
       },
       {
         "title": "Information Technology",
-        "university" : "Bahcesehir University",
-        "date" : "JANUARY 2016 - CURRENT",
-        "degree" : "Master degree"
+        "university": "Bahcesehir University",
+        "date": "JANUARY 2016 - CURRENT",
+        "degree": "Master degree"
       }
     ]
   },

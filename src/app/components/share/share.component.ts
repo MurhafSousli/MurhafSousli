@@ -1,10 +1,15 @@
 import {Input, Component, OnInit} from '@angular/core';
 
+import {ShareButton} from './share.model';
+
 @Component({
-  selector: 'share',
+  selector: 'share-buttons',
   template: require('./share.html')
 })
-export class Share implements OnInit{
+export class ShareButtons implements OnInit {
+
+  /** list of desired share buttons */
+  private shareButtons: ShareButton[];
 
   /** window attributes set the height and width of share window */
   windowAttr: any;
@@ -16,6 +21,11 @@ export class Share implements OnInit{
   /** Share buttons container title, ex: Sharing is caring */
   @Input() shareTitle: string;
 
+  /** Optional to add "Via @YourTwitter" to user tweet,
+   * this can be useful to get notified when user shares your link on twitter
+   * */
+  @Input() twitterAccount: string;
+
   /** Share meta tags
    *  Leave those Inputs empty if OG meta tags are already set.
    * */
@@ -23,6 +33,15 @@ export class Share implements OnInit{
   @Input() description;
   @Input() image;
   @Input() url;
+
+  @Input() facebook: boolean = true;
+  @Input() twitter: boolean = true;
+  @Input() linkedIn: boolean = true;
+  @Input() tumblr: boolean = true;
+  @Input() google: boolean = true;
+  @Input() pinterest: boolean = true;
+  @Input() stumbleUpOn: boolean = true;
+  @Input() reddit: boolean = true;
 
   ngOnInit() {
     if (!this.url) {
@@ -39,43 +58,122 @@ export class Share implements OnInit{
     }
 
     this.windowAttr = 'width=' + this.width + ', height=' + this.height;
+
+    this.initButtons();
+  }
+
+  initButtons() {
+    this.shareButtons = [];
+    if (this.facebook) {
+      let btn = new ShareButton(this.linkFacebook(),
+        'facebook',
+        "<i class='fa fa-facebook'></i>",
+        this.windowAttr);
+      this.shareButtons.push(btn);
+    }
+    if (this.twitter) {
+      let btn = new ShareButton(this.linkTwitter(),
+        'twitter',
+        "<i class='fa fa-twitter'></i>",
+        this.windowAttr);
+      this.shareButtons.push(btn);
+    }
+    if (this.linkedIn) {
+      let btn = new ShareButton(this.linkLinkedin(),
+        'linkedin',
+        "<i class='fa fa-linkedin'></i>",
+        this.windowAttr);
+      this.shareButtons.push(btn);
+    }
+    if (this.tumblr) {
+      let btn = new ShareButton(this.linkTumblr(),
+        'tumblr',
+        "<i class='fa fa-tumblr'></i>",
+        this.windowAttr);
+      this.shareButtons.push(btn);
+    }
+    if (this.google) {
+      let btn = new ShareButton(this.linkGooglePlus(),
+        'googleplus',
+        "<i class='fa fa-google-plus'></i>",
+        this.windowAttr);
+      this.shareButtons.push(btn);
+    }
+    if (this.reddit) {
+      let btn = new ShareButton(this.linkReddit(),
+        'reddit',
+        "<i class='fa fa-reddit-alien'></i>",
+        this.windowAttr);
+      this.shareButtons.push(btn);
+    }
+    if (this.pinterest) {
+      let btn = new ShareButton(this.linkPinterest(),
+        'pinterest',
+        "<i class='fa fa-pinterest-p'></i>",
+        this.windowAttr);
+      this.shareButtons.push();
+    }
+    if (this.stumbleUpOn) {
+      let btn = new ShareButton(this.linkStumbleUpon(),
+        'stumbleupon',
+        "<i class='fa fa-stumbleupon'></i>",
+        this.windowAttr);
+      this.shareButtons.push(btn);
+    }
+
   }
 
 
-  shareFacebook() {
-    window.open('http://www.facebook.com/sharer/sharer.php?u=' + this.url + '&title=' + this.title, 'newwindow', this.windowAttr);
+  linkFacebook = (): string => {
+    return 'http://www.facebook.com/sharer/sharer.php?u=' + this.url +
+      '&title=' + this.title;
   }
 
-  shareTwitter() {
-    window.open('https://twitter.com/intent/tweet?url=' + this.url + '&text=' + this.title + '&via=MurhafSousli&image=' + this.image, 'newwindow', this.windowAttr);
+  linkTwitter = () => {
+    if (this.twitterAccount) {
+      return 'https://twitter.com/intent/tweet?url=' + this.url +
+        '&text=' + this.title +
+        '&via=' + this.twitterAccount +
+        '&image=' + this.image;
+    }
+    return 'https://twitter.com/intent/tweet?url=' + this.url +
+      '&text=' + this.title +
+      '&image=' + this.image;
   }
 
-  shareTumblr() {
-    window.open('http://www.tumblr.com/share?v=3&u=' + this.url + '&t=' + this.title, 'newwindow', this.windowAttr);
+  linkTumblr = () => {
+    return 'http://www.tumblr.com/share?v=3&u=' + this.url +
+      '&t=' + this.title;
   }
 
-  shareGooglePlus() {
-    window.open('https://plus.google.com/share?url=' + this.url, 'newwindow', this.windowAttr);
+  linkGooglePlus = () => {
+    return 'https://plus.google.com/share?url=' + this.url;
   }
 
-  shareReddit() {
-    window.open('http://www.reddit.com/submit?url=' + this.url + '&title=' + this.title, 'newwindow', this.windowAttr);
+  linkReddit = () => {
+    return 'http://www.reddit.com/submit?url=' + this.url +
+      '&title=' + this.title;
   }
 
-  shareLinkedin() {
-    window.open('http://www.linkedin.com/shareArticle?mini=true&url=' + this.url + '&title=' + this.title + '&source=' + document.domain, 'newwindow', this.windowAttr);
+  linkLinkedin = () => {
+    return 'http://www.linkedin.com/shareArticle?mini=true&url=' + this.url +
+      '&title=' + this.title +
+      '&source=' + document.domain;
   }
 
-  shareStumbleUpon() {
-    window.open('http://www.stumbleupon.com/submit?url=' + this.url + '&title=' + this.title, 'newwindow', this.windowAttr);
+  linkStumbleUpon = () => {
+    return 'http://www.stumbleupon.com/submit?url=' + this.url +
+      '&title=' + this.title;
   }
 
-  sharePinterest() {
-    window.open('https://pinterest.com/pin/create/button/?url=' + this.url + '&media=' + this.image + '&description=' + this.title, 'newwindow', this.windowAttr);
+  linkPinterest = () => {
+    return 'https://pinterest.com/pin/create/button/?url=' + this.url +
+      '&media=' + this.image +
+      '&description=' + this.title;
   }
 
 
-  getMetaContent(property: string):string {
+  getMetaContent = (property: string): string => {
     let metas: any = document.getElementsByTagName('meta');
     for (let i = 0; i < metas.length; i++) {
       if (metas[i].getAttribute("name") == property) {

@@ -6,7 +6,7 @@ import {ScrollSpyService, ScrollSpyDirective} from "ng2-scrollspy";
 import {ScrollSpyParallaxDirective, ScrollSpyParallaxOptions} from "ng2-scrollspy/src/plugin/parallax";
 
 import {Disqus} from '../../components/disqus';
-import {Share} from '../../components/share';
+import {ShareButtons} from '../../components/share';
 import {RelatedPosts} from "../../components/related-posts";
 import {Author} from '../author';
 import {AppState} from "../../app.service";
@@ -15,7 +15,7 @@ import {AppState} from "../../app.service";
   selector: 'single',
   viewProviders: [ScrollSpyService],
   template: require('./single.html'),
-  directives: [ScrollSpyParallaxDirective, ScrollSpyDirective, Disqus, Share, RelatedPosts, Author]
+  directives: [ScrollSpyParallaxDirective, ScrollSpyDirective, Disqus, ShareButtons, RelatedPosts, Author]
 })
 
 export class Single implements AfterViewInit {
@@ -45,7 +45,7 @@ export class Single implements AfterViewInit {
     this.activateLightbox(this.post.content());
     /** set meta tags */
     this.metaService.setTitle(this.post.title());
-    this.metaService.setTag('og:image', this.post.featuredImageUrl('medium'));
+    this.metaService.setTag('og:image', this.post.featuredImageUrl('full'));
     this.metaService.setTag('description', this.post.excerpt());
   }
 

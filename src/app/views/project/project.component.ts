@@ -5,13 +5,13 @@ import {Post} from "ng2-wp-api/ng2-wp-api";
 import {MetaService} from 'ng2-meta';
 
 import {Disqus} from '../../components/disqus';
-import {Share} from '../../components/share';
+import {ShareButtons} from '../../components/share';
 
 @Component({
   selector: 'project',
   viewProviders: [ScrollSpyService],
   template: require('./project.html'),
-  directives: [Disqus, Share, ScrollSpyParallaxDirective, ScrollSpyDirective]
+  directives: [Disqus, ShareButtons, ScrollSpyParallaxDirective, ScrollSpyDirective]
 })
 
 export class Project implements AfterViewInit{

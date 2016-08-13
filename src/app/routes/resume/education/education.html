@@ -10,7 +10,8 @@
       <div class="education-content">
         <h3>{{certificate.title}}</h3>
         <p>{{certificate.university}}</p>
-        <i>{{certificate.degree}}</i>
+        <i><i class="fa fa-chevron-right"></i> {{certificate.degree}}</i>
+        <i class="signature"><img [src]="data?.signature" alt="signature"/> </i>
       </div>
     </div>
   </div>
