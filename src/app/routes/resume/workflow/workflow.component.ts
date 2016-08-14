@@ -2,7 +2,12 @@ import {Component, Input, ViewChild, ElementRef} from '@angular/core';
 
 @Component({
   selector: 'workflow',
-  template: require('./workflow.html')
+  template: require('./workflow.html'),
+  styles:[`
+    .mac-screen-border{
+      max-width: 554px;
+    }  
+  `]
 })
 export class Workflow {
   @Input() icons: any;
@@ -12,9 +17,9 @@ export class Workflow {
 
   @ViewChild('mac') macScreen: ElementRef;
 
-  ngAfterViewInit() {
-    console.log( this.macScreen.nativeElement.clientWidth);
-    this.screenHeight = this.macScreen.nativeElement.clientWidth * (9 / 16);
+  ngAfterContentInit() {
+    setTimeout(()=> this.screenHeight = this.macScreen.nativeElement.clientWidth * (9 / 16), 500);
+    console.log(this.macScreen.nativeElement.clientWidth);
   }
 
   iconClick(icon: any) {

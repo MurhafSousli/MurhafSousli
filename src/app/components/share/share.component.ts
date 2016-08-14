@@ -34,6 +34,7 @@ export class ShareButtons implements OnInit {
   @Input() image;
   @Input() url;
 
+  /** Toggle Service */
   @Input() facebook: boolean = true;
   @Input() twitter: boolean = true;
   @Input() linkedIn: boolean = true;
@@ -42,6 +43,16 @@ export class ShareButtons implements OnInit {
   @Input() pinterest: boolean = true;
   @Input() stumbleUpOn: boolean = true;
   @Input() reddit: boolean = true;
+
+  /** facebookInner */
+  @Input() facebookInner: any = "<i class='fa fa-facebook'></i>";
+  @Input() twiiterInner: any = "<i class='fa fa-twitter'></i>";
+  @Input() linkedInInner: any = "<i class='fa fa-linkedin'></i>";
+  @Input() tumblrInner: any = "<i class='fa fa-tumblr'></i>";
+  @Input() googleInner: any = "<i class='fa fa-google-plus'></i>";
+  @Input() pinterestInner: any = "<i class='fa fa-pinterest-p'></i>";
+  @Input() stumbleUpOnInner: any = "<i class='fa fa-stumbleupon'></i>";
+  @Input() redditInner: any = "<i class='fa fa-reddit-alien'></i>";
 
   ngOnInit() {
     if (!this.url) {
@@ -67,56 +78,56 @@ export class ShareButtons implements OnInit {
     if (this.facebook) {
       let btn = new ShareButton(this.linkFacebook(),
         'facebook',
-        "<i class='fa fa-facebook'></i>",
+        this.facebookInner,
         this.windowAttr);
       this.shareButtons.push(btn);
     }
     if (this.twitter) {
       let btn = new ShareButton(this.linkTwitter(),
         'twitter',
-        "<i class='fa fa-twitter'></i>",
-        this.windowAttr);
-      this.shareButtons.push(btn);
-    }
-    if (this.linkedIn) {
-      let btn = new ShareButton(this.linkLinkedin(),
-        'linkedin',
-        "<i class='fa fa-linkedin'></i>",
-        this.windowAttr);
-      this.shareButtons.push(btn);
-    }
-    if (this.tumblr) {
-      let btn = new ShareButton(this.linkTumblr(),
-        'tumblr',
-        "<i class='fa fa-tumblr'></i>",
+        this.twiiterInner,
         this.windowAttr);
       this.shareButtons.push(btn);
     }
     if (this.google) {
       let btn = new ShareButton(this.linkGooglePlus(),
         'googleplus',
-        "<i class='fa fa-google-plus'></i>",
-        this.windowAttr);
-      this.shareButtons.push(btn);
-    }
-    if (this.reddit) {
-      let btn = new ShareButton(this.linkReddit(),
-        'reddit',
-        "<i class='fa fa-reddit-alien'></i>",
+        this.googleInner,
         this.windowAttr);
       this.shareButtons.push(btn);
     }
     if (this.pinterest) {
       let btn = new ShareButton(this.linkPinterest(),
         'pinterest',
-        "<i class='fa fa-pinterest-p'></i>",
+        this.pinterestInner,
         this.windowAttr);
-      this.shareButtons.push();
+      this.shareButtons.push(btn);
+    }
+    if (this.linkedIn) {
+      let btn = new ShareButton(this.linkLinkedin(),
+        'linkedin',
+        this.linkedInInner,
+        this.windowAttr);
+      this.shareButtons.push(btn);
     }
     if (this.stumbleUpOn) {
       let btn = new ShareButton(this.linkStumbleUpon(),
         'stumbleupon',
-        "<i class='fa fa-stumbleupon'></i>",
+        this.stumbleUpOnInner,
+        this.windowAttr);
+      this.shareButtons.push(btn);
+    }
+    if (this.tumblr) {
+      let btn = new ShareButton(this.linkTumblr(),
+        'tumblr',
+        this.tumblrInner,
+        this.windowAttr);
+      this.shareButtons.push(btn);
+    }
+    if (this.reddit) {
+      let btn = new ShareButton(this.linkReddit(),
+        'reddit',
+        this.redditInner,
         this.windowAttr);
       this.shareButtons.push(btn);
     }

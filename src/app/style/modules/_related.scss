@@ -1,6 +1,7 @@
 .related {
   padding: 30px 0;
   &-title {
+    @extend .container;
     padding: 0 15px;
   }
   carousel {
