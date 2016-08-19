@@ -40,17 +40,14 @@
   },
   "pages": [
     {
-      "id": "",
       "title": "Home",
       "path": "./"
     },
     {
-      "id": "",
       "title": "Blog",
       "path": "./blog"
     },
     {
-      "id": "",
       "title": "Projects",
       "path": "./projects"
     },

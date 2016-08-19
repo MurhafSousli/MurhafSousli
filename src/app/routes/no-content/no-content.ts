@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Title} from '@angular/platform-browser';
+import {AppState} from "../../app.service";
 
 @Component({
   selector: 'no-content',
@@ -9,14 +10,20 @@ export class NoContent implements OnInit {
 
   title;
   body;
-  img;
 
-  constructor(private titleService:Title) {
+  constructor(private titleService:Title, private appState:AppState) {
 
   }
 
   ngOnInit() {
     this.titleService.setTitle("Murhaf Sousli");
+    let err = this.appState.get('error');
+    if(err){
+      if(err.code == ''){
+
+      }
+      this.appState.set('error', undefined);
+    }
   }
 
 }

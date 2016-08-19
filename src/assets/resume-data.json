@@ -50,7 +50,7 @@
   "workflow": [
     {
       "name": "Terminal",
-      "image": "../../../../assets/img/workflow/terminal.png"
+      "image": "../../../../assets/img/workflow/terminal.svg"
     },
     {
       "name": "Github",
@@ -70,7 +70,7 @@
     },
     {
       "name": "VSCode",
-      "image": "../../../../assets/img/workflow/vscode.ico"
+      "image": "../../../../assets/img/workflow/vscode.png"
     },
     {
       "name": "Spotify",

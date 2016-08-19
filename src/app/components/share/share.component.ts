@@ -44,7 +44,7 @@ export class ShareButtons implements OnInit {
   @Input() stumbleUpOn: boolean = true;
   @Input() reddit: boolean = true;
 
-  /** facebookInner */
+  /** Buttons Inner */
   @Input() facebookInner: any = "<i class='fa fa-facebook'></i>";
   @Input() twiiterInner: any = "<i class='fa fa-twitter'></i>";
   @Input() linkedInInner: any = "<i class='fa fa-linkedin'></i>";
