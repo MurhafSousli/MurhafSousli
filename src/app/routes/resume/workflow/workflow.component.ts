@@ -2,12 +2,7 @@ import {Component, Input, ViewChild, ElementRef} from '@angular/core';
 
 @Component({
   selector: 'workflow',
-  template: require('./workflow.html'),
-  styles:[`
-    .mac-screen-border{
-      max-width: 554px;
-    }  
-  `]
+  template: require('./workflow.html')
 })
 export class Workflow {
   @Input() icons: any;
@@ -18,7 +13,16 @@ export class Workflow {
   @ViewChild('mac') macScreen: ElementRef;
 
   ngAfterContentInit() {
-    setTimeout(()=> this.screenHeight = this.macScreen.nativeElement.clientWidth * (9 / 16), 500);
+    setTimeout(()=> {
+      /** fix height for mobile */
+        if (window.matchMedia("(min-width: 480px)").matches) {
+          this.screenHeight = this.macScreen.nativeElement.clientWidth * (9 / 16);
+        }
+        else {
+          this.screenHeight = this.macScreen.nativeElement.clientWidth;
+        }
+      }
+    , 500);
     console.log(this.macScreen.nativeElement.clientWidth);
   }
 
