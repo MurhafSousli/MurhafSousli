@@ -184,9 +184,9 @@ $menu-container-width: 400px;
       text-decoration: none;
       overflow: hidden;
       padding: 6px;
-      transition: opacity ease .35s;
+      transition: all ease .35s;
       &:hover {
-        opacity: 0.7;
+        color: $seafloor;
       }
     }
   }

@@ -7,13 +7,12 @@ import {MetaService} from 'ng2-meta';
 import {AppState} from './app.service';
 import {Header} from './components/header';
 import {SvgLoader} from'./components/svg-loader';
-import {Lightbox} from './components/lightbox';
 import {GoTop} from './components/go-top.component';
 
 @Component({
   selector: 'app',
   encapsulation: ViewEncapsulation.None,
-  directives: [Header, SvgLoader, Lightbox, GoTop],
+  directives: [Header, SvgLoader, GoTop],
   styleUrls: ['./style/style.scss'],
   template: require('./app.html')
 })
@@ -28,9 +27,8 @@ export class App implements OnInit, DoCheck {
               private http: Http,
               private metaService: MetaService,
               public wpState: WpState) {
-    //Initialize loading and lightbox state
+    //Initialize loading state
     appState.set('loading', false);
-    appState.set('lightbox', false);
     wpState.setBaseUrl(" http://portfolio.murhafsousli.com");
   }
 

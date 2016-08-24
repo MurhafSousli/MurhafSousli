@@ -19,7 +19,7 @@ export const routes: RouterConfig = [
     data:{
       meta:{
         title: 'Murhaf Sousli | Home',
-        description: 'This is my portfolio and blog.'
+        description: 'Welcome to my portfolio and blog.'
       }
     }
   },
@@ -35,13 +35,7 @@ export const routes: RouterConfig = [
   },
   {
     path: 'blog/:id',
-    component: Blog,
-    data: {
-      meta: {
-        title: 'Murhaf Sousli | Blog',
-        description: 'I blog about web, mostly angular 2'
-      }
-    }
+    component: Blog
   },
   {
     path: 'posts/:id',
@@ -58,28 +52,28 @@ export const routes: RouterConfig = [
     }
   },
   {
-    path: 'resume', component: Resume, data: {
-    meta: {
-      title: 'Murhaf Sousli | Resume',
-      description: ''
+    path: 'resume',
+    component: Resume,
+    data: {
+      meta: {
+        title: 'Murhaf Sousli | Resume',
+        description: 'Hire me!'
+      }
     }
-  }
   },
   {
-    path: 'projects', component: Projects, data: {
-    meta: {
-      title: 'Murhaf Sousli | Projects',
-      description: 'Project of the home page'
+    path: 'projects',
+    component: Projects,
+    data: {
+      meta: {
+        title: 'Murhaf Sousli | Projects',
+        description: 'Murhaf Sousli Projects'
+      }
     }
-  }
   },
   {
-    path: 'projects/:id', component: SingleProject, data: {
-    meta: {
-      title: 'Murhaf Sousli | Projects',
-      description: 'Project of the home page'
-    }
-  }
+    path: 'projects/:id',
+    component: SingleProject
   },
   {
     path: '**',

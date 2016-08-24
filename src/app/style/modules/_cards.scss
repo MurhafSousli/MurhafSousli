@@ -1,20 +1,24 @@
 $card-width: 400px;
 $small-card-dimension: 250px;
 
+.card{
+  @extend .animated, .zoomIn;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin: 15px auto;
+  position: relative;
+  border-radius: $base-border-radius;
+  background-color: $overlay-color;
+}
+
 .wide-card{
   @extend .container;
-  display: flex;
-  background-color: white;
-  flex-direction: column;
-  margin-top: 15px;
-  margin-bottom: 15px;
 
-  overflow: hidden;
-  border-radius: $base-border-radius;
   &-header{
     padding: 10px;
     h4{
-      margin-bottom: 5px;
+      margin: 5px 0;
     }
   }
   &-body{
@@ -58,6 +62,7 @@ $small-card-dimension: 250px;
   &-meta {
     position: relative;
     font-size: 16px;
+    font-family: $heading-font-family;
   }
   &-cat {
     a{
@@ -72,61 +77,10 @@ $small-card-dimension: 250px;
   }
 }
 
-
-.card {
-  max-width: $card-width;
-  border: $base-border;
-  border-radius: $base-border-radius;
-  overflow: hidden;
-  margin: 15px auto;
-  position: relative;
-  background-color: $overlay-color;
-  transition: box-shadow ease 0.3s;
-
-  &-meta {
-    position: relative;
-    font-size: 16px;
-    padding: 0 15px;
-  }
-  &-cat span {
-    color: $crush;
-    margin-right: 5px;
-  }
-  &-date {
-    color: $seafloor;
-    padding: 0 15px;
-    position: absolute;
-    top: 0;
-    right: 0;
-  }
-  &-image {
-
-  }
-
-  &-title {
-    padding: $base-spacing/2;
-  }
-  &-excerpt {
-    padding: $base-spacing/1.5;
-    font-size: $small-font-size;
-  }
-  &-footer {
-    padding: $base-spacing/1.5;
-    font-size: $small-font-size;
-    padding-top: 0;
-  }
-
-  h4 {
-    margin-bottom: 0;
-    color: $base-font-color;
-  }
-}
-
 .small-card {
   height: $small-card-dimension;
   width: $small-card-dimension;
-  display: flex;
-  flex-direction: column;
+
   &-image {
     flex: 1 1 auto;
     background-size: cover;

@@ -1,4 +1,4 @@
-import {Component, HostListener, Input} from '@angular/core';
+import {Component, HostListener, Input, Renderer} from '@angular/core';
 
 @Component({
   selector: 'go-top',
@@ -15,30 +15,37 @@ export class GoTop {
   /** scroll to top duration in ms (default: 600ms) */
   @Input()
   duration: number = 600;
+  /** show button when top = factor * view height */
+  @Input()
+  factor: number = 2.5;
 
   /** Track page scroll */
   @HostListener('window:scroll', ['$event'])
   trackScroll(e) {
-    /** Show button when user scroll 2 x 100vh */
-    let firePos = window.innerHeight * 2.5;
+    /** Show button when user scroll factor x 100vh */
+    let firePos = window.innerHeight * this.factor;
     let scrollPos = e.target.scrollingElement.scrollTop + window.innerHeight;
     this.isActive = (scrollPos > firePos);
   }
 
+  constructor(private renderer:Renderer){
+  }
+
   scrollTop(duration) {
-    scrollToTop(duration);
+    if (duration <= 0) return;
+    var difference = -getScrollTop();
+    var perTick = difference / duration * 10;
+
+    setTimeout(() => {
+      this.renderer.invokeElementMethod(window, 'scrollTo', [0, getScrollTop() + perTick])
+      if (getScrollTop() == 0) return;
+      this.scrollTop(duration - 10);
+    }, 10);
+
   }
 
 }
 
-var scrollToTop = (duration): void => {
-  if (duration <= 0) return;
-  var difference = -document.body.scrollTop;
-  var perTick = difference / duration * 10;
-
-  setTimeout(function () {
-    document.body.scrollTop = document.body.scrollTop + perTick;
-    if (document.body.scrollTop == 0) return;
-    scrollToTop(duration - 10);
-  }, 10);
+var getScrollTop = () => {
+  return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
 }

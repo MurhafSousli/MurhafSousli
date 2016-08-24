@@ -20,7 +20,7 @@ export class Header{
   }
 }
 
-/*
- * Header Component is loaded in appComponent, it represent our navigation menu
+/**
+ * Header Component represents the main menu
  *
  */

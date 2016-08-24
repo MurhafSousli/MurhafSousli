@@ -1,4 +1,16 @@
-import {Component, Input, AfterViewInit, ElementRef, ViewChild} from '@angular/core';
+import {
+  Component,
+  Input,
+  AfterViewInit,
+  ElementRef,
+  ViewChild,
+  Renderer,
+  ComponentResolver,
+  Type,
+  ViewContainerRef,
+  ComponentRef,
+  ComponentFactory,
+} from '@angular/core';
 import {Post} from "ng2-wp-api/ng2-wp-api";
 import {MetaService} from 'ng2-meta';
 
@@ -9,7 +21,7 @@ import {Disqus} from '../../components/disqus';
 import {ShareButtons} from '../../components/share';
 import {RelatedPosts} from "../../components/related-posts";
 import {Author} from '../author';
-import {AppState} from "../../app.service";
+import {Lightbox} from "../../components/lightbox/lightbox.component";
 
 @Component({
   selector: 'single',
@@ -21,12 +33,25 @@ import {AppState} from "../../app.service";
 export class Single implements AfterViewInit {
 
   post: Post;
-  featuredImage: any;
   showFooter: boolean = false;
-  private images:any;
+  featuredMedia: boolean = false;
+  private lightboxImages: any;
 
-  /** To append the content with lightbox */
+  @ViewChild('overlay') overlay: ElementRef;
   @ViewChild('postContent') postContent: ElementRef;
+
+  lightboxCmpRef:ComponentRef<any>;
+
+  @Input()
+  set data(data: any) {
+    this.post = new Post(data);
+    this.setFeaturedImage();
+    this.activateLightbox(this.post.content());
+    /** set meta tags */
+    this.metaService.setTitle(this.post.title());
+    this.metaService.setTag('description', this.post.excerpt());
+    this.metaService.setTag('og:image', this.post.featuredImageUrl('full'));
+  }
 
   private parallaxOptions: ScrollSpyParallaxOptions = {
     spyId: 'window',
@@ -39,78 +64,36 @@ export class Single implements AfterViewInit {
     axis: 'Y'
   };
 
-  @Input()
-  set data(data: any) {
-    this.post = new Post(data);
-    this.activateLightbox(this.post.content());
-    /** set meta tags */
-    this.metaService.setTitle(this.post.title());
-    this.metaService.setTag('og:image', this.post.featuredImageUrl('full'));
-    this.metaService.setTag('description', this.post.excerpt());
-  }
+  constructor(private metaService: MetaService,
+              private scrollSpyService: ScrollSpyService,
+              private viewContainerRef:ViewContainerRef,
+              private resolver:ComponentResolver,
+              private renderer: Renderer) {
 
-  constructor(private metaService: MetaService, private scrollSpyService: ScrollSpyService, private appState: AppState) {
-
-  }
-
-  activateLightbox(value: string) {
-
-    let div = document.createElement('div');
-    div.innerHTML = value;
-    this.images = [];
-    [].forEach.call(div.getElementsByTagName("img"), (img, i) => {
-
-      img.setAttribute('lightbox-id', i);
-      this.images.push(img);
-      let a = img.parentElement;
-      a.removeAttribute('href');
-      a.onclick = (e) => this.showLightbox(e);
-    });
-
-    this.postContent.nativeElement.appendChild(div);
-  }
-
-  showLightbox(e) {
-    let id = e.target.getAttribute('lightbox-id');
-    this.appState.set('lightboxImages', this.images);
-    this.appState.set('lightboxIndex', id);
-    this.appState.set('lightbox', true);
   }
 
   ngAfterViewInit() {
-    setTimeout(() => {
-        if (this.post.featuredMedia()) {
-          this.featuredImage = this.getFeaturedImage();
-          window.scrollTo(0, 0);
-        }
-      },
-      1000
-    );
     this.trackScroll();
   }
 
-  getFeaturedImage() {
-    // 1280-1024    - desktop
+  setFeaturedImage() {
+    setTimeout(()=> {
+      if (this.post.featuredMedia() > 0)
+        this.featuredMedia = true;
+    }, 1000);
+
     if (window.matchMedia("(min-width: 768px)").matches) {
-      //console.log('large - screen size: ' + window.outerWidth);
-      return {
-        'background-image': 'url(' + this.post.featuredImageUrl('full') + ')'
-      };
-
+      // 1280-1024    - desktop
+      this.renderer.setElementStyle(this.overlay.nativeElement, 'background-image', 'url(' + this.post.featuredImageUrl('full') + ')');
     }
-    //  768-480     - tablet
-    if (window.matchMedia("(min-width: 480px) and (max-width: 768px)").matches) {
-      //console.log('medium - screen size: ' + window.outerWidth);
-      return {
-        'background-image': 'url(' + this.post.featuredImageUrl('large') + ')'
-      };
+    else if (window.matchMedia("(min-width: 480px) and (max-width: 768px)").matches) {
+      //  768-480     - tablet
+      this.renderer.setElementStyle(this.overlay.nativeElement, 'background-image', 'url(' + this.post.featuredImageUrl('large') + ')');
     }
-    // 480        - phone landscape & smaller
-    //console.log('small - screen size: ' + window.outerWidth);
-    return {
-      'background-image': 'url(' + this.post.featuredImageUrl('large') + ')'
-    };
-
+    else {
+      //  <480 - mobile
+      this.renderer.setElementStyle(this.overlay.nativeElement, 'background-image', 'url(' + this.post.featuredImageUrl('large') + ')');
+    }
   }
 
   /** Track page scroll */
@@ -129,6 +112,42 @@ export class Single implements AfterViewInit {
     });
   }
 
+  activateLightbox(value: string) {
+    /** 1.Create div element from value param.
+     *  2.Filter img tags [change onClick to open the lightbox instead].
+     *  3.Add img to images list [send images to lightbox component].
+     *  4.Append the filtered element to post content using renderer.
+     */
+    this.lightboxImages = [];
+
+    let div = this.renderer.createElement(this.postContent.nativeElement, 'div');
+    div.innerHTML = value;
+    [].forEach.call(div.getElementsByTagName("img"), (img, i) => {
+
+      img.setAttribute('lightbox-id', i);
+      let a = img.parentElement;
+      a.removeAttribute('href');
+      a.onclick = (e) => this.showLightbox(e);
+      this.lightboxImages.push(img);
+    });
+  }
+
+  showLightbox(e) {
+    let id = e.target.getAttribute('lightbox-id');
+
+    this.resolver.resolveComponent(<Type>Lightbox).then((factory:ComponentFactory<any>) => {
+      this.lightboxCmpRef = this.viewContainerRef.createComponent(factory);
+      this.lightboxCmpRef.instance.images = this.lightboxImages;
+      this.lightboxCmpRef.instance.index = id;
+      this.lightboxCmpRef.instance.cmpRef = this.lightboxCmpRef;
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.lightboxCmpRef) {
+      this.lightboxCmpRef.destroy();
+    }
+  }
 }
 
 

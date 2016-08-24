@@ -1,5 +1,4 @@
-import {Component, OnInit} from '@angular/core';
-import {AppState} from "../../app.service";
+import {Component, ComponentRef, OnInit} from '@angular/core';
 import {Carousel} from '../carousel';
 
 @Component({
@@ -11,29 +10,25 @@ import {Carousel} from '../carousel';
 export class Lightbox implements OnInit{
 
   flickityOptions: any;
-  images:any;
+  public images:any;
+  public index: number;
+  public cmpRef: ComponentRef<Lightbox>;
 
-  constructor(public appState: AppState) {
-  }
-
-  ngOnInit() {
-    let lightboxImages = this.appState.get('lightboxImages');
-    if(lightboxImages && lightboxImages.length > 0){
-      this.images = lightboxImages;
-      let index = +this.appState.get('lightboxIndex');
-
+  ngOnInit(){
+    if(this.images && this.images.length > 0){
       this.flickityOptions = {
-        initialIndex: index,
+        initialIndex: this.index,
         setGallerySize: false
       }
     }
     else{
       console.error("[lightbox]: images data is invalid!");
+      this.close();
     }
   }
 
   close() {
-    this.appState.set('lightbox', false);
+    this.cmpRef.destroy();
   }
 }
 

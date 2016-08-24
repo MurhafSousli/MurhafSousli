@@ -33,4 +33,6 @@ export class WideCard {
       'background-image': 'url(' + this.post.featuredImageUrl('large') + ')'
     };
   }
+
+  /** TODO: use renderer instead of ngStyle */
 }

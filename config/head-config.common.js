@@ -46,14 +46,14 @@ module.exports = {
     { name: "msapplication-TileImage", content: "/assets/icon/ms-icon-144x144.png", "=content": true },
 
     /** Open Graph default properties */
-    { name: 'og:site_name', content: 'Murhaf Sousli'},
-    { name: 'og:title', content: 'Murhaf Sousli | Web Developer' },
-    { name: 'og:description', content: 'writes about web development and design trends.' },
-    { name: 'og:url', content: 'http://murhafsousli.com' },
-    { name: 'og:image', content: 'http://murhafsousli.com/assets/img/og.jpg' },
-    { name: 'og:type',content: 'website'},
-    { name: 'fb:app_id', content: '568610499915720'},
-    { name: 'twitter:site', content: '@MurhafSousli'},
-    { name: 'twitter:creator', content: '@MurhafSousli'}
+    { property: 'og:site_name', content: 'Murhaf Sousli'},
+    { property: 'og:title', content: 'Murhaf Sousli | Web Developer' },
+    { property: 'og:description', content: 'writes about web development and design trends.' },
+    { property: 'og:url', content: 'http://murhafsousli.com' },
+    { property: 'og:image', content: 'http://murhafsousli.com/assets/img/og.jpg' },
+    { property: 'og:type',content: 'website'},
+    { property: 'fb:app_id', content: '568610499915720'},
+    { property: 'twitter:site', content: '@MurhafSousli'},
+    { property: 'twitter:creator', content: '@MurhafSousli'}
   ]
 };

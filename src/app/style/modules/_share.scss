@@ -16,6 +16,7 @@ $stackoverflow: #F48023;
   margin: 30px 0 20px;
   button {
     @extend .btn;
+    font-family: $base-font-family;
     flex: 1 0 20%;
     margin: 5px;
     font-size: 1.2em;

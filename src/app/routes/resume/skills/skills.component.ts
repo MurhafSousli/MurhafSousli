@@ -21,7 +21,7 @@ export class Skills implements AfterContentInit {
   getSkills() {
     this.progessBarArgs = {
       color: '#022D41',
-      trailColor: '#1AA6B7',  //powderblue
+      trailColor: 'rgba(2, 45, 65, .2)',  //powderblue
       strokeWidth: 4,
       trailWidth: 2,
       duration: 1200,

@@ -20,7 +20,7 @@ export class ProjectsList {
 
   constructor(private appState:AppState, private router:Router) {
 
-    setTimeout(()=> this.appState.state['loading'] = true);
+    appState.set('loading', true);
   }
 
   ngOnInit() {

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild, ElementRef, Renderer} from '@angular/core';
 import {Http} from "@angular/http";
 import {Collection, WpHelper, QueryArgs} from "ng2-wp-api/ng2-wp-api";
 
@@ -22,7 +22,9 @@ export class Resume implements OnInit {
   projectEndpoint;
   projectArgs;
 
-  constructor(private http: Http, private appState: AppState) {
+  @ViewChild("intro") introRef:ElementRef;
+
+  constructor(private http: Http, private appState: AppState, private renderer: Renderer) {
     appState.set('loading', true);
   }
 
@@ -36,6 +38,7 @@ export class Resume implements OnInit {
       (res) => {
         this.data = res;
         this.appState.set('loading', false);
+        this.setIntroHeight();
       },
       err => console.log("[Resume]: ", err)
     );
@@ -49,6 +52,15 @@ export class Resume implements OnInit {
     });
   }
 
+  /** set the height of intro section to fit content height (required for height transistion) */
+  setIntroHeight(){
+    setTimeout(()=>{
+      let intro: HTMLElement = this.introRef.nativeElement;
+      let contentHeight = intro.lastElementChild.clientHeight;
+      this.renderer.setElementStyle(this.introRef.nativeElement, 'height', contentHeight + 250 + 'px');
+    }, 100);
+
+  }
 }
 
 /*{

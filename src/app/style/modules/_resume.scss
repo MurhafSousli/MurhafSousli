@@ -10,7 +10,6 @@ section{
   background-color: $resume-bg-color;
 
   &-title {
-
     @extend .container;
     h1 {
       color: $section-title-color;
@@ -23,8 +22,6 @@ section{
   }
 }
 
-
-
 .section-title {
   color: $section-title-color;
   @extend .container;
@@ -35,6 +32,7 @@ section{
   @extend .container;
   margin-top: 80px;
   margin-bottom: 80px;
+  backface-visibility: hidden;
 }
 
 .introduction {
@@ -245,35 +243,3 @@ section{
     transform: skew(0deg, 5deg);
   }
 }
-
-
-
-
-
-
-//.languages-wrapper {
-//  padding: 150px 20px 200px;
-//  margin-top: -80px;
-//  background-color: #8E2043;
-//  color: gray;
-//  .section-title {
-//    text-align: center;
-//    border: 2px dotted;
-//    border-radius: 8px;
-//  }
-//  languages {
-//    width: 100%;
-//  }
-//
-//}
-
-
-//&::before {
-//  content: '';
-//  position: absolute;
-//  top: 0;
-//  left: calc(50% - #{$education-column-width/2});
-//  height: 100%;
-//  width: $education-column-width;
-//  background: #5C546A;
-//}

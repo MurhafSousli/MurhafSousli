@@ -1,7 +1,7 @@
 <div class="post animated slideInUp">
-  <div class="post-header" [class.fillheight]="featuredImage">
+  <div class="post-header" [class.fillheight]="featuredMedia">
 
-    <div scrollSpy [scrollSpyParallax]="parallaxOptions" class="post-image" [ngStyle]="featuredImage">
+    <div scrollSpy [scrollSpyParallax]="parallaxOptions" class="post-image" #overlay>
     </div>
 
     <div class="post-overlay">
@@ -20,6 +20,7 @@
   </div>
   <div class="post-body">
     <div #postContent class="post-content"></div>
+    <lightbox></lightbox>
     <!--{{post.content() | lightboxPipe: postContent}}-->
     <div class="post-share">
       <share-buttons [shareTitle]="'Share'" [twitterAccount]="'MurhafSousli'"></share-buttons>

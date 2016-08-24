@@ -17,7 +17,8 @@ import { MetaConfig, MetaService } from 'ng2-meta';
 
 let metaConfig = new MetaConfig({
   defaults: {
-    title: 'Murhaf Sousli | Blog & Resume'
+    title: 'Murhaf Sousli',
+    description: 'Portfolio & Blog'
   }
 });
 
@@ -46,15 +47,13 @@ if ('production' === ENV) {
   ];
 
 } else {
-  // _decorateComponentRef = (cmpRef) => {
-  //   let _ng = (<any>window).ng;
-  //   enableDebugTools(cmpRef);
-  //   (<any>window).ng.probe = _ng.probe;
-  //   (<any>window).ng.coreTokens = _ng.coreTokens;
-  //   return cmpRef;
-  // };
-  disableDebugTools();
-  enableProdMode();
+  _decorateComponentRef = (cmpRef) => {
+    let _ng = (<any>window).ng;
+    enableDebugTools(cmpRef);
+    (<any>window).ng.probe = _ng.probe;
+    (<any>window).ng.coreTokens = _ng.coreTokens;
+    return cmpRef;
+  };
 
   // Development
   PROVIDERS = [

@@ -31,7 +31,7 @@ $home-bg: white;
       z-index: 100;
       font-weight: bold;
       text-shadow: 9px -9px 0 $home-bg;
-      font-family: $base-font-family;
+      font-family: $heading-font-family;
     }
 
     .my-pic {
@@ -51,6 +51,7 @@ $home-bg: white;
   }
   .my-job {
     margin: 10px;
+    width: 270px;
     font-size: $home-font-size;
     .rotate-title {
       width: 200px;
@@ -65,37 +66,73 @@ $home-bg: white;
 
   .menu {
     position: absolute;
-    left:0;
-    right:0;
-    bottom:0;
-    top:0;
-
-    margin: -100px -300px;
-
-    flex-flow: wrap;
+    right: calc(50% - 250px);
+    bottom: 0;
+    top: 0;
     display: none;
+    flex-direction: column;
+    justify-content: center;
+    span:nth-of-type(1) {
+      margin-left: -10px;
+    }
+    span:nth-of-type(4) {
+      margin-left: -10px;
+    }
     &-item {
       display: flex;
-      justify-content: center;
-      align-items: center;
+      flex: 0 1 auto;
       box-sizing: border-box;
-      padding: 20px;
-      flex: 1;
-      a{
-        color: $seafloor;
+      margin: 10px;
+      a {
+        color: $base-font-color;
         font-size: 1.5em;
-        transition: opacity ease 0.35s;
-        &:hover{
-          opacity: .5;
+        transition: all ease 0.35s;
+        &:hover {
+          color: $crush;
         }
       }
     }
 
     @media screen and (min-width: $medium-screen) {
       display: flex;
-      &-item {
-        flex-basis: 50%;
-      }
     }
   }
 }
+
+
+
+
+
+
+//.menu {
+//  position: absolute;
+//  left:0;
+//  right:0;
+//  bottom:0;
+//  top:0;
+//  margin: -100px -300px;
+//  flex-flow: wrap;
+//  display: none;
+//  &-item {
+//    display: flex;
+//    justify-content: center;
+//    align-items: center;
+//    box-sizing: border-box;
+//    padding: 20px;
+//    flex: 1;
+//    a{
+//      color: $seafloor;
+//      font-size: 1.5em;
+//      transition: opacity ease 0.35s;
+//      &:hover{
+//        opacity: .5;
+//      }
+//    }
+//  }
+//
+//  @media screen and (min-width: $medium-screen) {
+//    display: flex;
+//    &-item {
+//      flex-basis: 50%;
+//    }
+//  }

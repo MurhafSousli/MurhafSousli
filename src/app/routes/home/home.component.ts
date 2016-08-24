@@ -1,5 +1,4 @@
-import {Component, OnInit, DoCheck} from '@angular/core';
-import {Title} from '@angular/platform-browser';
+import {Component, DoCheck} from '@angular/core';
 
 import {TypingCarouselDirective} from "../../directives/typing-carousel";
 import {AppState} from "../../app.service";
@@ -9,16 +8,12 @@ import {AppState} from "../../app.service";
   template: require('./home.html'),
   directives: [TypingCarouselDirective]
 })
-export class Home implements OnInit, DoCheck {
+export class Home implements DoCheck {
 
   data;
 
-  constructor(private appState:AppState, private titleService:Title) {
+  constructor(private appState:AppState) {
 
-  }
-
-  ngOnInit() {
-    this.titleService.setTitle("Murhaf Sousli");
   }
 
   ngDoCheck() {

@@ -1,6 +1,5 @@
 $mac-scale: 1;
 .mac-wrapper{
-  font-family: 'Open Sans', sans-serif;
   color: #333333;
   max-width: 800px;
   margin: 0 auto;
@@ -56,6 +55,7 @@ $mac-scale: 1;
         align-items: center;
         padding: 0 10px;
         .mac-addressbar{
+          font-family: 'Open Sans', sans-serif;
           flex: 1 1 auto;
           height: 13px;
           margin-left: 10px;

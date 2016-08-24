@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Oswald:400,700|Roboto+Condensed:400,700');
+//@import url('https://fonts.googleapis.com/css?family=Architects+Daughter:400,700|Roboto+Condensed:400,700');
+@import url('https://fonts.googleapis.com/css?family=Rajdhani:600,700|Roboto+Condensed:400,700');
 
 // Breakpoints
 $x-large-screen: 1200px;
@@ -12,7 +13,8 @@ $device-phone: min-width $small-screen max-width $medium-screen;
 
 // Typography
 $base-font-family: 'Roboto Condensed', sans-serif;
-$heading-font-family: 'Oswald', sans-serif;
+$heading-font-family: 'Rajdhani', sans-serif;
+//'Architects Daughter', cursive;
 
 // Font Sizes
 $base-font-size: 1em;

@@ -1,4 +1,4 @@
-import {Component, Input, ViewChild, ElementRef} from '@angular/core';
+import {Component, Input, ViewChild, ElementRef, Renderer} from '@angular/core';
 
 @Component({
   selector: 'workflow',
@@ -6,24 +6,28 @@ import {Component, Input, ViewChild, ElementRef} from '@angular/core';
 })
 export class Workflow {
   @Input() icons: any;
-  screenHeight;
   selectedIcon: any = false;
   switcher: boolean = false;
 
   @ViewChild('mac') macScreen: ElementRef;
 
+  constructor(private renderer: Renderer){
+
+  }
+
   ngAfterContentInit() {
     setTimeout(()=> {
       /** fix height for mobile */
         if (window.matchMedia("(min-width: 480px)").matches) {
-          this.screenHeight = this.macScreen.nativeElement.clientWidth * (9 / 16);
+          let height = this.macScreen.nativeElement.clientWidth * (9 / 16);
+          this.renderer.setElementStyle(this.macScreen.nativeElement, 'height', height +'px');
         }
         else {
-          this.screenHeight = this.macScreen.nativeElement.clientWidth;
+          let height = this.macScreen.nativeElement.clientWidth;
+          this.renderer.setElementStyle(this.macScreen.nativeElement, 'height', height +'px');
         }
       }
     , 500);
-    console.log(this.macScreen.nativeElement.clientWidth);
   }
 
   iconClick(icon: any) {

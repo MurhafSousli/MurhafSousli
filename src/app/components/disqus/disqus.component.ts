@@ -1,20 +1,17 @@
-import {Component, Input, ElementRef} from '@angular/core';
+import {Component, Input, ElementRef, OnInit, Renderer} from '@angular/core';
 
 @Component({
   selector: 'disqus',
   template: '<div id="disqus_thread"></div>',
 })
 
-export class Disqus {
-
-  dom:HTMLElement;
+export class Disqus implements OnInit{
 
   @Input() public identifier:string;
 
   @Input() public shortname:string;
 
-  constructor(el:ElementRef) {
-    this.dom = el.nativeElement;
+  constructor(private el:ElementRef, private renderer:Renderer) {
   }
 
   ngOnInit() {
@@ -41,8 +38,12 @@ export class Disqus {
    */
   addScriptTag() {
     (<any>window).disqus_config = this.getConfig();
-    let script = this.buildScriptTag(`//${this.shortname}.disqus.com/embed.js`);
-    this.dom.appendChild(script);
+
+    let script = this.renderer.createElement(this.el.nativeElement, 'script');
+    script.src = `//${this.shortname}.disqus.com/embed.js`;
+    script.async = true;
+    script.type = 'text/javascript';
+    script.setAttribute('data-timestamp', new Date().getTime().toString());
   }
 
   /**
@@ -57,17 +58,4 @@ export class Disqus {
     };
   }
 
-  /**
-   * Build the Disqus script element.
-   * @param  {string} src
-   * @return {HTMLScriptElement}
-   */
-  buildScriptTag(src:string):HTMLScriptElement {
-    let script = document.createElement("script");
-    script.src = src;
-    script.async = true;
-    script.type = 'text/javascript';
-    script.setAttribute('data-timestamp', new Date().getTime().toString());
-    return script;
-  }
 }

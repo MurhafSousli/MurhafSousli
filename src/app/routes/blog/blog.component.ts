@@ -1,4 +1,4 @@
-import {Component, ViewChild, ElementRef, OnInit, OnDestroy, HostListener} from '@angular/core';
+import {Component, ViewChild, ElementRef, OnInit, OnDestroy, HostListener, Renderer} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {Collection, WpHelper, QueryArgs} from 'ng2-wp-api/ng2-wp-api';
 
@@ -15,33 +15,29 @@ import {Categories} from "../../components/categories";
 export class Blog implements OnInit, OnDestroy {
 
   endpoint = WpHelper.Endpoint.Posts;
-  args:QueryArgs;
-  posts:any;
-  empty:boolean | string = false;
+  args: QueryArgs;
+  posts: any;
+  empty: boolean | string = false;
 
   /** Collection ref to get more posts */
-  @ViewChild(Collection) collection:Collection;
+  @ViewChild(Collection) collection: Collection;
 
   /** Search & Categories */
-  activeSearch:boolean = false;
-  activeCats:boolean = false;
-  @ViewChild("headerOverlay") overlayRef:ElementRef;
-  @ViewChild("category") categoryRef:ElementRef;
-  categoryDom:HTMLElement;
-  overlayDom:HTMLElement;
+  activeSearch: boolean = false;
+  activeCats: boolean = false;
+  @ViewChild("headerOverlay") overlayRef: ElementRef;
+  @ViewChild("category") categoryRef: ElementRef;
 
-  private paramsObs:any;
+  private paramsObs: any;
 
-  constructor(private appState:AppState,
-              private router:Router,
-              private route:ActivatedRoute) {
+  constructor(private appState: AppState,
+              private router: Router,
+              private route: ActivatedRoute,
+              private renderer: Renderer) {
     appState.set('loading', true);
   }
 
   ngOnInit() {
-    /** create categoryDom to change the style height */
-    this.categoryDom = this.categoryRef.nativeElement;
-    this.overlayDom = this.overlayRef.nativeElement;
     /** listen for parameter id changes */
     this.paramsObs = this.route.params.subscribe(params => {
       this.updateComponent(params['id']);
@@ -52,7 +48,7 @@ export class Blog implements OnInit, OnDestroy {
     this.paramsObs.unsubscribe();
   }
 
-  updateComponent(catId:string) {
+  updateComponent(catId: string) {
     /** Show loading until new post data is received */
     this.appState.set('loading', true);
     this.empty = false;
@@ -106,7 +102,7 @@ export class Blog implements OnInit, OnDestroy {
       /*
        * check when user scroll is 200px to bottom of the page
        */
-      if (currPos >= targetPos && !this.appState.get('loading')) {
+      if (currPos >= targetPos && !this.appState.get('loading')){
         if (this.collection.hasMore()) {
           this.appState.set('loading', true);
           this.collection.more();
@@ -115,7 +111,7 @@ export class Blog implements OnInit, OnDestroy {
     }
   }
 
-  search(key:string) {
+  search(key: string) {
     if (key == "") return;
     this.appState.set('loading', true)
     /** Keep previous args, remove cat filter and add search key */
@@ -132,7 +128,8 @@ export class Blog implements OnInit, OnDestroy {
   toggleSearch(flag) {
     this.activeSearch = flag;
     this.activeCats = false;
-    this.categoryDom.style.height = '0';
+    //close categories if open
+    this.renderer.setElementStyle(this.categoryRef.nativeElement, 'height', '0');
   }
 
   toggleCats(flag) {
@@ -140,17 +137,17 @@ export class Blog implements OnInit, OnDestroy {
     this.activeSearch = false;
 
     if (this.activeCats) {
-      this.categoryDom.style.height = this.categoryHeight() + "px";
+      this.renderer.setElementStyle(this.categoryRef.nativeElement, 'height', this.categoryHeight() + 'px');
     }
     else {
-      this.categoryDom.style.height = '0';
+      this.renderer.setElementStyle(this.categoryRef.nativeElement, 'height', '0');
     }
   }
 
   /** Get the remaining view height for category overlay */
   categoryHeight() {
     let viewheight = window.innerHeight;
-    let overlay = this.overlayDom.scrollHeight;
+    let overlay = this.overlayRef.nativeElement.scrollHeight;
     return viewheight - overlay;
   }
 

@@ -10,8 +10,7 @@
   <meta name="description" content="Murhaf Sousli | Web Developer">
   
   <!-- Configured Head Tags  -->
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Karla:400,700">
-	<link rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 	<link rel="apple-touch-icon" sizes="57x57" href="/assets/icon/apple-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="60x60" href="/assets/icon/apple-icon-60x60.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="/assets/icon/apple-icon-72x72.png">
@@ -29,15 +28,15 @@
 	<link rel="manifest" href="/assets/manifest.json">
 	<meta name="msapplication-TileColor" content="#00bcd4">
 	<meta name="msapplication-TileImage" content="/assets/icon/ms-icon-144x144.png">
-	<meta name="og:site_name" content="Murhaf Sousli">
-	<meta name="og:title" content="Murhaf Sousli | Web Developer">
-	<meta name="og:description" content="writes about web development and design trends.">
-	<meta name="og:url" content="http://murhafsousli.com">
-	<meta name="og:image" content="http://murhafsousli.com/assets/img/og.jpg">
-	<meta name="og:type" content="website">
-	<meta name="fb:app_id" content="568610499915720">
-	<meta name="twitter:site" content="@MurhafSousli">
-	<meta name="twitter:creator" content="@MurhafSousli">
+	<meta property="og:site_name" content="Murhaf Sousli">
+	<meta property="og:title" content="Murhaf Sousli | Web Developer">
+	<meta property="og:description" content="writes about web development and design trends.">
+	<meta property="og:url" content="http://murhafsousli.com">
+	<meta property="og:image" content="http://murhafsousli.com/assets/img/og.jpg">
+	<meta property="og:type" content="website">
+	<meta property="fb:app_id" content="568610499915720">
+	<meta property="twitter:site" content="@MurhafSousli">
+	<meta property="twitter:creator" content="@MurhafSousli">
   
 
   <!-- base url -->
@@ -45,26 +44,53 @@
 
 
 </head>
+<style>
+  body {
+    margin: 0;
+    background-color: white;
+  }
+  .first-blood {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Open Sans', sans-serif;
+  }
 
-<body style="margin:0">
+  .first-blood p {
+    color: #022D41;
+  }
 
+  .first-blood .sr-only {
+    font-size: 1.2em;
+    color: #8CC152
+  }
+
+  .first-blood .text {
+    margin: 0 30px;
+    font-size: 1.2em;
+  }
+
+  .first-blood .heart {
+    color: #FE424D
+  }
+
+  .first-blood .coffee {
+    color: #47221A
+  }
+</style>
+<body>
 <app>
-  <div style="
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-      width: 100%;
-      background-color: white;
-      align-items: center;
-      justify-content: center;
-       font-family: 'Open Sans', sans-serif;
-      ">
-    <p style="color: #022D41"><i class="fa fa-spinner fa-spin fa-3x fa-fw"></i></p>
-    <p style="font-size: 1.2em; color: #8CC152" class="sr-only">Loading...</p>
-    <p style="margin: 0 30px ;font-size: 1.2em;color: #022D41">This site is in TESTING mode... the contents are dummy</p>
-    <p style="font-weight:bold; font-size: 1.2em;color: #022D41">Made with
-      <span style="color: #FE424D" class="fa fa-heart" aria-hidden="true"></span>&nbsp; &
-      <span style="color: #47221A" class="fa fa-coffee" aria-hidden="true"></span></p>
+  <div class="first-blood">
+    <p><i class="fa fa-spinner fa-spin fa-3x fa-fw"></i></p>
+    <p class="sr-only">Loading...</p>
+    <p class="text">Testing mode... the contents are
+      dummy</p>
+    <p class="text">Made with
+      <span class="fa fa-heart heart" aria-hidden="true"></span>&nbsp; &
+      <span class="fa fa-coffee coffee" aria-hidden="true"></span></p>
   </div>
 </app>
 
@@ -88,5 +114,5 @@
 
 
 
-<script type="text/javascript" src="polyfills.bundle.js"></script><script type="text/javascript" src="vendor.bundle.js"></script><script type="text/javascript" src="main.bundle.js"></script></body>
+<script type="text/javascript" src="polyfills.40aa44db3fb6e5d7b27c.bundle.js"></script><script type="text/javascript" src="vendor.e1e7c3acc7bffafd2901.bundle.js"></script><script type="text/javascript" src="main.1d6f55ccf3ae7748e20b.bundle.js"></script></body>
 </html>
