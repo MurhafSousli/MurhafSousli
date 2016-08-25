@@ -8,7 +8,7 @@ import { enableProdMode } from '@angular/core';
 //Disable the new Sanitizer
 import {NO_SANITIZATION_PROVIDERS} from '../app/directives/disable-sanitizer';
 //WordPress Service
-import {WORDPRESS_PROVIDERS} from "ng2-wp-api/ng2-wp-api";
+import {WORDPRESS_PROVIDERS} from "ng2-wp-api";
 // To set site title on navigation
 import {Title} from '@angular/platform-browser';
 

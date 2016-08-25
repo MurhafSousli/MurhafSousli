@@ -10,7 +10,7 @@ import {
   ViewChild
 } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Model, QueryArgs, WpHelper} from "ng2-wp-api/ng2-wp-api";
+import {Model, QueryArgs, WpHelper} from "ng2-wp-api";
 
 import {Single} from "../../views";
 import {AppState} from "../../app.service";

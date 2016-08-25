@@ -1,6 +1,6 @@
 import {Component, ViewChild, ElementRef, OnInit, OnDestroy, HostListener, Renderer} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {Collection, WpHelper, QueryArgs} from 'ng2-wp-api/ng2-wp-api';
+import {Collection, WpHelper, QueryArgs} from 'ng2-wp-api';
 
 import {WideCard} from "../../views";
 import {AppState} from "../../app.service";

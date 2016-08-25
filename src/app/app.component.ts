@@ -1,6 +1,6 @@
 import {Component, ViewEncapsulation, DoCheck, OnInit} from '@angular/core';
 import {Http} from "@angular/http";
-import {WpState} from "ng2-wp-api/ng2-wp-api";
+import {WpState} from "ng2-wp-api";
 
 import {MetaService} from 'ng2-meta';
 

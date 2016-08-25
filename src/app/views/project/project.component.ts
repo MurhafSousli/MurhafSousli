@@ -1,11 +1,12 @@
 import {Component, Input, AfterViewInit} from '@angular/core';
 import {ScrollSpyService, ScrollSpyDirective} from "ng2-scrollspy";
 import {ScrollSpyParallaxDirective, ScrollSpyParallaxOptions} from "ng2-scrollspy/src/plugin/parallax";
-import {Post} from "ng2-wp-api/ng2-wp-api";
+import {Post} from "ng2-wp-api";
 import {MetaService} from 'ng2-meta';
+import {ShareButtons} from 'ng2-sharebuttons';
 
 import {Disqus} from '../../components/disqus';
-import {ShareButtons} from '../../components/share';
+
 
 @Component({
   selector: 'project',

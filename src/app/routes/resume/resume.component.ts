@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild, ElementRef, Renderer} from '@angular/core';
 import {Http} from "@angular/http";
-import {Collection, WpHelper, QueryArgs} from "ng2-wp-api/ng2-wp-api";
+import {Collection, WpHelper, QueryArgs} from "ng2-wp-api";
 
 import {Education} from './education';
 import {Skills} from './skills';

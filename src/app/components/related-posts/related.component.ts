@@ -1,5 +1,5 @@
 import {Component, Input, ViewChild} from '@angular/core';
-import {Collection, WpHelper, QueryArgs} from "ng2-wp-api/ng2-wp-api";
+import {Collection, WpHelper, QueryArgs} from "ng2-wp-api";
 
 import {AppState} from "../../app.service";
 import {Carousel} from '../carousel';

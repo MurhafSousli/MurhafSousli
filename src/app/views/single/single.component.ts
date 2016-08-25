@@ -11,14 +11,14 @@ import {
   ComponentRef,
   ComponentFactory,
 } from '@angular/core';
-import {Post} from "ng2-wp-api/ng2-wp-api";
+import {Post} from "ng2-wp-api";
 import {MetaService} from 'ng2-meta';
+import {ShareButtons} from 'ng2-sharebuttons';
 
 import {ScrollSpyService, ScrollSpyDirective} from "ng2-scrollspy";
 import {ScrollSpyParallaxDirective, ScrollSpyParallaxOptions} from "ng2-scrollspy/src/plugin/parallax";
 
 import {Disqus} from '../../components/disqus';
-import {ShareButtons} from '../../components/share';
 import {RelatedPosts} from "../../components/related-posts";
 import {Author} from '../author';
 import {Lightbox} from "../../components/lightbox/lightbox.component";

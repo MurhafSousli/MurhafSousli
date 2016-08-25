@@ -1,6 +1,6 @@
 import {Component, DoCheck} from '@angular/core';
 import {Router} from '@angular/router';
-import {Model, WpHelper, Post} from 'ng2-wp-api/ng2-wp-api';
+import {Model, WpHelper, Post} from 'ng2-wp-api';
 
 import {AppState} from "../../app.service";
 
