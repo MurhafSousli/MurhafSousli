@@ -1,12 +1,16 @@
-import {Component} from '@angular/core';
-
-import {ProjectsList} from '../../components/projects';
+import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
 
 @Component({
-  selector: 'projects',
-  directives: [ProjectsList],
-  template: require('./projects.html')
+  selector: 'projects-route',
+  templateUrl: './projects.component.html',
+  styleUrls: ['./projects.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class Projects {
+export class ProjectsComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
 
 }

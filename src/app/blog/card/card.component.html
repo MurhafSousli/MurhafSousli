@@ -1,0 +1,37 @@
+<div class="card wide-card">
+  <div class="wide-card-header">
+    <div class="wide-card-image">
+      <a [routerLink]="[getRouteName(), post.id()]">
+        <img *ngIf="post.featuredMedia()" [src]="post.featuredImageUrl('thumbnail')">
+      </a>
+    </div>
+  </div>
+
+  <div class="wide-card-body">
+
+    <div class="wide-card-title">
+      <h4><a [routerLink]="[getRouteName(), post.id()]">{{post.title()}}</a></h4>
+    </div>
+    <div class="wide-card-description">
+
+      <div class="wide-card-meta">
+        <div class="wide-card-date">
+          {{post.date() | date}}
+        </div>
+      </div>
+
+      <div class="wide-card-excerpt">
+        <div [innerHtml]="post.excerpt()"></div>
+      </div>
+
+      <div class="wide-card-links">
+        <a *ngIf="post.post.source" class="btn" [href]="post.post.source" target="_blank">
+          <i class="fa fa-code-fork" aria-hidden="true"></i> Source</a>
+        <a *ngIf="post.post.demo" class="btn" [href]="post.post.demo" target="_blank">
+          <i class="fa fa-play" aria-hidden="true"></i> Demo</a>
+      </div>
+
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,11 @@
+<header [data]="appData | async"></header>
+<main>
+  <router-outlet></router-outlet>
+</main>
+<footer>
+  <ng-progress [toggle]="wpLoader | async" [minimum]="0.2" [speed]="350"
+               [trickleSpeed]="200" [color]="'#FE424D'" [thick]="true"></ng-progress>
+
+  <go-top></go-top>
+  <div class="copyright"> © 2016 Murhaf Sousli. All rights reserved</div>
+</footer>

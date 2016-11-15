@@ -1,0 +1,18 @@
+<div *ngIf="images?.length" class="carousel">
+  <div class="carousel-image">
+    <img [src]="images[selected]?.src">
+    <div class="carousel-image-meta">
+      <!--<div class="carousel-image-title">{{images[selected].title}}</div>-->
+      <!--<div class="carousel-image-description">{{images[selected].description}}</div>-->
+    </div>
+  </div>
+  <!--<div class="carousel-images">-->
+    <!--<div *ngFor="let image of images" class="carousel-thumbnail">-->
+      <!--<img [src]="image.thumbnail" (click)="selected=image.index">-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<div class="carousel-nav">-->
+    <!--<div class="carousel-next" (click)="(selected < images.length) ? selected = selected + 1 : false"></div>-->
+    <!--<div class="carousel-prev" (click)="(selected > 0) ? selected = selected - 1 : false"></div>-->
+  <!--</div>-->
+</div>

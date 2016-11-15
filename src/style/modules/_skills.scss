@@ -1,0 +1,17 @@
+.skills-wrapper{
+  .skills{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-family: $heading-font-family;
+    progress-bar {
+      margin: 10px;
+      width: 100px;
+      .progressbar-text {
+        text-transform: uppercase;
+        text-align: center;
+      }
+    }
+  }
+}

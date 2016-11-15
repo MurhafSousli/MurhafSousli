@@ -1,0 +1,86 @@
+$home-font-size: 1.45em;
+$home-bg: $base-font-color;
+$home-primary: $base-background-color;
+$home-secondary:$sec-color;
+
+home {
+  flex: 1;
+}
+
+.home {
+  position: relative;
+  color: $home-primary;
+  flex: 1;
+  height: calc(100vh - #{$header-height});
+  font-family: $heading-font-family;
+  padding: 0 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: $home-bg;
+
+  .my-cover {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+    position: relative;
+
+    .my-pic {
+      position: relative;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background-color: $action-color;
+      background-size: cover;
+      background-position: center;
+      z-index: 10;
+      transition: box-shadow 1000ms ease;
+
+      &:after {
+        content: 'Hi';
+        color: $home-secondary;
+        position: absolute;
+        top: 75%;
+        left: 0;
+        right: 0;
+        text-align: center;
+        font-size: 7.5em;
+        z-index: 100;
+        font-weight: bold;
+        text-shadow: 9px -9px 0 $home-bg;
+        font-family: $heading-font-family;
+      }
+    }
+  }
+
+  .my-name {
+    position: relative;
+    margin: 10px;
+    font-size: $home-font-size;
+  }
+  .my-job {
+    position: relative;
+    margin: 10px 10px 20px;
+    width: 230px;
+    font-size: $home-font-size;
+    strong {
+      color: $home-secondary;
+    }
+    .rotate-title {
+      width: 200px;
+      display: inline-block;
+    }
+  }
+  social {
+    display: flex;
+    justify-content: center;
+  }
+  .social {
+    a {
+      color: white;
+      font-size: 1.6em;
+    }
+  }
+}

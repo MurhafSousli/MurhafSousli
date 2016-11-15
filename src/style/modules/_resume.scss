@@ -1,0 +1,250 @@
+$resume-bg-color: $base-background-color;
+$section-title-color: $base-font-color;
+
+section{
+  padding: 20px;
+}
+
+.resume {
+  @extend .animated, .fadeIn;
+  background-color: $resume-bg-color;
+  overflow: hidden;
+
+
+  &-title {
+    @extend .container;
+    h1 {
+      color: $section-title-color;
+      text-align: right;
+      font-size: 3em;
+      font-weight: bold;
+      padding: 20px;
+      margin: 0;
+    }
+  }
+}
+
+.section-title {
+  color: $section-title-color;
+  @extend .container;
+  margin-top: 15px;
+}
+
+.section-content {
+  @extend .container;
+  margin-top: 80px;
+  margin-bottom: 80px;
+  backface-visibility: hidden;
+}
+
+.introduction {
+  background-color: $section-title-color;
+  padding: 20px 20px 60px;
+  color: white;
+  transform: skew(0deg, 5deg);
+  height: 10vh;
+  transition: all 0.5s ease;
+  &.extendheight{
+    height: 50vh;
+  }
+  .section-title {
+    color: $sec-color;
+  }
+  .section-content {
+    font-size: 1.2em;
+    padding: 0 20px;
+    transform: skew(0deg, -5deg);
+    >div{
+      @extend .animated, .flipInX;
+    }
+  }
+}
+
+.workflow-wrapper {
+  flex: 1 1 auto;
+  justify-content: center;
+  background-color: $sec-color;
+}
+
+.skills-wrapper {
+  position: relative;
+  overflow: hidden;
+  .section-title{
+    transform: skew(0deg, 5deg);
+  }
+  .section-misc{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width:20%;
+    i:nth-of-type(1){
+      position: absolute;
+      font-size: 20em;
+      animation-duration: 13s;
+      opacity: 0.2;
+      bottom: -100px;
+      right: -100px;
+      color:$sec-color;
+    }
+    i:nth-of-type(2){
+      position: absolute;
+      font-size: 10em;
+      animation-duration: 7s;
+      opacity: 0.1;
+      color:$action-color;
+      bottom: 160px;
+      right: -20px;
+    }
+    i:nth-of-type(3){
+      position: absolute;
+      top: 50px;
+      right: -10px;
+      animation-duration: 5s;
+      font-size: 9em;
+      opacity: 0.1;
+    }
+  }
+}
+
+.education-wrapper {
+  position: relative;
+  background-color: $action-color;
+
+  .education-icon {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    color: rgba(black, .1);
+    text-shadow: inner 0 0 7px rgba($sec-color, .7);
+  }
+
+//  .education {
+//    margin-top: 150px;
+//    display: flex;
+//    position: relative;
+//    justify-content: space-between;
+//
+//    @media screen and (max-width: $medium-screen) {
+//      flex-direction: column;
+//    }
+//
+//    &-item {
+//      box-shadow: $base-box-shadow;
+//      position: relative;
+//      flex: 1 1 auto;
+//      padding: 40px 10px;
+//      text-align: center;
+//      margin: 15px;
+//      background-color: white;
+//      border-radius: 4px;
+//      &:before{
+//        content: '\f0a3';
+//        position: absolute;
+//        font-size: 2.5em;
+//        height:50px;
+//        width: 50px;
+//        top: -20px;
+//        left: 5px;
+//        color: #FFD200;
+//        text-shadow: $base-text-shadow;
+//        font-family: FontAwesome;
+//      }
+//      .signature{
+//        position: absolute;
+//        bottom: 10px;
+//        right: 25px;
+//        width: 70px;
+//      }
+//    }
+//    &-date {
+//      text-align: right;
+//      opacity: .8;
+//      font-weight: bold;
+//      font-size: .9em;
+//    }
+//    &-content {
+//      margin: 15px 0;
+//      h3{
+//       color: $sec-color;
+//      }
+//      i{
+//        color: $base-font-color;
+//      }
+//    }
+//  }
+//
+}
+
+.experience-wrapper {
+  .experience {
+    max-width: 500px;
+    margin: 0 auto;
+    color: $base-font-color;
+    ul{
+      list-style: initial;
+      padding-left: 20px;
+    }
+    &-item {
+      margin: 30px 0 15px;
+      padding: 15px;
+    }
+    &-company-name {
+      font-weight: bold;
+    }
+    &-job-title {
+      font-weight: bold;
+      color: $action-color;
+    }
+    &-date {
+      text-align: right;
+      opacity: .8;
+      font-weight: bold;
+      font-size: .9em;
+    }
+    &-content {
+      margin-top: 20px;
+    }
+  }
+}
+
+.projects-wrapper{
+  background-color: $base-font-color;
+  color: white;
+  transform: skew(0deg, -5deg);
+  .section-title{
+    color: white;
+  }
+  .section-content{
+    padding: 50px 0;
+    margin-bottom: 100px;
+    transform: skew(0deg, 5deg);
+  }
+  .wide-card-title h4 a,
+  .wide-card-description{
+    color: white;
+  }
+  .wide-card{
+    background-color: $base-font-color;
+  }
+}
+
+.badges-wrapper{
+  background-color: white;
+  margin-top: -60px;
+  margin-bottom: -50px;
+  padding-top: 25px;
+  padding-bottom: -100px;
+  transform: skew(0deg, -5deg);
+  .section-title{
+  }
+  .section-content{
+    text-align: center;
+    transform: skew(0deg, 5deg);
+  }
+}

@@ -1,48 +1,13 @@
 {
   "name": "Murhaf Sousli",
-  "profilePic": "../../assets/img/boy.svg",
-  "logo": "../../../assets/img/logo.png",
+  "profilePic": "../../assets/img/pp.jpg",
+  "logo": "../../../assets/img/logo.svg",
   "titles": [
     "Web developer",
     "Software Engineer",
     "Blogger"
   ],
-  "socialLinks": [
-    {
-      "name": "twitter",
-      "link": "https://twitter.com/MurhafSousli",
-      "class": "fa fa-twitter twitter"
-    },
-    {
-      "name": "linkedin",
-      "link": "https://www.linkedin.com/in/murhafsousli",
-      "class": "fa fa-linkedin linkedin"
-    },
-    {
-      "name": "github",
-      "link": "https://github.com/MurhafSousli",
-      "class": "fa fa-github-alt github"
-    },
-    {
-      "name": "stackoverflow",
-      "link": "https://stackoverflow.com/users/1015648/murhaf-sousli",
-      "class": "fa fa-stack-overflow stackoverflow"
-    },
-    {
-      "name": "mail",
-      "link": "mailto:murhafsousli@gmail.com",
-      "class": "fa fa-envelope email"
-    }
-  ],
-  "loader": {
-    "svg": "../assets/img/loading-bubbles.svg",
-    "fallback": "fa fa-spinner fa-spin fa-3x fa-fw"
-  },
-  "pages": [
-    {
-      "title": "Home",
-      "path": "./"
-    },
+  "menu": [
     {
       "title": "Blog",
       "path": "./blog"
@@ -60,6 +25,33 @@
       "id": "174",
       "title": "About",
       "path": "./about"
+    }
+  ],
+  "social": [
+    {
+      "name": "twitter",
+      "link": "https://twitter.com/MurhafSousli",
+      "class": "fa fa-twitter"
+    },
+    {
+      "name": "linkedin",
+      "link": "https://www.linkedin.com/in/murhafsousli",
+      "class": "fa fa-linkedin"
+    },
+    {
+      "name": "github",
+      "link": "https://github.com/MurhafSousli",
+      "class": "fa fa-github-alt"
+    },
+    {
+      "name": "stackoverflow",
+      "link": "https://stackoverflow.com/users/1015648/murhaf-sousli",
+      "class": "fa fa-stack-overflow"
+    },
+    {
+      "name": "mail",
+      "link": "mailto:murhafsousli@gmail.com",
+      "class": "fa fa-send"
     }
   ]
 }

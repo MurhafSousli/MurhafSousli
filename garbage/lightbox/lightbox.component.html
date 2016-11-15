@@ -1,0 +1,9 @@
+<div class="lightbox" *ngWith="let lightbox be lightboxService.state | async">
+  <div *ngIf="lightbox.toggle" class="lightbox-container">
+    <div class="lightbox-close" (click)="lightboxService.close()">
+      <i class="fa fa-window-close" aria-hidden="true"></i>Close
+    </div>
+  </div>
+  <carousel [selected]="lightbox.selected" [images]="lightbox.imageList"></carousel>
+</div>
+<!---->

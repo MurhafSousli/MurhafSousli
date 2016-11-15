@@ -1,0 +1,65 @@
+.author {
+  @extend .container;
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+  position: relative;
+  &-image {
+    display: flex;
+    overflow: hidden;
+    border-radius: 50%;
+    backface-visibility: hidden;
+  }
+  &-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 250px;
+  }
+  &-name {
+    background-color: rgba($action-color, .9);
+    //opacity: .5;
+    color: white;
+    text-align: center;
+    padding: 2px;
+    border-radius: 4px;
+  }
+  &-twitter, &-site {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 46px;
+    height: 46px;
+    padding: 15px;
+    border-radius: 50%;
+    border: 1px solid rgba($sec-color, 1);
+    a{
+      color: rgba($sec-color, 1);
+      font-size: 1.2em;
+    }
+  }
+  &-site{
+    font-size: .8em;
+  }
+
+  &-name, &-twitter, &-site{
+    animation-duration: 300ms;
+    animation-delay: 50ms;
+  }
+
+
+  .show{
+    .author-site {
+      @extend .fadeInLeft;
+    }
+    .author-twitter{
+      @extend .fadeInRight;
+    }
+    .author-name{
+      @extend .fadeIn;
+    }
+  }
+}

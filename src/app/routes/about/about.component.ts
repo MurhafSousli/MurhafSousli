@@ -1,47 +1,29 @@
-import {Component, DoCheck} from '@angular/core';
-import {Router} from '@angular/router';
-import {Model, WpHelper, Post} from 'ng2-wp-api';
-
-import {AppState} from "../../app.service";
+import {Component, ChangeDetectionStrategy} from '@angular/core';
+import {WpEndpoint, WpPost, ModelResponse} from "ng2-wp-api";
 
 @Component({
   selector: 'about',
-  template: require('./about.html'),
-  directives: [Model]
+  templateUrl: './about.component.html',
+  styleUrls: ['./about.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class About implements DoCheck{
+export class AboutComponent{
 
-  endpoint = WpHelper.Endpoint.Pages;
-  id;
-  page;
+  id = 3124;
+  page: WpPost;
+  endpoint = WpEndpoint.pages;
+  noResponse;
 
-  constructor(private appState:AppState, private router:Router) {
-    appState.set('loading', true);
+  constructor() {
   }
 
-  ngDoCheck(){
-    /** check if appState have received app data */
-    let data = this.appState.get("data");
-    if(!this.id && data.hasOwnProperty('pages')){
-      this.id = (<any>this.appState.get("data").pages[3]).id;
-    }
-  }
-
-  pageData(event) {
+  wpResponse(event: ModelResponse){
     if (event.error) {
-      /** handle collection requests errors */
-      console.warn("[About] : " + event.error);
-      this.router.navigate(['/404']);
+      this.noResponse = "Server Error";
     }
     else {
-      this.page = new Post(event.object);
+      this.page = new WpPost(event.data);
     }
-    this.appState.set("loading", false);
   }
 
 }
-
-/*
- * About component displays about page
- *
- */

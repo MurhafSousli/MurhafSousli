@@ -1,0 +1,17 @@
+.social {
+  max-width: $menu-container-width;
+  z-index: 100;
+  display: flex;
+  justify-content: space-around;
+  a {
+    color: black;
+    margin: 15px;
+    font-size: 30px;
+    opacity: 1;
+    transition: text-shadow 0.35s;
+    &:hover {
+      text-shadow: 0 0 15px $action-color;
+    }
+  }
+}
+

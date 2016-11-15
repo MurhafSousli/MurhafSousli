@@ -1,0 +1,116 @@
+$card-width: 400px;
+$small-card-dimension: 250px;
+
+.card {
+  @extend .animated, .flipInX;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  font-family: $heading-font-family;
+}
+
+.wide-card {
+  @extend .container;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  &-header {
+  }
+  &-title {
+    h4 {
+      margin-top: 1em;
+      margin-bottom: 5px;
+      font-size: 1.5em;
+      a {
+        color: $base-font-color;
+        &:hover {
+          color: $action-color;
+        }
+      }
+    }
+  }
+  &-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.8em;
+    padding: 0 10px;
+    margin-left: 10px;
+  }
+  &-image {
+    //@extend .animated, .slideInLeft;
+    overflow: hidden;
+    flex: 1;
+    height: 150px;
+    img{
+      width: 100%;
+    }
+  }
+  &-description {
+    user-select: none;
+    flex: 1 1 auto;
+    p {
+      margin-bottom: 0;
+      font-size: 15px;
+    }
+  }
+  &-excerpt {
+
+  }
+  //&-link {
+  //  text-align: right;
+  //  button {
+  //    padding: 0.43333em;
+  //    margin-right: 0;
+  //  }
+  //}
+  &-links {
+    margin-top: 10px;
+  }
+
+  &-meta {
+    position: relative;
+    font-size: 16px;
+    //font-family: $heading-font-family;
+  }
+  &-cat {
+    a {
+      margin-right: 10px;
+    }
+  }
+  &-date {
+    color: $sec-color;
+  }
+
+  @media (min-width: $medium-screen) {
+    flex-direction: row;
+    &-title h4{
+      margin-top: 0;
+    }
+    &-image {
+      flex: 0 0 250px;
+      width: 250px;
+    }
+  }
+}
+
+.small-card {
+  height: $small-card-dimension;
+  width: $small-card-dimension;
+
+  &-image {
+    flex: 1 1 auto;
+    background-size: cover;
+  }
+  &-title, &-footer {
+    padding: $base-spacing/1.5;
+    flex: 0 0 auto;
+  }
+  &-footer {
+    padding-top: 0;
+  }
+
+  h4 {
+    margin: 0;
+  }
+}

@@ -1,0 +1,44 @@
+<div class="post">
+  <div class="post-header">
+    <!--[style.height]="(post.featuredMedia()) ? '50vh' : '0'"-->
+    <div class="post-image" parallax [config]="{parallaxRatio: .7}" #fImage>
+    </div>
+
+  </div>
+  <div class="post-outer">
+    <div class="post-inner container">
+      <div class="post-heading">
+        <div class="post-title"><h1>{{post.title()}}</h1></div>
+        <div class="post-meta">
+          <p>by {{post.author()[0].name}}</p>
+
+          <p class="post-date"><b>Published</b> on {{post.date() | date}}</p>
+
+          <!--<p class="post-categories">-->
+          <!--in-->
+          <!--<a *ngFor="let cat of post.categories()"-->
+          <!--[routerLink]="['/blog', {id: cat.id}]">{{cat.name}}</a>-->
+          <!--</p>-->
+        </div>
+      </div>
+
+      <div class="post-body">
+        <div class="post-content" [innerHtml]="post.content() | sanitizeHtml"></div>
+        <div class="post-share">
+          <share-buttons></share-buttons>
+        </div>
+        <div class="post-author">
+          <author [authors]="post.author()"></author>
+        </div>
+        <!--<div *ngIf="showComments" class="post-footer">-->
+
+        <!--<div class="post-comments">-->
+        <!--<div class="comments container">-->
+        <!--<disqus [shortname]="'murhafsousli'" [identifier]="post.id()"></disqus>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+      </div>
+    </div>
+  </div>
+</div>

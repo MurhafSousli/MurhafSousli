@@ -1,0 +1,36 @@
+
+<nav class="navigator">
+  <button class="logo" (click)="navigate('/')">
+    <img [src]="data.logo"/>
+  </button>
+  <ul class="menu">
+    <li class="menu-item" *ngFor="let menu of data.menu">
+      <a [routerLink]="menu.path">{{menu.title}}</a>
+    </li>
+  </ul>
+</nav>
+
+<div class="button_container" (click)="isActive = !isActive" [class.active]="isActive">
+  <span class="top"></span>
+  <span class="middle"></span>
+  <span class="bottom"></span>
+</div>
+
+<div class="mobile" [class.open]="isActive">
+    <button class="logo" (click)="navigate('/')">
+      <img [src]="data.logo"/>
+    </button>
+  <div class="mobile-body">
+    <ul class="menu">
+      <li class="menu-item" *ngFor="let menu of data.menu">
+        <button (click)="navigate(menu.path)">{{menu.title}}</button>
+      </li>
+    </ul>
+  </div>
+  <div class="mobile-footer">
+    <div class="social">
+      <a *ngFor="let social of data.social" [class]="social.class" [href]="social.link" target="_blank"
+         aria-hidden="true"></a>
+    </div>
+  </div>
+</div>

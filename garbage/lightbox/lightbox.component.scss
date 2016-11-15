@@ -1,0 +1,23 @@
+.lightbox {
+}
+
+.lightbox-container{
+  position: fixed;
+  top: 56px;// $header-height;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox-close {
+  color: white;
+  opacity: .7;
+  cursor: pointer;
+  position: absolute;
+  right: 1em;
+  top: 1em;
+}

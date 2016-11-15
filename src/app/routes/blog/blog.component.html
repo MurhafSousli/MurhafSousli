@@ -1,0 +1,49 @@
+<div class="page blog">
+  <div class="page-header">
+    <div #headerOverlay class="page-overlay">
+      <div class="page-title">
+        <h1>BLOG</h1>
+      </div>
+    </div>
+    <div class="filter-box">
+
+      <div class="filter-btn">
+        <button class="btn btn-circle" (click)="openSearchBox(!searchBoxActive)">
+          <i class="fa" [ngClass]="setSearchClasses()"></i>
+        </button>
+
+        <button class="btn btn-circle" (click)="openCatsBox(!catBoxActive)">
+          <i class="fa" [ngClass]="setCatClasses()"></i>
+        </button>
+      </div>
+
+      <div #searchBox  class="search-box">
+        <div class="search">
+          <input #searchInput autofocus="true"
+                 (keyup)="0" (keyup.enter)="search($event.target.value)" type="search"/>
+          <div (click)="searchInput.focus()"
+               [class.lightSpeedIn]="!searchInput.value"
+               [class.lightSpeedOut]="searchInput.value"
+               class="placeholder">
+            <p>Search...</p>
+          </div>
+        </div>
+      </div>
+
+      <div #categoryBox class="cats-box">
+        <categories ></categories>
+      </div>
+    </div>
+
+  </div>
+  <div class="page-body">
+    <div class="page-content">
+      <wp-collection [endpoint]="endpoint" (response)="wpResponse($event)">
+        <div class="list">
+          <card class="item" *ngFor="let post of posts" [data]="post"></card>
+        </div>
+      </wp-collection>
+      <h3 *ngIf="noResponse" class="no-response animated fadeIn">{{noResponse}}</h3>
+    </div>
+  </div>
+</div>

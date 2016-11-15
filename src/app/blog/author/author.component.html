@@ -1,0 +1,24 @@
+<div class="author" (mouseenter)="active=true" (mouseleave)="active=false">
+  <div class="author-image">
+    <img [src]="avatar"/>
+  </div>
+  <div class="author-overlay" [class.show]="active">
+
+    <div class="author-twitter animated fadeOutRight">
+      <a href="https://twitter.com/MurhafSousli">
+        <i class="fa fa-twitter" aria-hidden="true"></i>
+      </a>
+    </div>
+
+    <div class="author-name animated fadeOut">
+      {{author.name}}
+    </div>
+
+    <div class="author-site animated fadeOutLeft">
+      <a [routerLink]="['/']">
+        www
+      </a>
+    </div>
+  </div>
+</div>
+

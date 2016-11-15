@@ -1,79 +1,50 @@
-import {Component, DoCheck} from '@angular/core';
-
-import {TypingCarouselDirective} from "../../directives/typing-carousel";
-import {AppState} from "../../app.service";
+import {Component, OnInit, ViewChild, ElementRef, Renderer, OnDestroy, ChangeDetectionStrategy} from '@angular/core';
+import {IAppData} from "../../store/data.reducer";
+import {Store} from "@ngrx/store";
 
 @Component({
   selector: 'home',
-  template: require('./home.html'),
-  directives: [TypingCarouselDirective]
+  templateUrl: './home.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class Home implements DoCheck {
+export class HomeComponent implements OnInit, OnDestroy {
 
-  data;
+  @ViewChild('cover') cover: ElementRef;
 
-  constructor(private appState:AppState) {
+  appData;
+  colors = ['#4FC1E9', '#FE424D', '#1AA6B7', '#967ADC', '#48cfad', '#E9583F', '#fff'];
+  active = true;
 
+  constructor(private renderer: Renderer, private store: Store<IAppData>) {
   }
 
-  ngDoCheck() {
-    /** check if appState have received app data */
-    let data = this.appState.get("data");
-    if (!this.data && data.hasOwnProperty('titles')) {
-      this.data = data;
-    }
+  ngOnInit() {
+    this.appData = this.store.select('data');
+    this.changeCoverShadowColor();
   }
 
+  changeCoverShadowColor() {
+    let changeColor = () => {
+      setTimeout(()=> {
+        if (!this.active) return;
+        this.renderer.setElementStyle(this.cover.nativeElement, 'boxShadow', this.getRandomShadow())
+        changeColor();
+      }, this.getRandomDelay());
+    };
+    changeColor();
+  }
+
+  getRandomShadow() {
+    let color = this.colors[Math.floor(Math.random() * this.colors.length)];
+    let blur = Math.floor((Math.random() * 25) + 10);
+    return '0 0 ' + blur + 'px ' + color;
+  }
+
+  getRandomDelay(){
+    return Math.floor((Math.random() * 2500) + 1000);
+  }
+
+  ngOnDestroy() {
+    this.active = false;
+  }
 }
-
-/*
- *  Home component for home page
- *
- * TypingCarouselDirective is a simple typing carousel directive for angular2.
- * I use it here to display titles as it is being written
- Check it out on https://github.com/zaqqaz/ng2-typing-carousel
-
- another cool alternative to "ng2-typing-carousel" is rotation_words.scss
- which you has couple of animation effects and it is located in assets directory.
- 'src/assets/style/vendors/_rotation_words.scss'
- */
-
-
-/*
- * To use rotate.css instead of "TypingCarouselDirective" to animate text;
- *
- * Add the following to the template
- *
- <div class="rotate-title rotate-1">
- <span class="words-wrapper">
- <strong *ngFor="let title of titles let i = index" [ngClass]="getClass(i)">
- {{title}}
- </strong>
- </span>
- </div>
-
- =================================================
- and in the component:
- =================================================
-
- activeIndex = 0;
-
- ngOnInit(){
- setInterval(_ => {
- this.activeIndex++;
- if (this.activeIndex >= this.titles.length) {
- this.activeIndex = 0;
- }
- }, 2000);
- }
-
- getClass(index) {
- if (this.activeIndex == index) {
- return {'is-visible': true, 'is-hidden': false}
- }
- else {
- return {'is-visible': false, 'is-hidden': true}
- }
- }
-
- */

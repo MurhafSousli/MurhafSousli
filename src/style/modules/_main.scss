@@ -1,0 +1,12 @@
+body{
+  text-rendering: optimizeLegibility;
+}
+header{
+  display: flex;
+}
+main{
+  margin-top: $header-height;
+}
+.no-response{
+  text-align: center;
+}
