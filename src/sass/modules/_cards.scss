@@ -2,7 +2,7 @@ $card-width: 400px;
 $small-card-dimension: 250px;
 
 .card {
-  @extend .animated, .flipInX;
+  //@extend .animated, .flipInX;
   display: flex;
   flex-direction: column;
   overflow: hidden;

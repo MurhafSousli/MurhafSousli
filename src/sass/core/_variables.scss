@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Quicksand:400,700|Rajdhani:500,700');
+//@import url('https://fonts.googleapis.com/css?family=Quicksand:400,700|Rajdhani:500,700');
+@import url('https://fonts.googleapis.com/css?family=PT+Serif:400,400i,700,700i|Rajdhani:500,700');
+//@import url('https://fonts.googleapis.com/css?family=Trirong:400,400i,700,700i,900i|Rajdhani:500,700');
 
 
 // Breakpoints
@@ -8,10 +10,10 @@ $medium-screen: 480px;
 $small-screen: 320px;
 
 // Typography
-$base-font-family: "Quicksand", sans-serif;
+$base-font-family: "PT Serif", sans-serif;
 $heading-font-family: 'Rajdhani', serif;
 $menu-font-family:  'Rajdhani', serif;
-$title-font-family: 'Quicksand', serif;
+$title-font-family: 'PT Serif', serif;
 
 // Font Sizes
 $base-font-size: 1em;

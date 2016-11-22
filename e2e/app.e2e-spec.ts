@@ -1,10 +1,10 @@
-import { MurhafSousliPage } from './app.po';
+import { ProjectPage } from './app.po';
 
-describe('murhaf-sousli App', function() {
-  let page: MurhafSousliPage;
+describe('project App', function() {
+  let page: ProjectPage;
 
   beforeEach(() => {
-    page = new MurhafSousliPage();
+    page = new ProjectPage();
   });
 
   it('should display message saying app works', () => {

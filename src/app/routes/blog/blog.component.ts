@@ -1,6 +1,6 @@
 import {
   Component, HostListener, ViewChild, AfterViewInit, ElementRef, Renderer,
-  ChangeDetectionStrategy
+  ChangeDetectionStrategy, transition, trigger, animate, style
 } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {WpCollectionComponent, CollectionResponse, WpEndpoint, WpQueryArgs, WpService} from "ng2-wp-api";
@@ -9,7 +9,21 @@ import {WpCollectionComponent, CollectionResponse, WpEndpoint, WpQueryArgs, WpSe
   selector: 'blog',
   templateUrl: './blog.component.html',
   styleUrls: ['./blog.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    '[@routeAnimation]': "true"
+  },
+  animations: [
+    trigger('routeAnimation', [
+      transition('* => void', [
+        style({transform: 'translateY(-100%)', opacity: 0}),
+        animate(1000)
+      ]),
+      transition('void => *', [
+        animate(1000, style({transform: 'translateY(100%)', opacity: 1}))
+      ])
+    ])
+  ]
 })
 export class BlogComponent implements AfterViewInit {
 
@@ -47,10 +61,10 @@ export class BlogComponent implements AfterViewInit {
           this.noResponse = "No results found for '" + this.args.search + "'";
         }
         else if (this.args.filter.cat) {
-          this.noResponse = "Nothing to show..."
+          this.noResponse = "Category is empty..."
         }
         else {
-          this.noResponse = "Empty Results...";
+          this.noResponse = "Sorry, but I have posted yet...";
         }
       }
     }

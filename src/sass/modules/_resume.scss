@@ -1,0 +1,237 @@
+$resume-bg-color: $base-background-color;
+$section-title-color: $base-font-color;
+
+section {
+  padding: 20px;
+}
+
+.resume {
+  @extend .animated, .fadeIn;
+  background-color: $resume-bg-color;
+  overflow: hidden;
+
+  &-title {
+    @extend .container, .animated, .fadeIn;
+    h1 {
+      color: $section-title-color;
+      text-align: right;
+      font-size: 3em;
+      font-weight: bold;
+      padding: 20px;
+      margin: 0;
+    }
+  }
+}
+
+.section-title {
+  color: $section-title-color;
+  @extend .container;
+  margin-top: 15px;
+}
+
+.section-content {
+  @extend .container;
+  margin-top: 80px;
+  margin-bottom: 80px;
+  backface-visibility: hidden;
+}
+
+.introduction {
+  font-family: $heading-font-family;
+  background-color: $section-title-color;
+  padding: 20px 20px 60px;
+  color: white;
+  transform: skew(0deg, 5deg);
+  height: 10vh;
+  transition: all 0.5s ease;
+  &.extendheight {
+    height: 50vh;
+  }
+  .section-title {
+    color: $sec-color;
+  }
+  .section-content {
+    font-size: 1.2em;
+    padding: 0 20px;
+    transform: skew(0deg, -5deg);
+    > div {
+      @extend .animated, .flipInX;
+    }
+  }
+}
+
+.workflow-wrapper {
+  flex: 1 1 auto;
+  justify-content: center;
+  background-color: $sec-color;
+}
+
+.skills-wrapper {
+  position: relative;
+  overflow: hidden;
+  .section-title {
+    transform: skew(0deg, 5deg);
+  }
+  .section-misc {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 20%;
+    i:nth-of-type(1) {
+      position: absolute;
+      font-size: 20em;
+      animation-duration: 13s;
+      opacity: 0.2;
+      bottom: -100px;
+      right: -100px;
+      color: $sec-color;
+    }
+    i:nth-of-type(2) {
+      position: absolute;
+      font-size: 10em;
+      animation-duration: 7s;
+      opacity: 0.1;
+      color: $action-color;
+      bottom: 160px;
+      right: -20px;
+    }
+    i:nth-of-type(3) {
+      position: absolute;
+      top: 50px;
+      right: -10px;
+      animation-duration: 5s;
+      font-size: 9em;
+      opacity: 0.1;
+    }
+  }
+}
+
+.education-wrapper {
+  position: relative;
+  background-color: $sec-color;
+  padding-bottom: 100px;
+  margin-bottom: -100px;
+  font-family: $heading-font-family;
+
+  .line {
+    display: block;
+    position: absolute;
+    left: 50%;
+    margin-left: -1px;
+    height: calc(100% - 100px);
+    width: 2px;
+    //background-color: $sec-color;
+    background-color: white;
+  }
+
+  ul {
+    text-align: center;
+    margin: 0 auto;
+    padding: 0 20px;
+    font-size: 1em;
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 15px 0 20px 0;
+      padding: 15px 0;
+      //color:  $sub-font-color;
+      color: white;
+      &:hover{
+        span:after{
+          //background-color: $sec-color;
+          background-color: white;
+          transform: scale(1.3);
+        }
+      }
+
+      .university, .date{
+        display: inline-block;
+        vertical-align: middle;
+        width: 40%;
+      }
+      .university{
+        text-align: left;
+        line-height: 1.4em;
+        font-weight: 500;
+      }
+      .date{
+        position: relative;
+        line-height: 1.2em;
+        text-align: right;
+      }
+      span {
+        position: relative;
+        display: inline-block;
+        vertical-align: middle;
+        width: 20%;
+        &:before {
+          content: "";
+          display: block;
+          position: absolute;
+          background-color: rgba(255,255,255, 0.7);
+          height: 2px;
+          width: 60%;
+          margin: 0 20%;
+        }
+        &:after {
+          content: "";
+          display: block;
+          position: absolute;
+          left: 50%;
+          margin-left: -6px;
+          margin-top: -5px;
+          border: 2px solid tint($sec-color, 50%);
+          height: 12px;
+          width: 12px;
+          background-color: tint($sec-color, 10%);
+          border-radius: 14px;
+          transition-property: all;
+          transition-duration: 0.2s;
+        }
+      }
+    }
+  }
+
+}
+
+.projects-wrapper {
+  background-color: $base-font-color;
+  color: white;
+  transform: skew(0deg, -5deg);
+  .section-title {
+    color: $sec-color;
+  }
+  .section-content {
+    padding: 50px 0;
+    margin-bottom: 100px;
+    transform: skew(0deg, 5deg);
+  }
+  .wide-card-title h4 a,
+  .wide-card-description {
+    color: white;
+  }
+  .wide-card-title h4 a:hover{
+    color: $action-color;
+  }
+  .wide-card {
+    background-color: $base-font-color;
+  }
+}
+
+.badges-wrapper {
+  background-color: white;
+  margin-top: -60px;
+  margin-bottom: -50px;
+  padding-top: 25px;
+  padding-bottom: -100px;
+  transform: skew(0deg, -5deg);
+  .section-title {
+  }
+  .section-content {
+    text-align: center;
+    transform: skew(0deg, 5deg);
+  }
+}

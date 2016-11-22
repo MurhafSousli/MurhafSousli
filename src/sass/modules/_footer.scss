@@ -12,7 +12,7 @@
 
 .top-button {
   z-index: 5300;
-  @extend .animated, .slideInRight;
+  @extend .animated, .rotateIn;
   //opacity: 0.3;
   position: fixed;
   right: 2em;

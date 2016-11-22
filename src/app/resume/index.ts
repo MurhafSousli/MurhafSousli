@@ -15,15 +15,15 @@ import {WorkflowComponent} from './workflow/workflow.component';
 @NgModule({
   declarations: [
     EducationComponent,
-    ExperienceComponent,
+    // ExperienceComponent,
     SkillsComponent,
-    WorkflowComponent
+    // WorkflowComponent
   ],
   exports: [
     EducationComponent,
-    ExperienceComponent,
+    // ExperienceComponent,
     SkillsComponent,
-    WorkflowComponent
+    // WorkflowComponent
   ],
   imports: [
     CommonModule,

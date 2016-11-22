@@ -38,11 +38,15 @@
   </div>
   <div class="page-body">
     <div class="page-content">
+      <!--Cards-->
       <wp-collection [endpoint]="endpoint" (response)="wpResponse($event)">
         <div class="list">
           <card class="item" *ngFor="let post of posts" [data]="post"></card>
         </div>
       </wp-collection>
+      <!--Cards Placeholder-->
+      <list-placeholder *ngIf="!posts && !noResponse"></list-placeholder>
+      <!--Error message-->
       <h3 *ngIf="noResponse" class="no-response animated fadeIn">{{noResponse}}</h3>
     </div>
   </div>

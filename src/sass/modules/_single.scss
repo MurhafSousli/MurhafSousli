@@ -7,6 +7,7 @@
     position: relative;
     color: $base-font-color;
     display: flex;
+    box-shadow: inset 0 0 4px rgba(0,0,0,0.7);
     //flex-direction: column;
     //align-items: center;
     //justify-content: flex-end;
@@ -20,6 +21,7 @@
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
+    background-color: white;
   }
   &-heading{
     font-style: italic;
@@ -28,7 +30,7 @@
   &-title {
     width: 100%;
     padding: 50px 15px 0;
-    font-size: 1.4em;
+    font-size: 1.7em;
     h1{
       font-family: $title-font-family;
     }

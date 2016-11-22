@@ -10,16 +10,14 @@ $btn-bg-hover-color: $action-color;
   margin-right: 5px;
   background-color: white;
   font-family: $heading-font-family;
-
   border: $base-border;
-
   border-radius: $base-border-radius;
   padding: ($base-spacing / 3);
   color: $btn-color;
+  @include transition(all $base-duration $base-timing);
   &:hover {
     background: $btn-bg-hover-color;
     color: $btn-hover-color;
-    @include transition(all $base-duration $base-timing);
   }
 }
 

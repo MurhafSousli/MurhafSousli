@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor';
 
-export class MurhafSousliPage {
+export class ProjectPage {
   navigateTo() {
     return browser.get('/');
   }

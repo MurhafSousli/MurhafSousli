@@ -7,6 +7,7 @@ import {WordPressModule} from 'ng2-wp-api';
 import {NgProgressModule} from "ng2-progressbar";
 import {BlogModule} from "./blog";
 import {ResumeModule} from './resume';
+import {PlaceholdersModule} from './placeholders/placeholder.module';
 
 import {StoreModule} from "@ngrx/store";
 import {dataReducer} from './store/data.reducer';
@@ -41,7 +42,8 @@ import {ProjectsComponent} from './routes/projects/projects.component';
     WordPressModule,
     BlogModule,
     ResumeModule,
-    NgProgressModule
+    NgProgressModule,
+    PlaceholdersModule
   ],
   bootstrap: [AppComponent]
 })

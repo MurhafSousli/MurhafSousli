@@ -1,4 +1,4 @@
-import {Component, OnInit, HostListener, ViewChild, ChangeDetectionStrategy} from '@angular/core';
+import {Component, HostListener, ViewChild, ChangeDetectionStrategy} from '@angular/core';
 import {WpService, WpCollectionComponent, CollectionResponse} from "ng2-wp-api";
 
 @Component({
@@ -7,7 +7,7 @@ import {WpService, WpCollectionComponent, CollectionResponse} from "ng2-wp-api";
   styleUrls: ['./projects.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProjectsComponent implements OnInit {
+export class ProjectsComponent {
 
   projects;
   endpoint = '/wp-json/wp/v2/projects/';
@@ -21,11 +21,7 @@ export class ProjectsComponent implements OnInit {
   /** Collection Component reference */
   @ViewChild(WpCollectionComponent) collection: WpCollectionComponent;
 
-
   constructor(private _wpService: WpService) {
-  }
-
-  ngOnInit() {
   }
 
   wpResponse(event: CollectionResponse) {
@@ -38,7 +34,7 @@ export class ProjectsComponent implements OnInit {
         this.noResponse = false;
       }
       else {
-        this.noResponse = "Empty Results...";
+        this.noResponse = "No posts yet...";
       }
     }
   }

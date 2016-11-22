@@ -4,7 +4,7 @@ import {Component, HostListener, Input, Renderer, ChangeDetectionStrategy} from 
   selector: 'go-top',
   template: `
   <div *ngIf="isActive" class="top-button">
-      <a (click)="scrollTop(duration)"><i class="fa fa-arrow-circle-o-up fa-3x" aria-hidden="true"></i><p>Top</p></a>
+      <a (click)="scrollTop(duration)"><i class="fa fa-arrow-circle-o-up fa-3x" aria-hidden="true"></i></a>
   </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush

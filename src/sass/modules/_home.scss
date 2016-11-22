@@ -8,6 +8,7 @@ home {
 }
 
 .home {
+  @extend .animated, .fadeIn;
   position: relative;
   color: $home-primary;
   flex: 1;

@@ -18,12 +18,3 @@ dd {
   margin: 0;
 }
 
-.list{
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
-  .item{
-    flex: 1 1 auto;
-  }
-}

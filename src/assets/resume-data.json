@@ -58,7 +58,7 @@
     },
     {
       "name": "WebStorm",
-      "image":  "../../../../assets/img/workflow/webstorm.png"
+      "image": "../../../../assets/img/workflow/webstorm.png"
     },
     {
       "name": "PhpStorm",
@@ -81,50 +81,18 @@
       "image": "../../../../assets/img/workflow/illustrator.png"
     }
   ],
-  "education": {
-    "signature": "../../../../assets/img/signature.png",
-    "certificates": [
-      {
-        "title": "Software Engineering",
-        "university": "Bahcesehir University",
-        "date": "SEPTEMBER 2012 - JUNE 2015",
-        "degree": "Bachelor degree"
-      },
-      {
-        "title": "Information Technology",
-        "university": "Bahcesehir University",
-        "date": "JANUARY 2016 - CURRENT",
-        "degree": "Master degree"
-      }
-    ]
-  },
-  "experiences": [
+  "education": [
     {
-      "company": "Skymar Investment",
-      "address": "Maslak Uniq Istanbul",
-      "jobTitle": "IT manager",
-      "date": "APRIL 2016 - MAY 2016",
-      "content": [
-        "Hired to set up the IT workflow for the company",
-        "Setting up all computers OS, LAN and shared drive.",
-        "Getting the website up and running",
-        "Creating custom emails for employees",
-        "Fixing employees IT related problems",
-        "Communicating with 3rd party companies such as Hostgator and Envato Market"
-      ]
+      "title": "Information Technology",
+      "university": "Bahcesehir University",
+      "date": "Jan 2016 - Present",
+      "degree": "Master degree"
     },
     {
-      "company": "Lennox Clinic",
-      "address": "Remote",
-      "jobTitle": "Web developer",
-      "date": "JANUARY 2016 - MARCH 2016",
-      "content": [
-        "Hired for the front-end design, site maintenance & email marketing campaigns",
-        "Ensure site usability, SEO, web standards (W3C) and browser compatibility",
-        "Testing site functionality, identifying problems or bugs and fixing errors",
-        "Coding using front-end technologies, such as CSS and HTML",
-        "Using Photoshop to modify images to suits site’s design"
-      ]
+      "title": "Software Engineering",
+      "university": "Bahcesehir University",
+      "date": "Sep 2012 - Jun 2015",
+      "degree": "Bachelor degree"
     }
   ]
 }

@@ -1,10 +1,11 @@
-import {NgModule}      from '@angular/core';
+import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {SharedModule} from '../shared';
 import {WordPressModule} from 'ng2-wp-api';
 import {ShareButtonsModule} from "ng2-sharebuttons";
 import {DisqusModule} from "ng2-awesome-disqus";
+import {PlaceholdersModule} from '../placeholders/placeholder.module';
 
 import {CategoriesComponent} from "./categories/categories.component";
 import {CardComponent} from './card/card.component';
@@ -33,7 +34,8 @@ import {ProjectsComponent} from './projects/projects.component';
     WordPressModule,
     SharedModule,
     ShareButtonsModule,
-    DisqusModule
+    DisqusModule,
+    PlaceholdersModule
   ]
 })
 

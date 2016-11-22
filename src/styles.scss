@@ -1,3 +1,7 @@
-@import 'style/vendors/_base';
-@import 'style/core/_base';
-@import 'style/modules/_base';
+
+@import '~normalize.css';
+@import '~animate.css';
+@import '~bourbon/app/assets/stylesheets/bourbon';
+@import '~bourbon-neat/app/assets/stylesheets/neat';
+@import 'sass/core/base';
+@import 'sass/modules/base';
