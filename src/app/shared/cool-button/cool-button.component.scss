@@ -1,0 +1,103 @@
+unique-btn-text:host {
+  outline: 0;
+  -webkit-appearance: initial;
+}
+
+.unique-btn {
+  z-index: 999;
+  cursor: pointer;
+  display: block;
+  position: relative;
+  width: 280px;
+  height: 90px;
+  background-color: #000;
+
+  &:hover, &:active {
+    .unique-btn-bg {
+      transform: translate3d(-100%, 0, 0);
+    }
+    .unique-btn-shadow {
+      opacity: 0;
+      &.active {
+        opacity: 1;
+      }
+    }
+    .unique-btn-text {
+      transform: translate3d(40%, 0, 0);
+    }
+  }
+}
+
+.unique-btn-text-mask {
+  position: relative;
+  width: 215px;
+  overflow: hidden;
+  margin: 0 auto;
+  z-index: 1;
+}
+
+.unique-btn-icon-arrow {
+  position: absolute;
+  width: 80px;
+  height: 95px;
+  left: 135px;
+  background: url('../../../assets/img/btn/arrow.svg') left no-repeat;
+  &.active {
+    left: -95px;
+  }
+}
+
+.unique-btn-text {
+  height: 90px;
+  position: relative;
+  transition: transform ease 0.5s;
+  p {
+    position: absolute;
+    font-size: 15px;
+    letter-spacing: 1px;
+    line-height: 94px;
+    color: #ffffff;
+    margin: 0;
+    padding-right: 12px;
+    padding-left: 12px;
+    user-select: none;
+  }
+}
+
+.unique-btn-bg-mask {
+  position: relative;
+  width: 280px;
+  height: 90px;
+  background-color: #000;
+  overflow: hidden;
+  margin: 0 auto;
+  top: -90px;
+}
+
+.unique-btn-bg {
+  position: absolute;
+  right: -300px;
+  width: 300px;
+  height: 90px;
+  background-image: linear-gradient(to right, #1A20FF, #83FFD6);
+  transition: transform ease 0.5s;
+}
+
+.unique-btn-shadow {
+  position: absolute;
+  width: 400px;
+  height: 212px;
+  top: -20px;
+  left: -20px;
+  z-index: -1;
+  pointer-events: none;
+  transition-duration: 1.5s;
+  &.active {
+    opacity: 0;
+  }
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}

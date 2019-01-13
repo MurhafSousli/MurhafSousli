@@ -1,0 +1,10 @@
+:host {
+  display: block;
+  overflow: hidden;
+  max-height: 100vh;
+}
+
+// HIDE G-MAPS BRAND
+.sebm-google-map-container {
+  height: calc(100vh + 24px);
+}

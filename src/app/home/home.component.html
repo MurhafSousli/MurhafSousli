@@ -1,0 +1,17 @@
+<ng-scrollbar compact="true">
+  <div class="container">
+    <div class="m-5 d-flex justify-content-center">
+      <div class="profile-pic"></div>
+    </div>
+    <div class="row mb-3 text-center">
+      <div class="col intro-text">
+        <teximate *ngIf="animation.done | async" [text]="text" [enter]="enterAnimation"></teximate>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col d-flex justify-content-center">
+        <cool-button routerLink="/contact">Contact me</cool-button>
+      </div>
+    </div>
+  </div>
+</ng-scrollbar>

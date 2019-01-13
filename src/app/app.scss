@@ -1,0 +1,30 @@
+app-root {
+  display: flex;
+  flex-direction: row;
+  @include media($mobile) {
+    flex-direction: column;
+  }
+}
+
+.outlet-wrapper {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  perspective: 1000px;
+  //margin: 0 0 0 $header-height;
+  //@include media($mobile) {
+  //  margin: $header-height 0 0 0;
+  //}
+  flex: 1;
+}
+
+ng-progress {
+  .ng-bar-placeholder {
+    background-color: lightgray;
+  }
+
+  .ng-bar {
+    background: #00F260;
+    background: linear-gradient(to right, #0575E6, #00F260);
+  }
+}

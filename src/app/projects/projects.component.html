@@ -1,0 +1,29 @@
+<ng-scrollbar compact="true">
+  <section-title>
+    <h1>Projects</h1>
+  </section-title>
+  <div class="container">
+
+    <div class="projects">
+
+      <div class="card" *ngFor="let repo of repos | async">
+        <div class="card-body">
+          <h3 class="d-flex">
+            <span class="flex-fill">{{repo.name}}</span>
+            <div class="repo-meta">
+              <p class="repo-stars">
+                <fa-icon class="star" [icon]="['far', 'star']"></fa-icon>
+                <span class="ml-2">{{repo.stargazers_count}}</span>
+              </p>
+              <p class="repo-forks">
+                <fa-icon class="fork" [icon]="['fas', 'code-branch']"></fa-icon>
+                <span class="ml-2">{{repo.forks_count}}</span>
+              </p>
+            </div>
+          </h3>
+          <p>{{repo.description}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-scrollbar>

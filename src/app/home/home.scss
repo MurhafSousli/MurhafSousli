@@ -1,0 +1,140 @@
+$home-font-size: 1.5em;
+
+home {
+
+  .intro-text {
+    height: 100px;
+  }
+
+  .row {
+    position: relative;
+    flex: 1;
+  }
+
+  .cover-zone {
+    align-items: flex-start;
+    width: 50%;
+    font-size: 1em;
+    position: relative;
+    z-index: 10;
+  }
+
+  @include media($mobile) {
+    .text-zone, .cover-zone {
+      justify-content: center;
+      align-items: center;
+      min-height: unset;
+      margin-top: 3em;
+      width: 100%;
+    }
+  }
+  .profile-pic{
+    margin-top: 5em;
+    border-radius: 50%;
+    width: 280px;
+    height: 280px;
+    // background: url('http://digitalspyuk.cdnds.net/17/09/1024x512/landscape-1488442413-bw-hugh-jackman-logan.jpg') center center;
+    background: url('assets/img/me.jpg') center center;
+    background-size: contain;
+    filter: grayscale(1);
+    transition: all ease 1000ms;
+    &:hover {
+      filter: unset;
+    }
+  }
+
+  .my-cover {
+
+    display: flex;
+    justify-content: flex-end;
+    //justify-content: center;
+
+    @include media($mobile) {
+
+      justify-content: center;
+    }
+
+    .my-pic {
+      box-sizing: content-box;
+      position: relative;
+      min-width: 280px;
+      min-height: 280px;
+      border-radius: 50%;
+      background-color: $light-action-color;
+      background-size: cover;
+      background-position: center;
+      z-index: 10;
+      transition: all 1000ms ease;
+
+      &:after {
+        content: 'Hi';
+        font-family: $sec-font;
+        color: $light-action-color;
+        position: absolute;
+        top: 75%;
+        left: 0;
+        right: 0;
+        text-align: center;
+        font-size: 7.5em;
+        z-index: 100;
+        font-weight: bold;
+        text-shadow: none;
+
+      }
+    }
+  }
+
+  .my-intro {
+    padding: 10px;
+    width: 400px;
+    user-select: none;
+
+    .my-name {
+      margin: 0;
+      font-size: $home-font-size;
+    }
+    .my-job {
+      //margin: 10px 10px 20px;
+      margin-bottom: 20px;
+      font-size: $home-font-size;
+      strong {
+        color: $light-action-color;
+      }
+      teximate {
+        display: inline-block;
+      }
+    }
+  }
+
+  .panel {
+    width: 90%;
+  }
+  .panel-body {
+    position: relative;
+    display: flex;
+  }
+
+  .resume {
+    background-color: white;
+    margin: 2em;
+    position: relative;
+    .resume-body {
+      position: relative;
+      padding: 2em;
+      cool-button {
+        position: absolute;
+        right: 0;
+        bottom: 2em;
+      }
+    }
+  }
+
+  p {
+    font-size: 2em;
+  }
+}
+
+.home-container {
+  width: 100%;
+  height: 100%;
+}
