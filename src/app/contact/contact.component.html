@@ -1,0 +1,121 @@
+<ng-scrollbar compact="true">
+  <div class="row">
+    <div class="col-md-6 p-0">
+      <section-title>
+        <h1>Contact Me</h1>
+      </section-title>
+      <div class="contact-form d-flex flex-column p-3">
+        <div class="contact-text">
+          If you have any question, don't hesitate to contact using the form below
+        </div>
+
+        <form [formGroup]="form">
+          <div class="contact-control">
+            <input type="text" formControlName="name" placeholder="Name"/>
+            <div *ngIf="submitted && name.invalid" class="validate-err">
+              <div *ngFor="let err of formErrors.name">{{ err }}</div>
+            </div>
+          </div>
+
+          <div class="contact-control">
+            <input required type="text" formControlName="email" placeholder="Email"/>
+            <div *ngIf="submitted && email.invalid" class="validate-err">
+              <div *ngFor="let err of formErrors.email">{{ err }}</div>
+            </div>
+          </div>
+
+          <div class="contact-control message">
+            <textarea formControlName="message" placeholder="Message"
+                      cdkTextareaAutosize
+                      #autosize="cdkTextareaAutosize"
+                      cdkAutosizeMinRows="2"
+                      cdkAutosizeMaxRows="5"></textarea>
+            <div *ngIf="submitted && message.invalid" class="validate-err">
+              <div *ngFor="let err of formErrors.message">{{ err }}</div>
+            </div>
+          </div>
+
+          <cool-button (click)="sendEmail()">Send</cool-button>
+
+        </form>
+      </div>
+    </div>
+    <div class="col-md-6 p-0">
+
+      <!--<section-title fxHide [fxShow.xs]="true">-->
+      <section-title class="location-title">
+        <h1 class="page-title">Location</h1>
+      </section-title>
+
+      <div class="location" [@slideMap] *ngIf="showMap$ | async">
+        <app-card></app-card>
+        <app-map></app-map>
+      </div>
+    </div>
+  </div>
+</ng-scrollbar>
+
+<!--<div fxLayout="row" fxLayout.lt-md="column" class="page-wrapper">-->
+<!--<div class="column text-zone contact-form">-->
+
+<!--<h1 class="page-title">Contact Me</h1>-->
+
+<!--<div class="contact-text">-->
+<!--If you have any question, don't hesitate to contact using the form below-->
+<!--</div>-->
+
+<!--<form [formGroup]="form">-->
+<!--<div class="contact-control">-->
+<!--<input type="text" formControlName="name" placeholder="Name"/>-->
+<!--<div *ngIf="submitted && name.invalid" class="validate-err">-->
+<!--<div *ngFor="let err of formErrors.name">{{ err }}</div>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--<div class="contact-control">-->
+<!--<input required type="text" formControlName="email" placeholder="Email"/>-->
+<!--<div *ngIf="submitted && email.invalid" class="validate-err">-->
+<!--<div *ngFor="let err of formErrors.email">{{ err }}</div>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--<div class="contact-control message">-->
+<!--<textarea type="text" formControlName="message" placeholder="Message"></textarea>-->
+<!--<div *ngIf="submitted && message.invalid" class="validate-err">-->
+<!--<div *ngFor="let err of formErrors.message">{{ err }}</div>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--<cool-button (click)="sendEmail()">Send</cool-button>-->
+
+<!--</form>-->
+
+<!--</div>-->
+
+<!--<div class="column location" [@slideMap] *ngIf="showMap$ | async">-->
+<!--<div class="panel">-->
+<!--<div class="panel-body">Turkey, Istanbul, Beşiktaş (Merkez) 34330</div>-->
+<!--<div class="panel-footer"><i class="fa fa-envelope" aria-hidden="true"></i> murhafsousli@gmail.com</div>-->
+<!--</div>-->
+
+<!--<agm-map-->
+<!--[latitude]="map.lat"-->
+<!--[longitude]="map.lng"-->
+<!--[zoom]="map.zoom"-->
+<!--[styles]="map.styles"-->
+<!--[streetViewControl]="false"-->
+<!--[draggingCursor]="false"-->
+<!--[disableDefaultUI]="false"-->
+<!--[zoomControl]="false"-->
+<!--[scaleControl]="false">-->
+
+<!--<agm-marker-->
+<!--[latitude]="map.lat"-->
+<!--[longitude]="map.lng"-->
+<!--[iconUrl]="map.icon">-->
+<!--</agm-marker>-->
+
+<!--</agm-map>-->
+<!--</div>-->
+
+<!--</div>-->

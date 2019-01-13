@@ -1,0 +1,16 @@
+
+social-links {
+  margin: 1em 0;
+  @include media($mobile) {
+    display: none;
+  }
+
+  a {
+    margin-bottom: .5em;
+    color: $link-color;
+    &:hover {
+      color: $red;
+    }
+  }
+}
+

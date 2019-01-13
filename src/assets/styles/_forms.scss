@@ -1,0 +1,56 @@
+$form-font: $base-font;
+$form-text: $white;
+$danger-color: $red;
+
+$contact-shadow: -2px 0 20px rgba($black, 0.2);
+
+input {
+  height: 40px;
+}
+
+textarea {
+  height: 100%;
+  overflow-y: auto;
+}
+
+input, textarea {
+  font-family: $base-font !important;
+  position: relative;
+  width: 100%;
+  padding: .4em .6em;
+  outline: 0;
+  border: 0;
+  transition: all linear 0.1s;
+  color: $light-color;
+  background-color: $white;
+
+  &:focus {
+    border-left-width: 0;
+  }
+
+  &::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: $light-sec-color;
+  }
+  &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: $light-sec-color;
+  }
+  &::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: $light-sec-color;
+  }
+  &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: $light-sec-color;
+  }
+}
+
+//.ng-invalid:not(form) {
+//  border-bottom: 3px solid $danger-color;
+//}
+//
+//.ng-untouched:not(form) {
+//  border-bottom: 3px solid $white;
+//}
+//
+//.ng-valid[required], .ng-valid.required {
+//  border-bottom: 3px solid $success-color;
+//}
+

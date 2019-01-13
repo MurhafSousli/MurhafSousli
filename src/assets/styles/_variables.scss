@@ -1,0 +1,38 @@
+@import 'mixins';
+
+//Colors
+$white: #ffffff;
+$black: #000;
+$red: #fe424d;
+$gray: #24292E;
+
+//Theme Colors
+$base-color: $black;
+$header-bg: $black;
+
+$link-color: $white;
+
+//radius
+$radius: .2em;
+$base-font: 'Barlow', sans-serif;
+$sec-font: 'Barlow', sans-serif;
+
+//navigation
+$header-height: 60px;
+//media
+$mobile: 599px;
+$desktop: 959px;
+
+// Light theme
+
+$light-bg: $white;
+$light-color: $gray;
+$light-action-color: $red;
+$light-sec-color: #a8a8a8;
+$test-bg: #d8d8d8;
+
+$header-shadow: 2px 0 20px rgba($black, 0.2);
+$button-shadow: 0 0 8px 2px rgba($black, 0.2);
+$button-hover-shadow: 0 0 15px 4px rgba($black, 0.2);
+$big-shadow: 0 3px 10px 1px rgba($black, 0.2);
+$md-shadow: 0 2px 7px 0px rgba($black, 0.2);

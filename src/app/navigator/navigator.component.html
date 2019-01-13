@@ -1,0 +1,22 @@
+<div class="logo">
+  <a ripple [rippleSpread]="true" routerLink="/">
+    <logo></logo>
+    <span class="logo-text">Murhaf</span>
+  </a>
+</div>
+
+<main-menu class="nav-menu"></main-menu>
+
+<social-links></social-links>
+
+<div fxHide [fxShow.xs]="true">
+  <div class="hamburger hamburger--spin js-hamburger"
+       [class.is-active]="mobileMenu" (click)="mobileMenu = !mobileMenu">
+  <span class="hamburger-box">
+    <span class="hamburger-inner"></span>
+  </span>
+  </div>
+</div>
+
+<main-menu [@flyInOut] *ngIf="mobileMenu" class="nav-mobile"></main-menu>
+

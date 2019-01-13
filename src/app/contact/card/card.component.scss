@@ -1,0 +1,36 @@
+@import '../../../assets/styles/variables';
+
+$overlay-color: $white;
+$overlay-bg: rgba($black, .9);
+$overlay-light-bg: rgba($black, .5);
+
+$overlay-theme-bg: $white;
+
+.panel {
+  left: 3em;
+  top: 3em;
+  width: 260px;
+  min-height: 200px;
+  padding: 1.5em;
+  z-index: 1000;
+  position: absolute;
+  background-color: $overlay-theme-bg;
+  color: $light-color;
+  display: flex;
+  flex-direction: column;
+  transition: all linear 0.2s;
+  font-size: 0.9em;
+  box-shadow: $big-shadow;
+
+  i {
+    color: $red;
+  }
+
+  .panel-body {
+    flex: 1;
+  }
+
+  &.light-panel {
+    background-color: $overlay-light-bg;
+  }
+}

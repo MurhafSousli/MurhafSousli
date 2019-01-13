@@ -1,0 +1,92 @@
+//GENERAL RULES
+
+$form-space: .7em;
+
+contact {
+  .row {
+    margin: 0;
+    overflow: hidden;
+    height: 100%;
+  }
+
+  //CONTACT FORM
+
+  .contact-form {
+    position: relative;
+    margin-bottom: 4em;
+
+    @include media($desktop) {
+      padding-top: 0;
+    }
+  }
+
+  .form-submitted {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    line-height: 50px;
+    margin: 1em;
+  }
+
+  form {
+    flex: 1;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .contact-control {
+    position: relative;
+    margin: .2em .3em;
+    font-size: 14px;
+  }
+
+  .message {
+    margin-bottom: 2em;
+  }
+
+  .contact-text {
+    margin-bottom: 2em;
+  }
+
+  .alert {
+    border-radius: 0;
+    font-size: .8em;
+  }
+
+  // MAP LOCATION
+
+  .location {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin-right: -100px;
+    background-color: $white;
+
+    //hide google maps
+    overflow: hidden;
+    box-shadow: $big-shadow;
+
+    @include media($desktop) {
+      position: relative;
+    }
+  }
+
+  .validate-err {
+    font-size: 12px;
+    color: $red;
+    padding: .4em .6em;
+  }
+}

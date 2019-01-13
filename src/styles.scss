@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css?family=Barlow');
+@import '~bootstrap/dist/css/bootstrap.css';
+@import '~ngx-bar-rating/themes/br-horizontal-theme';
+@import 'assets/styles/base';
+
+@import '~@angular/cdk/overlay-prebuilt.css';
+
+html {
+  box-sizing: border-box;
+}
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/** TODO: To be removed when ng-scrollbar gets a new release */
+ng-scrollbar .ng-scrollbar-view {
+  box-sizing: content-box !important;
+}
+
+body {
+  font-family: $base-font;
+  //background-color: $black;
+  background-color: $light-action-color;
+  color: $light-color;
+  //margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+h1 {
+  font-size: 3em;
+  font-weight: normal;
+}
+
+a {
+  user-select: none;
+  text-decoration: none;
+  color: $light-color;
+
+  &:hover {
+    color: $red;
+  }
+}
+
+.cover-zone, .text-zone {
+  align-content: center;
+}
+
+.center {
+  justify-content: center;
+}
+
+.text-zone {
+  margin: 0 4em;
+  @include media($mobile) {
+    margin: 0 2em;
+  }
+}
+
+.columns {
+  display: flex;
+
+  @include media($mobile) {
+    flex-direction: column;
+  }
+}
+
+.column {
+  margin: 0 2em;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.line {
+  margin-bottom: 12px;
+}
+
+.word {
+  margin-right: 13px;
+}
+
+.page-wrapper {
+  overflow: hidden;
+  flex: 1;
+}
+
+//.bar {
+//  background-image: repeating-linear-gradient(to right, rgb(0, 165, 223) 0%, rgb(62, 20, 123) 20%, rgb(226, 0, 121) 40%, rgb(223, 19, 44) 60%, rgb(243, 239, 21) 80%, rgb(0, 152, 71) 100%) !important;
+//}
+
+
+.app-page {
+
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: $white;
+  transform: perspective(1000px);
+  overflow: hidden;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.player {
+  position: fixed;
+  width: 250px;
+  height: 150px;
+  right: 1em;
+  top: 1em;
+}
+
+.visualAudible__footer .g-transition-transform {
+  display: none !important;
+}
+
+ng-scrollbar {
+  width: 100%;
+}

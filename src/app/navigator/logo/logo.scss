@@ -1,0 +1,11 @@
+logo {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+
+  polygon, rect {
+    transition: fill ease-in-out 500ms;
+  }
+}

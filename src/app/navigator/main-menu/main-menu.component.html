@@ -1,0 +1,37 @@
+<a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+   ripple [rippleSpread]="true">
+  <div class="nav-icon">
+    <fa-icon icon="home"></fa-icon>
+  </div>
+  <div class="nav-text">
+    <span>HOME</span>
+  </div>
+</a>
+<a routerLink="/projects" routerLinkActive="active"
+   ripple [rippleSpread]="true">
+  <div class="nav-icon">
+    <fa-icon icon="code"></fa-icon>
+  </div>
+  <div class="nav-text">
+    <span>PROJECTS</span>
+  </div>
+</a>
+<a routerLink="/contact" routerLinkActive="active"
+   ripple [rippleSpread]="true">
+  <div class="nav-icon">
+    <fa-icon icon="envelope"></fa-icon>
+  </div>
+  <div class="nav-text">
+    <span>CONTACT</span>
+  </div>
+</a>
+
+<a *ngIf="loggedIn | async" routerLink="/admin" routerLinkActive="active"
+   ripple [rippleSpread]="true">
+  <div class="nav-icon">
+    <fa-icon icon="user-tie"></fa-icon>
+  </div>
+  <div class="nav-text">
+    <span>ADMIN</span>
+  </div>
+</a>

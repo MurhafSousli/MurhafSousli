@@ -1,0 +1,28 @@
+:host {
+  display: block;
+  background: #f8f8f8;
+  padding-top: 10em;
+  margin-bottom: 10em;
+  position: relative;
+  //transform: translateX(-50vw);
+  //width: 100vw;
+  //left: 50vw;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+.section-title {
+  position: absolute;
+  left: 0;
+  right: 0;
+  transform: translateY(-30px);
+}
+
+fa-icon {
+  font-size: 2em;
+  color: rgba(0, 0, 0, 0.3)
+}
