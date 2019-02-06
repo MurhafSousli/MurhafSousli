@@ -19,9 +19,8 @@ export class AppComponent {
   );
 
   @ViewChild(NgProgressComponent) progress: NgProgressComponent;
-  
-  constructor(private store: Store, private animation: AnimationService) {
-    store.subscribe(x => console.log(x));
+
+  constructor(private _store: Store, private _animation: AnimationService) {
   }
 
   getState(outlet) {
@@ -29,7 +28,7 @@ export class AppComponent {
   }
 
   onAnimationDone() {
-    this.animation.notifyOnDone();
+    this._animation.notifyOnDone();
     this.progress.complete();
   }
 }

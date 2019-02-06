@@ -17,7 +17,7 @@ import { validationMessages } from './contact.helper';
   host: {
     'class': 'app-page'
   },
-  selector: 'contact',
+  selector: 'app-contact',
   templateUrl: './contact.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [slideMapAnimation]

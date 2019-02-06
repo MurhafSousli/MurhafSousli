@@ -15,6 +15,7 @@ import { faCodeBranch } from '@fortawesome/free-solid-svg-icons/faCodeBranch';
 import { faUserTie } from '@fortawesome/free-solid-svg-icons/faUserTie';
 import { faStar } from '@fortawesome/free-regular-svg-icons/faStar';
 import { faHashtag } from '@fortawesome/free-solid-svg-icons/faHashtag';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons/faArrowRight';
 
 if (environment.production) {
   enableProdMode();
@@ -23,4 +24,4 @@ if (environment.production) {
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.log(err));
 
-library.add(faTwitter, faGithub, faLinkedinIn, faEnvelope, faCode, faHome, faStar, faCodeBranch, faHashtag, faUserTie);
+library.add(faTwitter, faGithub, faLinkedinIn, faEnvelope, faCode, faHome, faStar, faCodeBranch, faHashtag, faUserTie, faArrowRight);

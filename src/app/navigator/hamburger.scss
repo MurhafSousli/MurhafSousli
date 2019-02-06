@@ -1,7 +1,8 @@
-$hamburger-padding-x: 1em !default;
-$hamburger-padding-y: 0 !default;
-$hamburger-layer-spacing: 6px !default;
-$hamburger-hover-opacity: 1 !default;
+$hamburger-padding-x: 1em;
+$hamburger-padding-y: 0;
+$hamburger-layer-spacing: 6px;
+$hamburger-hover-opacity: 1;
+$hamburger-layer-color: white;
 
 @import "~hamburgers/_sass/hamburgers/hamburgers";
 
@@ -9,12 +10,5 @@ $hamburger-hover-opacity: 1 !default;
   height: 100%;
   display: flex;
   align-items: center;
-
-  .hamburger-inner {
-    background-color: $white;
-    &:after, &:before {
-      background-color: $white;
-    }
-  }
 }
 

@@ -5,7 +5,7 @@
     </div>
     <div class="row mb-3 text-center">
       <div class="col intro-text">
-        <teximate *ngIf="animation.done | async" [text]="text" [enter]="enterAnimation"></teximate>
+        <teximate *ngIf="animation.done | async" [text]="(info$ | async)?.bio" [enter]="enterAnimation"></teximate>
       </div>
     </div>
     <div class="row">

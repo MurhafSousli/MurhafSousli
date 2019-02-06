@@ -1,6 +1,6 @@
 $home-font-size: 1.5em;
 
-home {
+app-home {
 
   .intro-text {
     height: 100px;
@@ -28,7 +28,8 @@ home {
       width: 100%;
     }
   }
-  .profile-pic{
+
+  .profile-pic {
     margin-top: 5em;
     border-radius: 50%;
     width: 280px;
@@ -38,6 +39,7 @@ home {
     background-size: contain;
     filter: grayscale(1);
     transition: all ease 1000ms;
+
     &:hover {
       filter: unset;
     }
@@ -93,13 +95,16 @@ home {
       margin: 0;
       font-size: $home-font-size;
     }
+
     .my-job {
       //margin: 10px 10px 20px;
       margin-bottom: 20px;
       font-size: $home-font-size;
+
       strong {
         color: $light-action-color;
       }
+
       teximate {
         display: inline-block;
       }
@@ -109,6 +114,7 @@ home {
   .panel {
     width: 90%;
   }
+
   .panel-body {
     position: relative;
     display: flex;
@@ -118,9 +124,11 @@ home {
     background-color: white;
     margin: 2em;
     position: relative;
+
     .resume-body {
       position: relative;
       padding: 2em;
+
       cool-button {
         position: absolute;
         right: 0;

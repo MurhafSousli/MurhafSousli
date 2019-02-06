@@ -1,6 +1,6 @@
-<div>
-    <input type="text" placeholder="Project name">
-    <textarea cols="30" rows="10" placeholder="Project description"></textarea>
-    <input type="text" placeholder="Project website">
-    <div>Upload cover pic</div>
-</div>
+<h1 class="mb-5">
+  <input type="text" placeholder="Title">
+</h1>
+
+<quill-editor [style]="{height: '200px'}" [ngModel]="test" placeholder="Body..." (ngModelChange)="testOutput($event)">
+</quill-editor>

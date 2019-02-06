@@ -1,21 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { map, filter } from 'rxjs/operators';
-import { GithubRepo } from './project.model';
+import { GithubRepo } from '../project.model';
 
 @Component({
   host: {
     'class': 'app-page'
   },
-  selector: 'projects',
-  templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.scss']
+  selector: 'app-project-list',
+  templateUrl: './project-list.component.html',
+  styleUrls: ['./project-list.component.scss']
 })
-export class ProjectsComponent implements OnInit {
+export class ProjectListComponent implements OnInit {
+
   repos: Observable<GithubRepo[]>;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
   ngOnInit() {
     // this.http
@@ -39,8 +40,8 @@ export class ProjectsComponent implements OnInit {
           a.stargazers_count < b.stargazers_count
             ? 1
             : b.stargazers_count < a.stargazers_count
-              ? -1
-              : 0
+            ? -1
+            : 0
       );
     this.repos = of<GithubRepo[]>(arr);
   }

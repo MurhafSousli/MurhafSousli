@@ -1,0 +1,15 @@
+<ng-scrollbar compact="true">
+  <section-title>
+    <h1>Edit Project</h1>
+  </section-title>
+
+  <div class="container">
+    <app-project-form></app-project-form>
+
+    <div class="actions">
+      <button (click)="saveChanges()">Save Changes</button>
+      <button (click)="discard()">Discard</button>
+      <button (click)="deleteProject()">Delete Project</button>
+    </div>
+  </div>
+</ng-scrollbar>
