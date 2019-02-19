@@ -4,7 +4,6 @@ import { RouterModule } from '@angular/router';
 import { NgxsFormPluginModule } from '@ngxs/form-plugin';
 
 import { AdminComponent } from './admin/admin.component';
-import { AppDialog } from '../dialog/dialog.service';
 import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -18,9 +17,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     RouterModule.forChild([
       {path: '', component: AdminComponent}
     ])
-  ],
-  providers: [
-    AppDialog
   ]
 })
 export class AdminModule { }

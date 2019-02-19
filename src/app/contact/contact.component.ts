@@ -6,7 +6,7 @@ import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
 import { NotificationsService } from 'angular2-notifications';
 
-import { of, EMPTY } from 'rxjs';
+import { of, EMPTY, Observable } from 'rxjs';
 import { take, delay, tap, catchError } from 'rxjs/operators';
 
 import { DialogComponent } from './dialog.component';
@@ -23,6 +23,7 @@ import { validationMessages } from './contact.helper';
   animations: [slideMapAnimation]
 })
 export class ContactComponent implements OnInit {
+
   form: FormGroup;
   submitted = false;
   formErrors = {name: [], email: [], message: []};

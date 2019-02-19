@@ -7,8 +7,8 @@
     <app-project-form></app-project-form>
 
     <div class="actions">
-      <button (click)="add()">Add</button>
-      <button (click)="discard()">Discard</button>
+      <cool-button primary mini (click)="add()">Add</cool-button>
+      <cool-button danger mini icon="times" (click)="discard()">Discard</cool-button>
     </div>
   </div>
 </ng-scrollbar>

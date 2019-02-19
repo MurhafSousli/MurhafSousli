@@ -7,9 +7,9 @@
     <app-project-form></app-project-form>
 
     <div class="actions">
-      <button (click)="saveChanges()">Save Changes</button>
-      <button (click)="discard()">Discard</button>
-      <button (click)="deleteProject()">Delete Project</button>
+      <cool-button primary mini (click)="saveChanges()">Save Changes</cool-button>
+      <cool-button danger mini icon="times" (click)="discard()">Discard</cool-button>
+      <cool-button danger mini (click)="deleteProject()">Delete Project</cool-button>
     </div>
   </div>
 </ng-scrollbar>

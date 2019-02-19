@@ -1,16 +1,21 @@
-<agm-map [latitude]="latitude"
-         [longitude]="longitude"
-         [zoom]="zoom"
-         [styles]="styles"
-         [streetViewControl]="streetViewControl"
-         [draggingCursor]="draggingCursor"
-         [disableDefaultUI]="disableDefaultUI"
-         [zoomControl]="zoomControl"
-         [scaleControl]="scaleControl">
+<ng-container *ngIf="coordinates$ | async as coordinates">
 
-  <agm-marker [latitude]="latitude"
-              [longitude]="longitude"
-              [iconUrl]="iconUrl">
-  </agm-marker>
+  <agm-map [latitude]="coordinates?.latitude"
+           [longitude]="coordinates?.longitude"
+           [zoom]="zoom"
+           [styles]="styles"
+           [streetViewControl]="streetViewControl"
+           [draggingCursor]="draggingCursor"
+           [disableDefaultUI]="disableDefaultUI"
+           [zoomControl]="zoomControl"
+           [scaleControl]="scaleControl">
 
-</agm-map>
+    <agm-marker [latitude]="coordinates?.latitude"
+                [longitude]="coordinates?.longitude"
+                [iconUrl]="iconUrl">
+    </agm-marker>
+
+  </agm-map>
+
+</ng-container>
+

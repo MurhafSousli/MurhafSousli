@@ -1,16 +1,24 @@
 <ng-scrollbar compact="true">
-  <div class="container">
+  <div *ngIf="info$ | async as info" class="container my-5">
     <div class="m-5 d-flex justify-content-center">
-      <div class="profile-pic"></div>
+
+      <div class="profile-pic-container">
+        <div class="profile-pic-border"></div>
+        <div class="profile-pic">
+          <img src="{{info?.photoUrl}}" alt="profile-photo">
+        </div>
+        <div class="profile-pic-shadow"></div>
+      </div>
+
     </div>
     <div class="row mb-3 text-center">
       <div class="col intro-text">
-        <teximate *ngIf="animation.done | async" [text]="(info$ | async)?.bio" [enter]="enterAnimation"></teximate>
+        <teximate *ngIf="animation.done | async" [text]="info?.bio" [enter]="enterAnimation"></teximate>
       </div>
     </div>
     <div class="row">
       <div class="col d-flex justify-content-center">
-        <cool-button routerLink="/contact">Contact me</cool-button>
+        <cool-button primary center routerLink="/contact">Contact me</cool-button>
       </div>
     </div>
   </div>

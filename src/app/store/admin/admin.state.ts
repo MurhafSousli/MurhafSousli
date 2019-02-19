@@ -8,7 +8,11 @@ import { Info, AdminStateModel } from './admin.model';
 @State<AdminStateModel>({
   name: 'admin',
   defaults: {
-    info: null,
+    info: {
+      bio: 'Hello - My name is Murhaf and I am Frontend developer',
+      map: '41.044476:29.007396',
+      photoUrl: 'http://4.bp.blogspot.com/-O8Pm2ZGhCdM/UKAuC2U4qEI/AAAAAAAACPI/nN2vhN5X3bY/s320/12billthebutcher-Gangs-of-New-York.jpeg'
+    },
     infoForm: {
       model: null,
       dirty: false,
@@ -30,27 +34,33 @@ export class AdminState implements NgxsOnInit {
 
   @Action(GetInfo)
   getInfo({patchState, dispatch}: StateContext<AdminStateModel>) {
+
     patchState({loading: true});
+
     this._info.getInfo().pipe(
       tap((info: Info) => {
         dispatch(new GetInfoSuccess(info));
       }),
       catchError((error: Error) => dispatch(new GetInfoFailed(error)))
-    ).subscribe();
+    )
+      // .subscribe();
   }
 
   @Action(UpdateInfo)
   updateInfo({patchState, dispatch, getState}: StateContext<AdminStateModel>) {
+
     patchState({loading: true});
+
     const formValue = getState().infoForm.model;
-    return this._info.updateInfo(formValue).pipe(
+
+    this._info.updateInfo(formValue).pipe(
       tap((res) =>
         dispatch(new UpdateInfoSuccess(res))
       ),
       catchError((error: Error) =>
         dispatch(new UpdateInfoFailed(error))
       )
-    );
+    ).subscribe();
   }
 
   @Action([GetInfoSuccess, UpdateInfoSuccess])

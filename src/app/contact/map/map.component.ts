@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Select } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+
 import { mapStyle } from '../contact.helper';
 
 @Component({
@@ -6,11 +10,12 @@ import { mapStyle } from '../contact.helper';
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss']
 })
-export class MapComponent {
+export class MapComponent implements OnInit {
+
+  coordinates$: Observable<Partial<Coordinates>>;
+  @Select('admin.info.map') map$: Observable<string>;
 
   zoom = 5;
-  latitude = 41.044476;
-  longitude = 29.007396;
   iconUrl = 'assets/img/pin.svg';
   streetViewControl = false;
   draggingCursor = false;
@@ -18,5 +23,17 @@ export class MapComponent {
   zoomControl = false;
   scaleControl = false;
   styles = mapStyle;
+
+  ngOnInit() {
+    this.coordinates$ = this.map$.pipe(
+      map((mapCoordinates: string) => {
+        const coordinates = mapCoordinates.split(':');
+        return {
+          latitude: +coordinates[0],
+          longitude: +coordinates[1]
+        };
+      })
+    );
+  }
 
 }

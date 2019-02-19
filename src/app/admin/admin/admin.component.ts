@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Store } from '@ngxs/store';
+import { Select, Store } from '@ngxs/store';
 import { Navigate } from '@ngxs/router-plugin';
+import { Observable } from 'rxjs';
+import { filter, tap } from 'rxjs/operators';
 
 import { Info } from '../../store/admin/admin.model';
 import { UpdateInfo } from '../../store/admin/admin.actions';
@@ -16,28 +18,34 @@ import { UpdateInfo } from '../../store/admin/admin.actions';
 })
 export class AdminComponent implements OnInit {
 
-  info: FormGroup;
+  @Select('admin.info') info$: Observable<Info>;
+
+  infoFormGroup: FormGroup;
 
   constructor(private _formBuilder: FormBuilder, private _store: Store) {
   }
 
   ngOnInit() {
-    const defaultInfo: Info = {
+    // Initialize form controls
+    this.infoFormGroup = this._formBuilder.group({
       displayName: '',
       email: '',
       bio: '',
       map: '',
       photoUrl: ''
-    };
-    const info: Info = {...defaultInfo, ...this._store.snapshot().admin.info};
-    this.info = this._formBuilder.group(info);
+    });
+    // Patch form value from Store
+    this.info$.pipe(
+      filter((info: Info) => !!info),
+      tap((info: Info) => this.infoFormGroup.patchValue(info))
+    ).subscribe();
   }
 
-  save() {
+  saveChanges() {
     this._store.dispatch(new UpdateInfo());
   }
 
-  cancel() {
+  discard() {
     this._store.dispatch(new Navigate(['/']));
   }
 }

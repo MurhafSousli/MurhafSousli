@@ -4,6 +4,9 @@ $danger-color: $red;
 
 $contact-shadow: -2px 0 20px rgba($black, 0.2);
 
+input, textarea {
+  border: 1px solid #ccc;
+}
 app-contact {
 
   input {

@@ -16,6 +16,9 @@ import { faUserTie } from '@fortawesome/free-solid-svg-icons/faUserTie';
 import { faStar } from '@fortawesome/free-regular-svg-icons/faStar';
 import { faHashtag } from '@fortawesome/free-solid-svg-icons/faHashtag';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons/faArrowRight';
+import { faTimes } from '@fortawesome/free-solid-svg-icons/faTimes';
+import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash';
+import { faPlus } from '@fortawesome/free-solid-svg-icons/faPlus';
 
 if (environment.production) {
   enableProdMode();
@@ -24,4 +27,20 @@ if (environment.production) {
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.log(err));
 
-library.add(faTwitter, faGithub, faLinkedinIn, faEnvelope, faCode, faHome, faStar, faCodeBranch, faHashtag, faUserTie, faArrowRight);
+const icons = [
+  faTwitter,
+  faGithub,
+  faLinkedinIn,
+  faEnvelope,
+  faCode,
+  faHome,
+  faStar,
+  faCodeBranch,
+  faHashtag,
+  faUserTie,
+  faArrowRight,
+  faTimes,
+  faTrash,
+  faPlus
+];
+library.add(...icons);

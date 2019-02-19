@@ -5,6 +5,7 @@
         [@sideAnimation]="getState(o)"
         (@sideAnimation.start)="progress.start()"
         (@sideAnimation.done)="onAnimationDone()">
+    <!--<main class="outlet-wrapper">-->
     <router-outlet #o="outlet"></router-outlet>
   </main>
   <ng-progress [meteor]="false" [trickleSpeed]="200" [thick]="true" [spinner]="false"></ng-progress>

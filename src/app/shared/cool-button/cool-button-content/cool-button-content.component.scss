@@ -1,0 +1,41 @@
+:host {
+  display: block;
+  color: white;
+  position: relative;
+  width: 80%;
+  height: 100%;
+  overflow: hidden;
+  margin: 0 auto;
+  z-index: 1;
+}
+
+.cool-btn-text.cool-btn-text-active {
+  transform: translate3d(0, 0, 0);
+}
+
+.cool-btn-icon {
+  flex: 0 0 20%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cool-btn-text {
+  transform: translate3d(-20%, 0, 0);
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 120%;
+  position: relative;
+  transition: transform ease .4s;
+}
+
+.cool-btn-content {
+  flex: 1;
+  //font-size: 1em;
+  letter-spacing: 1px;
+  padding-right: .8em;
+  padding-left: .8em;
+  user-select: none;
+}

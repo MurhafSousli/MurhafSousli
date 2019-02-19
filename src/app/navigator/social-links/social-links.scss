@@ -1,4 +1,3 @@
-
 social-links {
   margin: 1em 0;
   @include media($mobile) {
@@ -8,9 +7,27 @@ social-links {
   a {
     margin-bottom: .5em;
     color: $link-color;
+
     &:hover {
       color: $red;
     }
   }
 }
 
+#linkedIn-link {
+  &:hover, &:active {
+    color: #0077B5;
+  }
+}
+
+#github-link {
+  &:hover, &:active {
+    color: #d32ee4;
+  }
+}
+
+#twitter-link {
+  &:hover, &:active {
+    color: #00acee;
+  }
+}

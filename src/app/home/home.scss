@@ -29,21 +29,56 @@ app-home {
     }
   }
 
-  .profile-pic {
+  .profile-pic-container {
+    position: relative;
     margin-top: 5em;
+  }
+
+  .profile-pic {
     border-radius: 50%;
     width: 280px;
     height: 280px;
-    // background: url('http://digitalspyuk.cdnds.net/17/09/1024x512/landscape-1488442413-bw-hugh-jackman-logan.jpg') center center;
-    background: url('assets/img/me.jpg') center center;
+    background-color: white;
+    background-position: center center;
     background-size: contain;
     filter: grayscale(1);
     transition: all ease 1000ms;
+    overflow: hidden;
 
     &:hover {
       filter: unset;
     }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
+
+  .profile-pic-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    //border: 140px solid white;
+    z-index: 8888;
+    transition: 400ms linear border;
+    border-radius: 50%;
+  }
+
+  //.profile-pic-shadow {
+  //  border-radius: 50%;
+  //  width: 280px;
+  //  height: 280px;
+  //  background-color: rgba(0, 0, 0, 0.5);
+  //  filter: blur(15px);
+  //  position: absolute;
+  //  bottom: -30px;
+  //  right: -30px;
+  //  z-index: -1;
+  //}
 
   .my-cover {
 

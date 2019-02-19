@@ -2,14 +2,21 @@ import { Injectable } from '@angular/core';
 import { ComponentPortal } from '@angular/cdk/portal';
 import { Overlay, OverlayRef, OverlayConfig } from '@angular/cdk/overlay';
 import { ESCAPE } from '@angular/cdk/keycodes';
+import { LoginComponent } from './login/login.component';
 
 @Injectable()
-export class AppDialog {
+export class DialogService {
 
   /** Overlay ref */
   private _overlayRef: OverlayRef;
 
   constructor(private _overlay: Overlay) {
+  }
+
+  openLogin() {
+    const overlayRef = this._overlay.create();
+    const loginPortal = new ComponentPortal(LoginComponent);
+    overlayRef.attach(loginPortal);
   }
 
   open() {
