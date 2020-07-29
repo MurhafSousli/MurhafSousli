@@ -1,9 +1,0 @@
-<wp-collection [endpoint]="endpoint" [args]="args" (response)="wpResponse($event)">
-  <div class="list">
-    <card class="item" *ngFor="let project of projects" [data]="project"></card>
-  </div>
-</wp-collection>
-<!--Cards Placeholder-->
-<list-placeholder *ngIf="!projects && !noResponse"></list-placeholder>
-<!--Error message-->
-<h3 *ngIf="noResponse" class="no-response animated fadeIn">{{noResponse}}</h3>
