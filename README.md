@@ -1,6 +1,18 @@
-Hi, welcome to my Github profile!
+## Hi, welcome to my Github profile!
 
-I make cool stuff, I've written many open-source projects for the Angular community
+I'm Murhaf, I create stuff and I've written many open-source projects for the Angular community, I would like to highlight:
+
+- [Angular progressbar]()
+- [Angular scrollbar]()
+- [Angular share buttons]()
+- [Angular gallery & lightbox]()
+- [Angular Highlight.js port]()
+- [Angular Disqus port]()
+- [Angular bar rating]()
+- [Angular Firebase file and image uploader]()
+- [Angular Wordpress module]()
+- [Angular text animation]()
+- [Angular toggle header on scroll](https://header-autohide.netlify.app/)
 
 Here are some of my projects:
 
