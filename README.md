@@ -1,32 +1,3 @@
-## Hi, welcome to my Github profile!
+#### Hello — my name is Murhaf. I build web apps and create libraries.
 
-I'm Murhaf, I create stuff and I've written many open-source projects for the Angular community, I would like to highlight:
-
-- [Angular progressbar]()
-- [Angular scrollbar]()
-- [Angular share buttons]()
-- [Angular gallery & lightbox]()
-- [Angular Highlight.js port]()
-- [Angular Disqus port]()
-- [Angular bar rating]()
-- [Angular Firebase file and image uploader]()
-- [Angular Wordpress module]()
-- [Angular text animation]()
-- [Angular toggle header on scroll](https://header-autohide.netlify.app/)
-
-Here are some of my projects:
-
-<div align="center">
-  <h3><a href="https://murhafsousli.github.io/runman">Runman game</a></h3>
-  <img src="https://media-exp1.licdn.com/dms/image/C4D2DAQGVrdkJ3X15PQ/profile-treasury-image-shrink_1920_1920/0/1602296504006?e=1629572400&v=beta&t=rP2vewApZyZtbcEBa2l0SrWpGJHlhNj_6DbqXy6Oves" alt="Image" height="350" />
-</div>
-
-<div align="center">
-  <h3><a href="https://murhafsousli.github.io/8puzzle">8-Puzzle game</a></h3>
-  <img src="https://murhafsousli.github.io/8puzzle/assets/cover.png" alt="Image" height="250" />
-</div>
-
-<div align="center">
-  <h3><a href="https://murhafsousli.github.io/memory">Memory game</a></h3>
-  <img src="https://media-exp1.licdn.com/dms/image/C4D2DAQGOx9xFnS12Aw/profile-treasury-image-shrink_1920_1920/0/1602193229060?e=1629572400&v=beta&t=t6g19CD2X2e7HBiPAU_HNoKM0YvJXdZSwez68NkMjug" alt="Image" height="250" />
-</div>
+My academic education is in Software Engineering and IT, and I've spent my fair share of time as a front-end developer before embracing the full-stack.
